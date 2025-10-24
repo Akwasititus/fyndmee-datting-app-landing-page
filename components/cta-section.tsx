@@ -12,7 +12,7 @@ export default function CTASection() {
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
           Ready to Find Your{" "}
-          <span className="bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-rose-900 to-pink-900 bg-clip-text text-transparent">
             Perfect Match
           </span>
           ?
@@ -23,7 +23,7 @@ export default function CTASection() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="px-10 py-4 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold rounded-full text-lg shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105">
+          <button className="px-10 py-4 bg-gradient-to-r from-rose-900 to-pink-900 text-white font-semibold rounded-full text-lg shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105">
             Download App Now
           </button>
           <button className="px-10 py-4 bg-white/10 backdrop-blur-md text-white font-semibold rounded-full text-lg border-2 border-white/30 hover:bg-white/20 transition-all duration-300 hover:scale-105">

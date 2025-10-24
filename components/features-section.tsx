@@ -62,7 +62,7 @@ export default function FeaturesSection() {
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
             Why Choose{" "}
-            <span className="bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">FyndMee</span>?
+            <span className="bg-gradient-to-r from-rose-900 to-pink-900 bg-clip-text text-transparent">FyndMee</span>?
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
             Experience dating reimagined with cutting-edge technology and genuine human connection
