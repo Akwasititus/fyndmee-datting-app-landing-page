@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Heart className="w-6 h-6 text-rose-500 fill-rose-500" />
-              <span className="text-xl font-bold text-white">LoveMatch</span>
+              <span className="text-xl font-bold text-white">FyndMee</span>
             </div>
             <p className="text-white/70">Where authentic connections begin and love stories unfold.</p>
           </div>
