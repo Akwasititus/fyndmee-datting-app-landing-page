@@ -14,7 +14,7 @@ export default function Home() {
       <EnhancedHeroSection />
       <FeaturesSection />
       {/* <HowItWorksSection /> */}
-      {/* <TestimonialsSection /> */}
+      <TestimonialsSection />
       {/* <PricingSection /> */}
       <CTASection />
       {/* <Footer /> */}
