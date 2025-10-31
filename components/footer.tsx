@@ -9,7 +9,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Heart className="w-6 h-6 text-rose-500 fill-rose-500" />
+              <img
+                src="/images/logos.png"
+                alt="Fynd Mee logo"
+                className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
+
+              />
               <span className="text-xl font-bold text-white">FyndMee</span>
             </div>
             <p className="text-white/70">Where authentic connections begin and love stories unfold.</p>
@@ -17,28 +22,28 @@ export default function Footer() {
 
           {/* Product */}
           <div>
-            <h4 className="font-bold text-white mb-4">Product</h4>
+            <h4 className="font-bold text-white mb-4">Index</h4>
             <ul className="space-y-2 text-white/70">
               <li>
                 <a href="#" className="hover:text-rose-400 transition">
-                  Features
+                  The App
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-rose-400 transition">
-                  Pricing
+                  Careers
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-rose-400 transition">
-                  Download
+                  Newsroom
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-rose-400 transition">
                   Blog
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -53,17 +58,17 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#" className="hover:text-rose-400 transition">
-                  Careers
+                  Contact Us
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-rose-400 transition">
                   Press
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="#" className="hover:text-rose-400 transition">
-                  Contact
+                  Privacy Policy
                 </a>
               </li>
             </ul>
@@ -99,7 +104,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/50 text-sm">© 2025 LoveMatch. All rights reserved.</p>
+            <p className="text-white/50 text-sm">© 2025 Fyndmee. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="text-white/50 hover:text-rose-400 transition">
                 Twitter

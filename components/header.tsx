@@ -158,7 +158,7 @@ export default function Header() {
     { id: "products", label: "Products", href: "#products" },
     { id: "newsroom", label: "News Room", href: "#newsroom" },
     { id: "download", label: "Download", href: "#download" },
-    { id: "download", label: "Download", href: "#download" }
+    // { id: "download", label: "Download", href: "#download" }
   ]
 
   const socials = [
