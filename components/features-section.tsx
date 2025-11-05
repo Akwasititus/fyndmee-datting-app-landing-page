@@ -1,7 +1,6 @@
 "use client"
 
 import { motion, Variants } from "framer-motion"
-import { Flame, Shield, Users, Zap, Heart, Lock } from "lucide-react"
 import Image from "next/image"
 
 const fadeUp: Variants = {
@@ -11,9 +10,28 @@ const fadeUp: Variants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut", // ✅ must be a string, not an array
+      ease: "easeOut",
     },
   },
+}
+
+// Custom component to handle Lordicon
+const LordIcon = ({ src, colors = "primary:#fb7185,secondary:#f9a8d4", trigger = "hover", size = 60 }: any) => {
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `
+          <lord-icon
+            src="${src}"
+            trigger="${trigger}"
+            colors="${colors}"
+            style="width:${size}px;height:${size}px"
+          >
+          </lord-icon>
+        `
+      }}
+    />
+  )
 }
 
 
@@ -24,63 +42,58 @@ const FeatureCard = ({ iconUrl, title, description, index }: any) => (
     whileInView="show"
     viewport={{ once: true, amount: 0.2 }}
     transition={{ delay: index * 0.1 }}
-    className="group relative p-6 rounded-2xl bg-linear-to-br from-white/5 to-white/10 border border-white/10 hover:border-rose-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-rose-500/20"
+    className="group relative p-6 rounded-2xl bg-linear-to-br from-white/5 to-white/10 border border-white/10 hover:border-[#AB1E3E]/50 transition-all duration-300 hover:shadow-2xl hover:shadow-[#AB1E3E]/20"
   >
-    <div className="absolute inset-0 bg-linear-to-br from-rose-500/0 to-pink-500/0 group-hover:from-rose-500/10 group-hover:to-pink-500/10 rounded-2xl transition-all duration-300"></div>
+    <div className="absolute inset-0 bg-linear-to-br from-rose-500/0 to-pink-500/0 group-hover:from-[#AB1E3E]/10 group-hover:to-[#AB1E3E]/10 rounded-2xl transition-all duration-300"></div>
     <div className="relative z-10 flex flex-col items-start">
-      <span
-        style={{ width: "60px", height: "60px", marginBottom: "12px", display: "inline-block" }}
-        dangerouslySetInnerHTML={{
-          __html: `<lord-icon src="${iconUrl}" trigger="hover" colors="primary:#fb7185,secondary:#f9a8d4" style="width:60px;height:60px;"></lord-icon>`
-        }}
-      />
+      <div className="mb-3" style={{ width: "60px", height: "60px" }}>
+        <LordIcon src={iconUrl} className="group-hover:fill-[#AB1E3E]" />
+      </div>
       <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-      <p className="text-white/70 leading-relaxed text-sm">{description}</p>
+      <p className="text-white leading-relaxed text-sm">{description}</p>
     </div>
   </motion.div>
-)
-
+);
 
 export default function FeaturesSection() {
   const features = [
-  {
-    iconUrl: "https://cdn.lordicon.com/puvaffet.json",
-    title: "Smart Matching",
-    description:
-      "AI-powered algorithm that learns your preferences and finds compatible matches based on interests, values, and lifestyle.",
-  },
-  {
-    iconUrl: "https://cdn.lordicon.com/cllunfud.json",
-    title: "Verified Profiles",
-    description:
-      "All members are verified with photo and ID verification to ensure authenticity and safety in every connection.",
-  },
-  {
-    iconUrl: "https://cdn.lordicon.com/hpivxauj.json",
-    title: "Real Connections",
-    description:
-      "Connect with genuine people looking for meaningful relationships, not just casual encounters.",
-  },
-  {
-    iconUrl: "https://cdn.lordicon.com/gmzxduhd.json",
-    title: "Instant Messaging",
-    description:
-      "Chat instantly with matches, share photos, and get to know each other before meeting in person.",
-  },
-  {
-    iconUrl: "https://cdn.lordicon.com/jvucoldz.json",
-    title: "Compatibility Score",
-    description:
-      "See detailed compatibility scores with each match to understand your potential connection at a glance.",
-  },
-  {
-    iconUrl: "https://cdn.lordicon.com/oqhlhtfq.json",
-    title: "Privacy First",
-    description:
-      "Your data is encrypted and protected. Control who sees your profile and what information you share.",
-  },
-]
-
+    {
+      iconUrl: "https://cdn.lordicon.com/puvaffet.json",
+      title: "Smart Matching",
+      description:
+        "AI-powered algorithm that learns your preferences and finds compatible matches based on interests, values, and lifestyle.",
+    },
+    {
+      iconUrl: "https://cdn.lordicon.com/cllunfud.json",
+      title: "Verified Profiles",
+      description:
+        "All members are verified with photo and ID verification to ensure authenticity and safety in every connection.",
+    },
+    {
+      iconUrl: "https://cdn.lordicon.com/hpivxauj.json",
+      title: "Real Connections",
+      description:
+        "Connect with genuine people looking for meaningful relationships, not just casual encounters.",
+    },
+    {
+      iconUrl: "https://cdn.lordicon.com/gmzxduhd.json",
+      title: "Instant Messaging",
+      description:
+        "Chat instantly with matches, share photos, and get to know each other before meeting in person.",
+    },
+    {
+      iconUrl: "https://cdn.lordicon.com/jvucoldz.json",
+      title: "Compatibility Score",
+      description:
+        "See detailed compatibility scores with each match to understand your potential connection at a glance.",
+    },
+    {
+      iconUrl: "https://cdn.lordicon.com/oqhlhtfq.json",
+      title: "Privacy First",
+      description:
+        "Your data is encrypted and protected. Control who sees your profile and what information you share.",
+    },
+  ]
 
   return (
     <section className="relative py-24 px-4 bg-linear-to-b from-black via-slate-950 to-black overflow-hidden">
@@ -124,12 +137,12 @@ export default function FeaturesSection() {
             <div className="mb-8">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                 Why Choose{" "}
-                <span className="bg-linear-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">
+                <span className="bg-[#AB1E3E] bg-clip-text text-transparent">
                   FyndMee
                 </span>
                 ?
               </h2>
-              <p className="text-lg text-white/70">
+              <p className="text-lg text-white">
                 Experience dating reimagined with cutting-edge technology and genuine human connection
               </p>
             </div>

@@ -38,18 +38,16 @@ const posts: BlogPost[] = [
   },
 ]
 
-
-
 export default function BlogPostSection() {
   return (
-    <section className="py-24 px-4 bg-linear-to-b from-black via-slate-950 to-black overflow-hidden">
+    <section className="py-24 px-4 bg-white dark:bg-linear-to-b dark:from-black dark:via-slate-950 dark:to-black overflow-hidden">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-white mb-4"
+          className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
         >
           Newsletter
         </motion.h2>
@@ -58,7 +56,7 @@ export default function BlogPostSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-lg text-white/70"
+          className="text-lg text-gray-600 dark:text-white/70"
         >
           Insights, stories and updates from the FyndMee team.
         </motion.p>
@@ -73,7 +71,7 @@ export default function BlogPostSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="group block rounded-3xl overflow-hidden bg-white/5 hover:bg-white/10 transition"
+            className="group block rounded-3xl overflow-hidden bg-gray-50 hover:bg-gray-100 transition dark:bg-white/5 dark:hover:bg-white/10"
           >
             <div className="relative w-full h-48 md:h-56 lg:h-64">
               <Image
@@ -85,9 +83,9 @@ export default function BlogPostSection() {
             </div>
             <div className="p-6">
               <div className="text-sm text-rose-400 mb-2">{post.category}</div>
-              <h3 className="text-2xl font-bold text-white mb-2">{post.title}</h3>
-              <p className="text-white/70 mb-4">{post.excerpt}</p>
-              <div className="text-sm text-white/50">{post.date}</div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{post.title}</h3>
+              <p className="text-gray-600 dark:text-white/70 mb-4">{post.excerpt}</p>
+              <div className="text-sm text-gray-500 dark:text-white/50">{post.date}</div>
             </div>
           </motion.a>
         ))}

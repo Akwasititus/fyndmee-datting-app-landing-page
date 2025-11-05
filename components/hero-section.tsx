@@ -64,8 +64,9 @@ const EnhancedHeroSection = () => {
           <img
             key={index}
             src={image}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-2000 ease-in-out ${index === currentImage ? "opacity-100 scale-105" : "opacity-0 scale-100"
-              }`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-2000 ease-in-out ${
+              index === currentImage ? "opacity-100 scale-105" : "opacity-0 scale-100"
+            }`}
             alt="Background"
           />
         ))}
@@ -109,7 +110,7 @@ const EnhancedHeroSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="text-6xl md:text-8xl font-extrabold text-white mb-4 tracking-tight"
+          className="text-6xl md:text-8xl font-extrabold text-white/90 mb-4 tracking-tight"
         >
           Find Your
         </motion.h1>
@@ -147,11 +148,11 @@ const EnhancedHeroSection = () => {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-
-
           {/* Google Play */}
-          <button className="flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold transition-transform duration-300 hover:scale-105"
-            style={{ background: 'linear-gradient(to right, #AB1E3E, #D42952)' }}>
+          <button 
+            className="flex items-center gap-2 px-6 py-3 rounded-full text-white/90 text-sm font-semibold transition-transform duration-300 hover:scale-105"
+            style={{ background: 'linear-gradient(to right, #AB1E3E, #D42952)' }}
+          >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
               <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5Z" />
               <path d="M16.81 10.09L13.69 12L16.81 13.91L20.06 12.15C20.71 11.78 21 11.24 21 12C21 11.76 20.71 12.22 20.06 11.85L16.81 10.09Z" />
@@ -162,14 +163,14 @@ const EnhancedHeroSection = () => {
           </button>
 
           {/* App Store */}
-          <button className="flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold transition-transform duration-300 hover:scale-105 border border-white/30 bg-white/10">
+          <button 
+            className="flex items-center gap-2 px-6 py-3 rounded-full text-white/90 text-sm font-semibold transition-transform duration-300 hover:scale-105 border border-white/30 bg-white/10"
+          >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
               <path d="M17.564 12.043c-.03-3.019 2.473-4.465 2.584-4.534-1.411-2.062-3.6-2.345-4.373-2.377-1.864-.189-3.637 1.111-4.583 1.111-.946 0-2.404-1.087-3.955-1.057-2.03.03-3.935 1.181-4.986 3.003-2.125 3.681-.541 9.106 1.524 12.087 1.006 1.44 2.2 3.05 3.756 2.992 1.526-.057 2.094-.963 3.932-.963 1.837 0 2.35.963 3.953.933 1.633-.027 2.668-1.456 3.664-2.899 1.152-1.679 1.63-3.302 1.656-3.383-.036-.018-3.176-1.216-3.172-4.914zM15.236 4.372c.825-1.002 1.38-2.387 1.227-3.772-1.188.047-2.62.791-3.475 1.791-.765.887-1.437 2.304-1.258 3.659 1.331.104 2.681-.676 3.506-1.678z" />
             </svg>
             <span>App Store</span>
           </button>
-
-
         </motion.div>
       </div>
 
@@ -189,3 +190,4 @@ const EnhancedHeroSection = () => {
 }
 
 export default EnhancedHeroSection
+

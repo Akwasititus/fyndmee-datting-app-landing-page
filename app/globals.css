@@ -37,9 +37,26 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+}
+
+* {
+  font-family: var(--font-kumbh-sans), sans-serif;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+
+
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -114,6 +131,58 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+
+/* Light theme specific styles */
+.light {
+  background-color: white;
+  color: black;
+}
+
+.light .bg-black {
+  background-color: white;
+}
+
+.light .bg-slate-950 {
+  background-color: #f8fafc;
+}
+
+.light .bg-gradient-to-b {
+  background-image: none;
+  background-color: white;
+}
+
+.light .from-black {
+  --tw-gradient-from: white var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.light .via-slate-950 {
+  --tw-gradient-via: #f8fafc var(--tw-gradient-via-position);
+}
+
+.light .to-black {
+  --tw-gradient-to: white var(--tw-gradient-to-position);
+}
+
+.light .text-white {
+  color: black;
+}
+
+
+
+
+
+/* Ensure header stays visible in light mode */
+.light header {
+  background: transparent;
+}
+
+.light header .text-white {
+  color: black;
+}
+
+
 
 @layer base {
   * {

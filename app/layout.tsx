@@ -1,11 +1,21 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Kumbh_Sans, Geist, Geist_Mono, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script" // ✅ import Script
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+
+const inter = Inter({ subsets: ['latin'] })
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
+
+// Configure the font
+const kumbhSans = Kumbh_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-kumbh-sans',
+})
 
 export const metadata: Metadata = {
   title: "Fyndmee",
@@ -15,20 +25,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
-        {children}
-        <Analytics />
-
-        {/* ✅ Lordicon script added here */}
+    <html lang="en" suppressHydrationWarning className={kumbhSans.variable}>
+      <head>
         <Script
           src="https://cdn.lordicon.com/lordicon.js"
           strategy="afterInteractive"
         />
+      </head>
+      <body className={inter.className}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

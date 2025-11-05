@@ -11,7 +11,7 @@ import BlogPostSection from "@/components/NewsletterSection"
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main className="w-full min-h-screen transition-colors duration-300">
       <Header/>
       <EnhancedHeroSection />
        <TestimonialsSection />
