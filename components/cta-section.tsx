@@ -2,10 +2,10 @@
 
 export default function CTASection() {
   return (
-    <section className="relative py-24 px-4 bg-gradient-to-b from-gray-50 to-white dark:from-slate-950 dark:to-black overflow-hidden">
+    <section className="relative py-24 px-4 bg-linear-to-b from-gray-50 to-white dark:from-slate-950 dark:to-black overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-rose-500/10 via-transparent to-pink-500/10"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-rose-500/10 via-transparent to-pink-500/10"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-rose-500/20 rounded-full blur-3xl"></div>
       </div>
 

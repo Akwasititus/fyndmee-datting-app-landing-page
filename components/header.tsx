@@ -21,10 +21,12 @@ export default function Header() {
   const navItems = [
     { id: "FeatureCard", label: "The App", href: "#FeatureCard" },
     { id: "products", label: "Products", href: "#products" },
-    { id: "newsroom", label: "News Room", href: "#newsroom" },
+    { id: "newsroom", label: "News Room", href: "/blog" },
     { id: "download", label: "Download", href: "#download" },
     // { id: "download", label: "Download", href: "#download" }
   ]
+
+
 
   const socials = [
     { name: "WhatsApp", icon: MessageCircle, link: "https://chat.whatsapp.com/your-group-link", color: "bg-[#25D366]" },
