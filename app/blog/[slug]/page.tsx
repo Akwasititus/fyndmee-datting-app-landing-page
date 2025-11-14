@@ -181,11 +181,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="relative py-8 border-b border-gray-200 dark:border-gray-800">
+      <header className="relative py-8 border-b border-gray-200 dark:border-gray-800"> 
         <div className="container mx-auto px-4">
           <Link 
             href="/blog"
-            className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#AB1E3E] hover:text-rose-700 transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
@@ -199,7 +199,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Article Header */}
           <header className="mb-12">
             <div className="flex justify-start mb-6">
-              <span className="px-4 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 rounded-full font-semibold">
+              <span className="px-4 py-2 bg-[#AB1E3E]/60 text-white/60 rounded-full font-semibold">
                 {post.category}
               </span>
             </div>
@@ -322,7 +322,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {post.authorRole} with years of experience helping people build meaningful connections. Passionate about creating authentic relationships in the digital age.
                 </p>
-                <div className="text-sm text-rose-600 dark:text-rose-400 font-semibold">
+                <div className="text-sm text-[#AB1E3E] dark:text-rose-400 font-semibold">
                   {post.likes} article likes • {post.comments} reader comments
                 </div>
               </div>
@@ -385,7 +385,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
           <Link
             href="/#newsletter"
-            className="inline-flex items-center px-8 py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-lg transition-colors"
+            className="inline-flex items-center px-8 py-3 bg-[#AB1E3E] hover:bg-[#AB1E3E]/80 text-white/90 font-semibold rounded-lg transition-colors"
           >
             Subscribe to Newsletter
           </Link>

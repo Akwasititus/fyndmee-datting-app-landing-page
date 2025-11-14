@@ -93,7 +93,7 @@ export default function BlogPostSection() {
         ))}
       </div>
 
-             {/* View All Posts Button */}
+      {/* View All Posts Button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -101,14 +101,14 @@ export default function BlogPostSection() {
         viewport={{ once: true }}
         className="text-center mt-12"
       >
-      
+
         <Link
-  href="/blog"
-  className="inline-flex items-center gap-3 px-8 py-4 bg-[#AB1E3E] text-white font-semibold rounded-lg hover:bg-[#8B1830] transition-all duration-300 hover:scale-105 group/view-all"
->
-  View All Posts
-  <ArrowRight className="w-5 h-5 group-hover/view-all:translate-x-1 transition-transform" />
-</Link>
+          href="/blog"
+          className="inline-flex items-center gap-3 px-8 py-4 bg-[#AB1E3E] text-white/90 font-semibold rounded-lg hover:bg-[#8B1830] transition-all duration-300 hover:scale-105 group/view-all"
+        >
+          View All Posts
+          <ArrowRight className="w-5 h-5 group-hover/view-all:translate-x-1 transition-transform" />
+        </Link>
       </motion.div>
     </section>
   )

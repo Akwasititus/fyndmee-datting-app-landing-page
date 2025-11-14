@@ -112,11 +112,11 @@ export default function FeaturesSection() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center justify-center px-6 py-3 bg-[#AB1E3E] text-white font-semibold rounded-lg hover:bg-[#8B1830] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed min-w-[120px]"
+                  className="flex items-center justify-center px-6 py-3 bg-[#AB1E3E] text-white/90 font-semibold rounded-lg hover:bg-[#8B1830] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed min-w-[120px]"
                 >
                   {isLoading ? (
                     <div className="flex items-center">
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                      <div className="w-4 h-4 border-2 text-white/90 border-t-transparent rounded-full animate-spin mr-2"></div>
                       Subscribing...
                     </div>
                   ) : (

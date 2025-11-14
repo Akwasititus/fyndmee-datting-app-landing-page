@@ -8,6 +8,7 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import NewsletterSection from "@/components/NewsletterSection"
 import BlogPostSection from "@/components/NewsletterSection"
+import DownloadPage from "@/app/download/page"
 
 export default function Home() {
   return (
@@ -22,6 +23,12 @@ export default function Home() {
       {/* <PricingSection /> */}
       <CTASection />
       <Footer />
+      {/* <DownloadPage /> */}
     </main>
   )
 }
+
+
+
+
+
