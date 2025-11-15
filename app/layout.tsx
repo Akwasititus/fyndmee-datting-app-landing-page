@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Kumbh_Sans, Geist, Geist_Mono, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script" // ✅ import Script
+import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
@@ -11,7 +11,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 // Configure the font
-const kumbhSans = Kumbh_Sans({
+const kumbhSans = Kumbh_Sans({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-kumbh-sans',

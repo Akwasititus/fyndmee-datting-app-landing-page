@@ -30,7 +30,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-rose-400 transition">
+                <a href="/careers" className="hover:text-rose-400 transition">
                   Careers
                 </a>
               </li>
