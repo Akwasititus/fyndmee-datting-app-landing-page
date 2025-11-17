@@ -18,9 +18,12 @@ const kumbhSans = Kumbh_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Fyndmee",
+  title: "Fynd Mee",
   description: "Welcome to fyndmee",
   generator: "BB-group",
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
@@ -31,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={kumbhSans.variable}>
       <head>
+      {/* <link rel="icon" href="/favicon.ico" /> */}
         <Script
           src="https://cdn.lordicon.com/lordicon.js"
           strategy="afterInteractive"
