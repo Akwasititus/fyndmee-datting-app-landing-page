@@ -332,7 +332,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
 
       {/* Related Posts */}
-      {relatedPosts.length > 0 && (
+      {/* {relatedPosts.length > 0 && (
         <section className="py-16 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-4 max-w-6xl">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
@@ -372,10 +372,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Newsletter CTA */}
-      <section className="py-16 bg-rose-50 dark:bg-rose-950/20">
+      {/* <section className="py-16 bg-rose-50 dark:bg-rose-950/20">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
             Enjoyed this article?
@@ -390,7 +390,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             Subscribe to Newsletter
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
