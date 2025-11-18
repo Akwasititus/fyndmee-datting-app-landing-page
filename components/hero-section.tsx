@@ -12,7 +12,7 @@ const EnhancedHeroSection = () => {
   const [floatingHearts, setFloatingHearts] = useState<any[]>([])
 
   const typewriterWords = ["Perfect Match", "Soulmate", "True Love", "Dream Partner", "Forever Person", "Best Friend"]
-  const images = ["/images/bg111.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
+  const images = ["/images/bg111.jpg", "/images/fyndmee-bg-1.png", "/images/fyndmee-bg-3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
 
   // Background image carousel
   useEffect(() => {
@@ -64,9 +64,8 @@ const EnhancedHeroSection = () => {
           <img
             key={index}
             src={image}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-2000 ease-in-out ${
-              index === currentImage ? "opacity-100 scale-105" : "opacity-0 scale-100"
-            }`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-2000 ease-in-out ${index === currentImage ? "opacity-100 scale-105" : "opacity-0 scale-100"
+              }`}
             alt="Background"
           />
         ))}
@@ -149,7 +148,7 @@ const EnhancedHeroSection = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           {/* Google Play */}
-          <button 
+          <button
             className="flex items-center gap-2 px-6 py-3 rounded-full text-white/90 text-sm font-semibold transition-transform duration-300 hover:scale-105"
             style={{ background: 'linear-gradient(to right, #AB1E3E, #D42952)' }}
           >
@@ -163,7 +162,7 @@ const EnhancedHeroSection = () => {
           </button>
 
           {/* App Store */}
-          <button 
+          <button
             className="flex items-center gap-2 px-6 py-3 rounded-full text-white/90 text-sm font-semibold transition-transform duration-300 hover:scale-105 border border-white/30 bg-white/10"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
