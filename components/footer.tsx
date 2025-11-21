@@ -35,7 +35,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-rose-400 transition">
+                <a href="/blog" className="hover:text-rose-400 transition">
                   Newsroom
                 </a>
               </li>

@@ -3,6 +3,7 @@ import { Kumbh_Sans, Geist, Geist_Mono, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
+import RadioPlayer from "@/components/RadioPlayer"
 import "./globals.css"
 
 const inter = Inter({ subsets: ['latin'] })
@@ -44,6 +45,9 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
         </ThemeProvider>
+
+                {/* Global Radio Player */}
+                <RadioPlayer />
       </body>
     </html>
   )
