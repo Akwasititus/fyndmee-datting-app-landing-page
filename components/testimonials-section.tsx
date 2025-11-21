@@ -87,7 +87,7 @@ export default function FeaturesSection() {
                 Be the first to know
               </h2>
               <p className="text-xl text-gray-600 dark:text-white/70 leading-relaxed">
-                FyndMee has led to millions of relationships, marriages, and friendships around the world.
+                Fynd Mee has led to millions of relationships, marriages, and friendships around the world.
                 Want to see what we're building next?
               </p>
               <div className="w-24 h-1 bg-[#AB1E3E] rounded-full"></div>
@@ -142,7 +142,7 @@ export default function FeaturesSection() {
             <div className="relative rounded-3xl overflow-hidden">
               <Image
                 src="/images/all-in-fyndmee.png"
-                alt="FyndMee App"
+                alt="Fynd Mee App"
                 width={900}
                 height={800}
                 className="rounded-3xl shadow-2xl"

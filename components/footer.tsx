@@ -15,7 +15,7 @@ export default function Footer() {
                 alt="Fynd Mee logo"
                 className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
               />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">FyndMee</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">Fynd Mee</span>
             </div>
             <p className="text-gray-600 dark:text-white/70">Where authentic connections begin and love stories unfold.</p>
           </div>
@@ -94,7 +94,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-200 dark:border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 dark:text-white/50 text-sm">© 2025 Fyndmee. All rights reserved.</p>
+            <p className="text-gray-500 dark:text-white/50 text-sm">© 2025 Fynd mee. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
                 Twitter
