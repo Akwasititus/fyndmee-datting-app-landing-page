@@ -47,7 +47,7 @@ export default function RootLayout({
         </ThemeProvider>
 
                 {/* Global Radio Player */}
-                <RadioPlayer />
+                {/* <RadioPlayer /> */}
       </body>
     </html>
   )
