@@ -7,9 +7,9 @@ import { ArrowLeft, Calendar, User, Clock, Share2, Heart, MessageCircle, Bookmar
 
 const blogPosts = [
   {
-    slug: "perfect-match-tips",
-    title: "How to Find Your Perfect Match",
-    excerpt: "Discover five proven ways to meet someone who truly connects with you on a deeper level.",
+    slug: "perfect-match-tips", // not required
+    title: "How to Find Your Perfect Match", // required
+    excerpt: "Discover five proven ways to meet someone who truly connects with you on a deeper level.", // required
     content: `
       <p>Finding your perfect match involves understanding yourself, being open to new experiences, and using the right tools to connect with compatible partners. In today's digital age, it's easier than ever to meet new people, but finding genuine connections requires intention and strategy.</p>
       
@@ -21,16 +21,16 @@ const blogPosts = [
       
       <h2>Expand Your Social Circles</h2>
       <p>While dating apps are great, don't underestimate the power of real-world connections. Join clubs, attend events, and participate in activities that genuinely interest you. You're more likely to meet compatible partners in environments where you feel comfortable.</p>
-    `,
-    imageUrl: "https://images.pexels.com/photos/17704448/pexels-photo-17704448.jpeg",
-    date: "October 30, 2025",
-    category: "Dating Advice",
-    author: "Sarah Johnson",
-    authorRole: "Relationship Coach",
-    authorImage: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    readTime: "5 min read",
-    likes: 142,
-    comments: 28
+    `, // required
+    imageUrl: "https://images.pexels.com/photos/17704448/pexels-photo-17704448.jpeg", // required
+    date: "October 30, 2025", // required
+    category: "Dating Advice", // required
+    author: "Sarah Johnson", // required
+    authorRole: "Relationship Coach", // required
+    authorImage: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg", // required  
+    readTime: "5 min read", // required
+    likes: 142, // required
+    comments: 28 // required
   },
   {
     slug: "smart-matching-ai",
