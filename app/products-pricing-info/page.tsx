@@ -39,7 +39,7 @@ export default function PricingPage() {
   const plans = [
     {
       name: "Fynd Mee Plus",
-      iconUrl: "https://cdn.lordicon.com/puvaffet.json",
+      iconUrl: "/images/fyndmee-plus.png",
       color: "from-blue-500 to-cyan-500",
       description: "Essential premium features to enhance your experience",
       features: [
@@ -53,7 +53,7 @@ export default function PricingPage() {
     },
     {
       name: "Fynd Mee Gold",
-      iconUrl: "https://cdn.lordicon.com/cllunfud.json",
+      iconUrl: "/images/fyndmee-gold.png",
       color: "from-amber-500 to-orange-500",
       description: "Advanced features for serious connections",
       popular: true,
@@ -68,7 +68,7 @@ export default function PricingPage() {
     },
     {
       name: "Fynd Mee Royal",
-      iconUrl: "https://cdn.lordicon.com/hpivxauj.json",
+      iconUrl: "/images/fyndmee-royal.png",
       color: "from-purple-500 to-pink-500",
       description: "The ultimate VIP experience",
       features: [
@@ -89,20 +89,20 @@ export default function PricingPage() {
 
 
 
-        {/* Header */}
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            
-            <Link 
-              href="/"
-              className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#AB1E3E] dark:hover:text-[#AB1E3E] transition-colors"
-            >
-              <ArrowRight className="w-4 h-4 rotate-180" />
-              Back to Home
-            </Link>
-          </div>
+      {/* Header */}
+      <div className="container mx-auto px-4 py-6">
+        <div className="flex items-center justify-between">
+
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#AB1E3E] dark:hover:text-[#AB1E3E] transition-colors"
+          >
+            <ArrowRight className="w-4 h-4 rotate-180" />
+            Back to Home
+          </Link>
         </div>
-      
+      </div>
+
 
 
 
@@ -113,7 +113,7 @@ export default function PricingPage() {
         viewport={{ once: true, amount: 0.3 }}
         className="container mx-auto px-4 text-center mb-16"
       >
-       
+
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
           Choose Your Experience
         </h1>
@@ -133,11 +133,10 @@ export default function PricingPage() {
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: index * 0.1 }}
-              className={`relative bg-white dark:bg-slate-800 rounded-3xl shadow-lg border transition-all duration-300 hover:shadow-xl ${
-                plan.popular 
-                  ? 'border-2 border-amber-400 dark:border-amber-500' 
-                  : 'border-gray-200 dark:border-slate-700'
-              }`}
+              className={`relative bg-white dark:bg-slate-800 rounded-3xl shadow-lg border transition-all duration-300 hover:shadow-xl ${plan.popular
+                ? 'border-2 border-amber-400 dark:border-amber-500'
+                : 'border-gray-200 dark:border-slate-700'
+                }`}
             >
               {/* Popular Badge */}
               {plan.popular && (
@@ -153,7 +152,16 @@ export default function PricingPage() {
               <div className={`p-8 rounded-t-3xl bg-gradient-to-r ${plan.color}`}>
                 <div className="text-center text-white">
                   <div className="flex justify-center mb-4" style={{ width: "60px", height: "60px", margin: "0 auto" }}>
-                    <LordIcon src={plan.iconUrl} />
+                    
+
+                    <div className="bg-white/30 backdrop-blur-lg rounded-full p-4 shadow-lg">
+                      <img
+                        src={plan.iconUrl}
+                        alt="Fynd Mee logo"
+                        className="h-8 w-8 object-contain hover:scale-110 transition-transform"
+                      />
+                    </div>
+                    
                   </div>
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-white/90">{plan.description}</p>
@@ -220,32 +228,32 @@ export default function PricingPage() {
                   "Unlimited Passport Mode",
                   "Supa Likes",
                   "Boosts",
-                  "See Who Liked You", 
+                  "See Who Liked You",
                   "Advanced Filters",
                   "VIP Badge",
                   "Global Access",
                   "Ad-Free Experience",
                   "Customer Support"
                 ].map((feature, index) => (
-                  <tr key={index} className="border-b text-white/90 border-gray-100 dark:border-slate-700">
+                  <tr key={index} className="border-b text-white border-gray-100 dark:border-slate-700">
                     <td className="py-4 text-gray-600 dark:text-gray-400">{feature}</td>
                     <td className="text-center py-4">
-                      {feature === "Supa Likes" ? "1/month" : 
-                       feature === "Boosts" ? "15min" :
-                       feature === "Customer Support" ? "Priority" :
-                       ["Unlimited Likes", "Unlimited Passport Mode", "Ad-Free Experience"].includes(feature) ? "✓" : "–"}
+                      {feature === "Supa Likes" ? "1/month" :
+                        feature === "Boosts" ? "15min" :
+                          feature === "Customer Support" ? "Priority" :
+                            ["Unlimited Likes", "Unlimited Passport Mode", "Ad-Free Experience"].includes(feature) ? "✓" : "–"}
                     </td>
                     <td className="text-center py-4">
-                      {feature === "Supa Likes" ? "3/month" : 
-                       feature === "Boosts" ? "2x 15min" :
-                       feature === "Customer Support" ? "Priority" :
-                       ["Unlimited Likes", "Unlimited Passport Mode", "See Who Liked You", "Advanced Filters", "Ad-Free Experience"].includes(feature) ? "✓" : "–"}
+                      {feature === "Supa Likes" ? "3/month" :
+                        feature === "Boosts" ? "2x 15min" :
+                          feature === "Customer Support" ? "Priority" :
+                            ["Unlimited Likes", "Unlimited Passport Mode", "See Who Liked You", "Advanced Filters", "Ad-Free Experience"].includes(feature) ? "✓" : "–"}
                     </td>
                     <td className="text-center py-4">
-                      {feature === "Supa Likes" ? "5/month" : 
-                       feature === "Boosts" ? "30min" :
-                       feature === "Customer Support" ? "Premium" :
-                       ["Unlimited Likes", "Unlimited Passport Mode", "See Who Liked You", "Advanced Filters", "VIP Badge", "Global Access", "Ad-Free Experience"].includes(feature) ? "✓" : "–"}
+                      {feature === "Supa Likes" ? "5/month" :
+                        feature === "Boosts" ? "30min" :
+                          feature === "Customer Support" ? "Premium" :
+                            ["Unlimited Likes", "Unlimited Passport Mode", "See Who Liked You", "Advanced Filters", "VIP Badge", "Global Access", "Ad-Free Experience"].includes(feature) ? "✓" : "–"}
                     </td>
                   </tr>
                 ))}

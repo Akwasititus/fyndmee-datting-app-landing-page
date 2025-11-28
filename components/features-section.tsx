@@ -58,37 +58,37 @@ const FeatureCard = ({ iconUrl, title, description, index }: any) => (
 export default function FeaturesSection() {
   const features = [
     {
-      iconUrl: "https://cdn.lordicon.com/puvaffet.json",
+      iconUrl: "https://cdn.lordicon.com/ktsahwvc.json",
       title: "Smart Matching",
       description:
         "AI-powered algorithm that learns your preferences and finds compatible matches based on interests, values, and lifestyle.",
     },
     {
-      iconUrl: "https://cdn.lordicon.com/cllunfud.json",
-      title: "Verified Profiles",
+      iconUrl: "https://cdn.lordicon.com/wzrwaorf.json",
+      title: "Verified Profiles", 
       description:
         "All members are verified with photo and ID verification to ensure authenticity and safety in every connection.",
     },
     {
-      iconUrl: "https://cdn.lordicon.com/hpivxauj.json",
+      iconUrl: "https://cdn.lordicon.com/fhtaantg.json",
       title: "Real Connections",
       description:
         "Connect with genuine people looking for meaningful relationships, not just casual encounters.",
     },
     {
-      iconUrl: "https://cdn.lordicon.com/gmzxduhd.json",
+      iconUrl: "https://cdn.lordicon.com/fdxqrdfe.json",
       title: "Instant Messaging",
       description:
         "Chat instantly with matches, share photos, and get to know each other before meeting in person.",
     },
     {
-      iconUrl: "https://cdn.lordicon.com/jvucoldz.json",
+      iconUrl: "https://cdn.lordicon.com/gqdnbnwt.json",
       title: "Compatibility Score",
       description:
         "See detailed compatibility scores with each match to understand your potential connection at a glance.",
     },
     {
-      iconUrl: "https://cdn.lordicon.com/oqhlhtfq.json",
+      iconUrl: "https://cdn.lordicon.com/svbmmyue.json",
       title: "Privacy First",
       description:
         "Your data is encrypted and protected. Control who sees your profile and what information you share.",
@@ -115,10 +115,11 @@ export default function FeaturesSection() {
           >
             <div className="relative rounded-3xl overflow-hidden">
               <Image
-                src="/images/fyndmee_image.jpg"
-                alt="Why Choose FyndMee"
+                // src="/images/fyndmee_image.jpg"
+                src="/images/fynddd.jpg"
+                alt="Why Choose Fynd Mee"
                 width={600}
-                height={600}
+                height={900}
                 className="rounded-3xl object-cover"
                 priority
               />
@@ -138,7 +139,7 @@ export default function FeaturesSection() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                 Why Choose{" "}
                 <span className="bg-[#AB1E3E] bg-clip-text text-transparent">
-                  FyndMee
+                  Fynd Mee
                 </span>
                 ?
               </h2>

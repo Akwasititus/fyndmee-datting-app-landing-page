@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from "framer-motion"
-import { MapPin, Clock, Users, ArrowLeft, Calendar, Briefcase, Mail, FileText } from 'lucide-react'
+import { MapPin, Clock, Users, ArrowLeft, Calendar, Briefcase, Mail, FileText, Target, GraduationCap, Award } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -11,192 +11,61 @@ const fadeUp = {
 
 // This would typically come from your database or API
 const jobData: { [key: string]: any } = {
-
-  1:{
+  1: {
     title: "Marketing & Digital Strategy Lead",
     type: "Full-time",
     location: "Remote",
     department: "Marketing",
-    experience: "6 months – 1 year",
     description: "Lead digital marketing, brand storytelling, and engagement across all BB Group projects.",
-    fullDescription: "BB Group is seeking a creative and data-driven Marketing & Digital Strategy Lead to drive our digital presence and brand growth across Africa. You will lead marketing strategy for Fynd Mee, Caregiver Africa, Recycle Tech, and all BB Group innovations. This role involves campaign planning, analytics, content strategy, and building strong brand stories that connect with audiences online and offline.",
+    
+    // New structured data
+    aboutCompany: {
+      description: "BB Group is a Pan-African innovation company built to shape Africa's future through technology, creativity, and bold ideas. Founded in 2025, we focus on driving innovation, digitization, industrialization, and development across the continent.",
+      mission: "We build and manage projects that make everyday life better for people and communities.",
+      values: ["Integrity", "Inclusion", "Growth", "Bold thinking"],
+      projects: [
+        "Fynd Mee – a social connection mobile-app made for Africa",
+        "Caregiver Africa – a platform connecting families with trusted caregivers (coming soon)",
+        "Recycle Tech – a future project focused on clean technology and sustainable development"
+      ]
+    },
+    
+    qualifications: {
+      education: "Bachelor's degree in Marketing, Communications, Business, or related field (or certified digital marketing training)",
+      experience: "At least 6 months–1 year of relevant work experience (internship, volunteer, or full-time)"
+    },
+    
+    positionSummary: "BB Group is looking for a creative and data-driven marketer to lead our marketing and digital strategy across all BB Group projects. From Fynd Mee, our social connection mobile-app platform, to upcoming projects like Caregiver Africa and Recycle Tech, the Marketing & Digital Strategy Lead will play a major role in building strong brand stories, managing campaigns, and driving engagement across Africa and beyond. This person will help us shape how people see BB Group—telling our story, connecting with audiences, and building excitement for our projects online and offline.",
+    
     responsibilities: [
       "Plan and manage digital marketing campaigns across social media, search, and email",
       "Lead creative content planning for Fynd Mee and other BB Group projects",
-      "Work with the production team to design videos, promotional assets, and influencer partnerships",
-      "Analyze marketing data to measure performance and guide decisions",
-      "Collaborate with design and development teams to ensure brand consistency",
-      "Strengthen BB Group’s online presence through storytelling and community engagement"
+      "Work with the production team to design promotional campaigns, videos, and influencer partnerships",
+      "Analyze marketing data to measure performance and guide decision-making",
+      "Collaborate with the design and development teams to ensure brand consistency",
+      "Build and grow BB Group's online presence through authentic storytelling and community engagement"
     ],
+    
     requirements: [
-      "Bachelor’s degree in Marketing, Communications, Business, or related field (or certified digital marketing training)",
-      "6 months – 1 year of relevant marketing experience (internship, volunteer, or full-time)",
-      "Good understanding of Instagram, TikTok, YouTube, LinkedIn, X/Twitter, and Meta Ads",
+      "Good understanding of digital platforms (Instagram, TikTok, YouTube, LinkedIn, X/Twitter, Meta Ads)",
       "Experience with SEO, content strategy, and analytics tools",
       "Strong writing, communication, and presentation skills",
-      "Creative thinker who understands audience behavior and digital trends",
-      "Self-motivated and comfortable working remotely",
-      "Passionate about Africa’s growth, innovation, and storytelling"
+      "Strategic and creative thinker who can turn ideas into action",
+      "Self-motivated and comfortable working remotely with a team spread across regions",
+      "Passionate about Africa's growth, innovation, and storytelling"
     ],
-    extra: {
-      aboutBBGroup: "BB Group is a Pan-African innovation company driving technology, creativity, and development across the continent. Our mission includes innovation, digitization, industrialization, and improving everyday life through impactful projects.",
-      projects: [
-        "Fynd Mee – Social connection mobile app made for Africa",
-        "Caregiver Africa – Platform connecting families with trusted caregivers (coming soon)",
-        "Recycle Tech – Clean technology and sustainable development initiative"
-      ],
-      successTraits: [
-        "Naturally curious, creative, and bold",
-        "Understands both marketing strategy and audience behavior",
-        "Enjoys experimenting with new tools",
-        "Organized, reliable, and positive team player"
-      ],
-      applicationDeadline: "Applications are reviewed on a rolling basis"
-    },
+    
+    successTraits: [
+      "You are naturally curious, creative, and bold in your ideas",
+      "You understand both marketing strategy and audience behavior",
+      "You love trying new tools and learning as you go",
+      "You are reliable, organized, and bring positive energy to teamwork"
+    ],
+    
+    applicationDeadline: "Applications are reviewed on a rolling basis",
     salary: "Competitive salary based on experience",
     applyEmail: "info@bbgroupglobal.com"
-  },
-
-  
-2: {
-  title: "HR & Accounting Associate",
-  type: "Full-time",
-  location: "Remote",
-  department: "Operations",
-  experience: "6 months – 1 year",
-  description: "Support HR, payroll, team coordination, and financial reporting across all BB Group projects.",
-  fullDescription: "BB Group is seeking a dependable and organized HR & Accounting Associate to support both the people operations and financial systems of the company. You will assist with recruitment, onboarding, payroll, accounting, budgeting, and internal coordination across all BB Group projects, including Fynd Mee, Caregiver Africa, and Recycle Tech. This role works closely with leadership to ensure smooth operations, structured processes, and accurate reporting as the company grows.",
-  responsibilities: [
-    "Manage recruitment, onboarding, and employee contract documentation",
-    "Assist in drafting job descriptions and scheduling interviews",
-    "Maintain employee records, attendance tracking, and payroll schedules",
-    "Prepare and update monthly financial and salary reports",
-    "Track payments, budgets, and project-related expenses",
-    "Support leadership with budget planning and financial forecasting",
-    "Ensure data confidentiality, compliance, and accuracy",
-    "Coordinate communication between departments to support smooth operations"
-  ],
-  requirements: [
-    "Bachelor’s degree in Human Resources, Accounting, Business Administration, or related field (or certified HR/finance training)",
-    "6 months – 1 year of HR or accounting experience (internship, volunteer, or full-time)",
-    "Basic understanding of HR processes (recruitment, onboarding, payroll)",
-    "Basic accounting knowledge (records, budgeting, expense tracking)",
-    "Strong organizational and documentation skills",
-    "Good communication and interpersonal skills",
-    "Comfortable using digital tools and remote team collaboration platforms",
-    "Reliable, detail-oriented, and discreet with sensitive information"
-  ],
-  extra: {
-    aboutBBGroup: "BB Group is a Pan-African innovation company driving technology, creativity, and development across the continent. We build projects that improve everyday life through innovation, digitization, and sustainable growth.",
-    projects: [
-      "Fynd Mee – Social connection mobile app made for Africa",
-      "Caregiver Africa – Platform connecting families with trusted caregivers (coming soon)",
-      "Recycle Tech – Clean technology and sustainable development initiative"
-    ],
-    successTraits: [
-      "Dependable and highly organized",
-      "Clear communicator with strong attention to detail",
-      "Understands people and numbers equally well"
-    ],
-    applicationDeadline: "Applications are reviewed on a rolling basis"
-  },
-  salary: "Competitive salary based on experience",
-  applyEmail: "info@bbgroupglobal.com"
-},
-
-3: {
-  title: "UI/UX Designer (Web & Mobile)",
-  type: "Full-time",
-  location: "Remote",
-  department: "Design",
-  experience: "6 months – 1 year",
-  description: "Design modern, clean, and intuitive user experiences for BB Group’s mobile and web products.",
-  fullDescription: "BB Group is looking for a creative and detail-oriented UI/UX Designer to shape the user experience of our digital products, including Fynd Mee, Caregiver Africa, and Recycle Tech. You will design intuitive user flows, wireframes, prototypes, and polished interfaces for both mobile and web platforms. This role involves collaborating with developers, marketers, and project leads to ensure consistent, engaging, and user-friendly product experiences across all BB Group projects.",
-  responsibilities: [
-    "Design user interfaces for mobile and web applications",
-    "Create design systems, mockups, wireframes, and prototypes for new features",
-    "Collaborate with developers to ensure seamless handoff and implementation",
-    "Conduct user research, gather feedback, and refine designs to improve usability",
-    "Maintain a consistent visual identity across all BB Group projects",
-    "Support creative direction for landing pages, campaigns, and brand visuals"
-  ],
-  requirements: [
-    "Bachelor’s degree in Design, Computer Science, or related field (or certified UI/UX or web design training)",
-    "6 months – 1 year of UI/UX design experience (internship, volunteer, or full-time)",
-    "Proficiency in Figma (primary), Sketch, Framer, Miro, Penpot, or similar tools",
-    "Basic understanding of HTML, CSS, and responsive design principles",
-    "Strong attention to detail with an eye for clean, modern design",
-    "Experience designing mobile interfaces and web landing pages",
-    "Good communication skills and ability to collaborate with developers and teams",
-    "Interest in African tech innovation and digital product design"
-  ],
-  extra: {
-    aboutBBGroup: "BB Group is a Pan-African innovation company driving technology, creativity, and development across the continent. We build digital products that improve everyday life through innovation, design, and sustainable growth.",
-    projects: [
-      "Fynd Mee – Social connection mobile app made for Africa",
-      "Caregiver Africa – Platform connecting families with trusted caregivers (coming soon)",
-      "Recycle Tech – Clean technology and sustainable development initiative"
-    ],
-    successTraits: [
-      "Understands how design connects people to ideas",
-      "Values feedback and continuous learning",
-      "Balances creativity with practicality",
-      "Passionate about using design to solve real-world problems"
-    ],
-    applicationDeadline: "Applications are reviewed on a rolling basis"
-  },
-  salary: "Competitive salary based on experience",
-  applyEmail: "info@bbgroupglobal.com"
-},
-
-4: {
-  title: "Software Developer (Full Stack)",
-  type: "Full-time",
-  location: "Remote",
-  department: "Engineering",
-  experience: "6 months – 1 year",
-  description: "Build and maintain web and mobile applications across all BB Group projects.",
-  fullDescription: "BB Group is seeking a skilled Full Stack Software Developer to join our growing tech team. You will work on front-end and back-end development for products like Fynd Mee, Caregiver Africa, and Recycle Tech. This role involves building, testing, and maintaining applications while collaborating with designers and project managers to ensure smooth user experiences and high performance across all platforms.",
-  responsibilities: [
-    "Develop and maintain web and mobile applications for BB Group projects",
-    "Write clean, efficient, and well-documented code",
-    "Collaborate with the design team to implement responsive UI/UX features",
-    "Integrate APIs, payment systems, and databases",
-    "Test, debug, and optimize applications for performance and security",
-    "Participate in technical discussions and propose improvements"
-  ],
-  requirements: [
-    "Bachelor’s degree in Computer Science, Software Engineering, or related field (or certified full-stack training)",
-    "6 months – 1 year of relevant development experience (internship, volunteer, or full-time)",
-    "Experience with front-end frameworks (React, Next.js, or Vue) and back-end frameworks (Node.js, Django, or Laravel)",
-    "Knowledge of database management (Firebase, Supabase, MongoDB, or SQL)",
-    "Basic understanding of version control systems like GitHub or GitLab",
-    "Familiarity with deployment platforms (Vercel, Netlify, or AWS)",
-    "Problem-solving mindset and ability to work independently",
-    "Strong communication and collaboration skills"
-  ],
-  extra: {
-    aboutBBGroup: "BB Group is a Pan-African innovation company driving technology, creativity, and development across the continent. We build impactful digital products that improve everyday life through innovation, digitization, and sustainable growth.",
-    projects: [
-      "Fynd Mee – Social connection mobile app made for Africa",
-      "Caregiver Africa – Platform connecting families with trusted caregivers (coming soon)",
-      "Recycle Tech – Clean technology and sustainable development initiative"
-    ],
-    successTraits: [
-      "Enjoys turning ideas into working products",
-      "Curious about new tools, frameworks, and coding trends",
-      "Reliable, detail-oriented, and a team player",
-      "Passionate about building technology that improves lives across Africa"
-    ],
-    applicationDeadline: "Applications are reviewed on a rolling basis"
-  },
-  salary: "Competitive salary based on experience",
-  applyEmail: "info@bbgroupglobal.com"
-}
-
-
-
-  
+  }
 }
 
 export default async function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -218,7 +87,7 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
 
   const handleEmailApply = () => {
     const subject = `Application for ${job.title}`
-    const body = `Hello FyndMee Team,\n\nI am interested in applying for the ${job.title} position.\n\nPlease find my details below:\n\n[Your brief description]\n\nBest regards,\n[Your Name]`
+    const body = `Hello BB Group Team,\n\nI am interested in applying for the ${job.title} position.\n\nPlease find my details below:\n\n[Your brief description]\n\nBest regards,\n[Your Name]`
     
     window.location.href = `mailto:${job.applyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
@@ -229,7 +98,6 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
       <header className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-           
             <Link 
               href="/careers"
               className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#AB1E3E] dark:hover:text-[#AB1E3E] transition-colors"
@@ -254,9 +122,6 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 {job.title}
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">
-                {job.fullDescription}
-              </p>
               
               <div className="flex flex-wrap gap-4 mb-6">
                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
@@ -271,20 +136,94 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
                   <Users className="w-5 h-5" />
                   <span>{job.department}</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                  <Briefcase className="w-5 h-5" />
-                  <span>{job.experience}</span>
-                </div>
               </div>
 
-              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
                 <p className="text-blue-800 dark:text-blue-300 font-semibold">
                   💰 {job.salary}
                 </p>
               </div>
+
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {job.description}
+              </p>
             </div>
 
-            {/* Job Details */}
+            {/* About BB Group */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-8 mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                  <Target className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                </div>
+                About BB Group
+              </h2>
+              
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                {job.aboutCompany.description}
+              </p>
+              
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                {job.aboutCompany.mission}
+              </p>
+
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Our Values</h3>
+                <div className="flex flex-wrap gap-2">
+                  {job.aboutCompany.values.map((value: string, index: number) => (
+                    <span key={index} className="px-3 py-1 bg-[#AB1E3E]/10 text-[#AB1E3E] rounded-full text-sm font-medium">
+                      {value}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Our Projects</h3>
+                <ul className="space-y-2">
+                  {job.aboutCompany.projects.map((project: string, index: number) => (
+                    <li key={index} className="flex items-start gap-3 text-gray-600 dark:text-gray-400">
+                      <div className="w-2 h-2 bg-[#AB1E3E] rounded-full mt-2 flex-shrink-0" />
+                      {project}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Qualifications */}
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-6">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <GraduationCap className="w-5 h-5 text-[#AB1E3E]" />
+                  Education Qualification
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {job.qualifications.education}
+                </p>
+              </div>
+
+              <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-6">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <Award className="w-5 h-5 text-[#AB1E3E]" />
+                  Relevant Experience
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {job.qualifications.experience}
+                </p>
+              </div>
+            </div>
+
+            {/* Position Summary */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-8 mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Position Summary
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                {job.positionSummary}
+              </p>
+            </div>
+
+            {/* Job Details Grid */}
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               {/* Responsibilities */}
               <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-6">
@@ -306,7 +245,7 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
               <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-6">
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                   <Briefcase className="w-5 h-5 text-[#AB1E3E]" />
-                  Requirements
+                  Skills & Requirements
                 </h2>
                 <ul className="space-y-3">
                   {job.requirements.map((requirement: string, index: number) => (
@@ -316,6 +255,39 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+
+            {/* Success Traits */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-8 mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                  <Users className="w-5 h-5 text-green-600 dark:text-green-400" />
+                </div>
+                What Will Make You Successful
+              </h2>
+              
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-6">
+                <div className="flex items-center gap-2 text-yellow-800 dark:text-yellow-300 font-semibold">
+                  <Calendar className="w-4 h-4" />
+                  Application Deadline
+                </div>
+                <p className="text-yellow-700 dark:text-yellow-400 mt-1">
+                  {job.applicationDeadline}
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                {job.successTraits.map((trait: string, index: number) => (
+                  <div key={index} className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-slate-700/50 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                    <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-blue-600 dark:text-blue-400 text-sm font-bold">✓</span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      {trait}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -347,4 +319,3 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
     </div>
   )
 }
-

@@ -52,12 +52,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-rose-400 transition">
+                <a href="/contact-us" className="hover:text-rose-400 transition">
                   Contact Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-rose-400 transition">
+                <a href="/privicy-policy" className="hover:text-rose-400 transition">
                   Privacy Policy
                 </a>
               </li>
@@ -69,25 +69,17 @@ export default function Footer() {
             <h4 className="font-bold text-gray-900 dark:text-white mb-4">Legal</h4>
             <ul className="space-y-2 text-gray-600 dark:text-white/70">
               <li>
-                <a href="#" className="hover:text-rose-400 transition">
-                  Privacy
+                <a href="/terms-of-sevice" className="hover:text-rose-400 transition">
+                  Terms of Service
                 </a>
               </li>
-              <li>
-                <a href="#" className="hover:text-rose-400 transition">
-                  Terms
-                </a>
-              </li>
+             
               <li>
                 <a href="#" className="hover:text-rose-400 transition">
                   Safety
                 </a>
               </li>
-              <li>
-                <a href="#" className="hover:text-rose-400 transition">
-                  Cookies
-                </a>
-              </li>
+             
             </ul>
           </div>
         </div>
