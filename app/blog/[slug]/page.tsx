@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, Calendar, User, Clock, Share2, Heart, MessageCircle, Bookmark } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 
 const blogPosts = [
 

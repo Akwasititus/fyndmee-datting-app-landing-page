@@ -56,7 +56,7 @@ const jobData: { [key: string]: any } = {
     ],
     
     successTraits: [
-      "You are naturally curious, creative, and bold in your ideas",
+      "You are naturally curious, creative, and bold in your ideas", 
       "You understand both marketing strategy and audience behavior",
       "You love trying new tools and learning as you go",
       "You are reliable, organized, and bring positive energy to teamwork"
