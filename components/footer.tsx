@@ -24,11 +24,11 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-gray-900 dark:text-white mb-4">Index</h4>
             <ul className="space-y-2 text-gray-600 dark:text-white/70">
-              <li>
-                <a href="#" className="hover:text-rose-400 transition">
+              {/* <li>
+                <a href="/the-app" className="hover:text-rose-400 transition">
                   The App
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="/careers" className="hover:text-rose-400 transition">
                   Careers
@@ -47,7 +47,7 @@ export default function Footer() {
             <h4 className="font-bold text-gray-900 dark:text-white mb-4">Company</h4>
             <ul className="space-y-2 text-gray-600 dark:text-white/70">
               <li>
-                <a href="#" className="hover:text-rose-400 transition">
+                <a href="/about-us" className="hover:text-rose-400 transition">
                   About
                 </a>
               </li>
@@ -75,7 +75,7 @@ export default function Footer() {
               </li>
              
               <li>
-                <a href="#" className="hover:text-rose-400 transition">
+                <a href="/safty" className="hover:text-rose-400 transition">
                   Safety
                 </a>
               </li>
@@ -88,13 +88,16 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 dark:text-white/50 text-sm">© 2025 Fynd mee. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
-                Twitter
+            <a href="https://www.tiktok.com/@fyndmee_app" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
+                TikTok
               </a>
-              <a href="#" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
+              <a href="https://www.linkedin.com/company/fynd-mee/?viewAsMember=true" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
+                LinkedIn
+              </a>
+              <a href="https://www.instagram.com/fyndmee.app/" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
                 Instagram
               </a>
-              <a href="#" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
+                <a href="https://web.facebook.com/profile.php?id=61579879823028" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
                 Facebook
               </a>
             </div>

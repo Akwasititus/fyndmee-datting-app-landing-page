@@ -58,13 +58,13 @@ const FeatureCard = ({ iconUrl, title, description, index }: any) => (
 export default function FeaturesSection() {
   const features = [
     {
-      iconUrl: "https://cdn.lordicon.com/ktsahwvc.json",
+      iconUrl: "https://cdn.lordicon.com/wzrwaorf.json",
       title: "Smart Matching",
       description:
         "AI-powered algorithm that learns your preferences and finds compatible matches based on interests, values, and lifestyle.",
     },
     {
-      iconUrl: "https://cdn.lordicon.com/wzrwaorf.json",
+      iconUrl: "https://cdn.lordicon.com/egiwmiit.json",
       title: "Verified Profiles", 
       description:
         "All members are verified with photo and ID verification to ensure authenticity and safety in every connection.",

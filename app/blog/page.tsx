@@ -1,8 +1,7 @@
-// app/blog/page.tsx
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, Calendar, User } from 'lucide-react'
+import { ArrowLeft, Calendar, User, Heart, MessageCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Blog - FyndMee',
@@ -10,7 +9,6 @@ export const metadata: Metadata = {
 }
 
 const blogPosts = [
-
   {
     slug: "authentic-professional-connections-online",
     title: "How to Build Authentic Professional Connections Online",
@@ -45,7 +43,6 @@ const blogPosts = [
     likes: 200,
     comments: 5
   },
-
   {
     slug: "art-of-being-intentional",
     title: "The Art of Being Intentional",
@@ -72,13 +69,12 @@ const blogPosts = [
     readTime: "7 min read",
     likes: 150,
     comments: 12
-  }
-,  
-{
-  slug: "healthy-boundaries-for-lasting-connections",
-  title: "The Secret to Long-Lasting Connections",
-  excerpt: "Discover three essential boundaries that strengthen relationships and keep love healthy and real.",
-  content: `
+  },
+  {
+    slug: "healthy-boundaries-for-lasting-connections",
+    title: "The Secret to Long-Lasting Connections",
+    excerpt: "Discover three essential boundaries that strengthen relationships and keep love healthy and real.",
+    content: `
       <p>3 Healthy Boundaries</p>
 
       <p>We've all heard that relationships take work, but what does that actually mean? One of the most important things you can do for any relationship is set healthy boundaries. I know the word "boundaries" can sound cold or like you're pushing someone away. But here's the truth: boundaries aren't walls that keep love out. They're actually the foundation that keeps love strong and lasting. When you know where you end and your partner begins, you create space for genuine connection instead of resentment or burnout.</p>
@@ -98,23 +94,21 @@ const blogPosts = [
       <p><strong>Image idea for this blog post:</strong><br/>
       A couple sitting together but doing different things — one reading, one journaling — showing closeness without losing individuality.</p>
   `,
-  imageUrl: "/images/blog-secret-long-lasting-connection.jpg",
-  date: "December 2, 2025",
-  category: "Relationship Growth",
-  author: "Paulina Mwindor",
-  authorRole: "Relationship Writer",
-  authorImage: "/images/Paulina-BB-Group.jpg",
-  readTime: "7 min read",
-  likes: 150,
-  comments: 12
-},
-
-
-{
-  slug: "meaningful-connections-in-2025",
-  title: "Why Meaningful Connections Matter More Than Ever in 2025",
-  excerpt: "Explore why trust, community, and real conversations have become the heart of modern relationships in 2025.",
-  content: `
+    imageUrl: "/images/blog-secret-long-lasting-connection.jpg",
+    date: "December 2, 2025",
+    category: "Relationship Growth",
+    author: "Paulina Mwindor",
+    authorRole: "Relationship Writer",
+    authorImage: "/images/Paulina-BB-Group.jpg",
+    readTime: "7 min read",
+    likes: 150,
+    comments: 12
+  },
+  {
+    slug: "meaningful-connections-in-2025",
+    title: "Why Meaningful Connections Matter More Than Ever in 2025",
+    excerpt: "Explore why trust, community, and real conversations have become the heart of modern relationships in 2025.",
+    content: `
   <br/>
       <p>The Rising Need for Trust, Community, and Real Conversations</p>
 
@@ -133,41 +127,47 @@ const blogPosts = [
       <p><strong>Image idea for this blog post:</strong><br/>
       A collage-style image showing people having deep conversations, sharing moments, and engaging in real, unfiltered connection — representing trust, community, and meaningful interaction.</p>
   `,
-  imageUrl: "/images/meaningful-connections-in-2025.jpg",
-  date: "December 5, 2025",
-  category: "Modern Relationships",
-  author: "Paulina Mwindor",
-  authorRole: "Relationship Writer",
-  authorImage: "/images/Paulina-BB-Group.jpg",
-  readTime: "6 min read",
-  likes: 180,
-  comments: 9
-}
-
-
-
-
+    imageUrl: "/images/meaningful-connections-in-2025.jpg",
+    date: "December 5, 2025",
+    category: "Modern Relationships",
+    author: "Paulina Mwindor",
+    authorRole: "Relationship Writer",
+    authorImage: "/images/Paulina-BB-Group.jpg",
+    readTime: "6 min read",
+    likes: 180,
+    comments: 9
+  }
 ]
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-black dark:via-slate-950 dark:to-black">
+      {/* Background effects - only visible in dark mode */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none dark:block hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl"></div>
+      </div>
+
       {/* Header */}
-      <header className="relative py-16 bg-linear-to-br from-rose-50 to-pink-100 dark:from-rose-950/20 dark:to-pink-950/20">
-        <div className="container mx-auto px-4">
-          <Link 
+      <header className="relative py-16">
+        <div className="container mx-auto px-4 relative z-10">
+          <Link
             href="/"
-            className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#AB1E3E] hover:text-rose-700 transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
-          
+
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-              FyndMee Blog
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+              FyndMee{" "}
+              <span className="bg-gradient-to-r from-[#AB1E3E] to-rose-500 bg-clip-text text-transparent">
+                Blog
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-white/60">
               Insights, stories, and updates from the FyndMee team.
             </p>
           </div>
@@ -175,44 +175,57 @@ export default function BlogPage() {
       </header>
 
       {/* All Posts */}
-      <section className="py-16">
+      <section className="relative z-10 py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {blogPosts.map((post) => (
-              <article key={post.slug} className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <article key={post.slug} className="group bg-white dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden hover:border-[#AB1E3E]/30 transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/5">
                 <div className="relative h-48">
                   <Image
                     src={post.imageUrl}
                     alt={post.title}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-3">
-                    <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded">
+                  <div className="absolute top-3 left-3">
+                    <span className="px-3 py-1 bg-white/90 dark:bg-black/90 text-gray-800 dark:text-white text-xs font-semibold rounded-full">
                       {post.category}
                     </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-white/60 mb-3">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       {post.date}
                     </div>
+                    <div className="flex items-center gap-1">
+                      <Heart className="w-4 h-4" />
+                      {post.likes}
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#AB1E3E] transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
+                  <p className="text-gray-600 dark:text-white/70 text-sm mb-4 line-clamp-2">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      {post.readTime}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#AB1E3E] to-rose-500 flex items-center justify-center text-white/90 text-xs">
+                        {post.author.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-gray-900 dark:text-white">{post.author}</p>
+                        <p className="text-xs text-gray-500 dark:text-white/60">{post.authorRole}</p>
+                      </div>
                     </div>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="text-rose-500 hover:text-rose-600 font-semibold text-sm transition-colors"
+                      className="text-[#AB1E3E] hover:text-rose-700 font-semibold text-sm transition-colors inline-flex items-center gap-1"
                     >
-                      Read →
+                      Read
+                      <ArrowLeft className="w-4 h-4 rotate-180" />
                     </Link>
                   </div>
                 </div>

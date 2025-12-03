@@ -18,7 +18,7 @@ export default function Header() {
   }, [])
 
   const navItems = [
-    { id: "FeatureCard", label: "The App", href: "#FeatureCard" },
+    { id: "FeatureCard", label: "", href: "#FeatureCard" },
     { id: "pricing", label: "Products", href: "/products-pricing-info" },
     { id: "newsroom", label: "News Room", href: "/blog" },
     { id: "download", label: "Download", href: "/download" },

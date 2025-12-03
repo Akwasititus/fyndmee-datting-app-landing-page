@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
           <Section delay={0.1}>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Introduction</h2>
             <p>
-              BB Group (referred to as "we," "us," or "our") is committed to protecting the privacy and security of the personal information of our clients, partners, and website visitors. This Privacy Policy outlines our practices concerning the collection, use, disclosure, and protection of your personal information in connection with your use of our website and services.
+              Fynd Mee (referred to as "we," "us," or "our") is committed to protecting the privacy and security of the personal information of our clients, partners, and website visitors. This Privacy Policy outlines our practices concerning the collection, use, disclosure, and protection of your personal information in connection with your use of our website and services.
             </p>
             <p>
               This policy is designed to be in compliance with applicable data protection laws and regulations, including GDPR and CCPA. We are dedicated to maintaining the highest standards of transparency and data integrity.
@@ -209,10 +209,10 @@ export default function PrivacyPolicy() {
             <p>
               If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:{" "}
               <a 
-                href="mailto:info@bbgroupglobal.com" 
+                href="mailto:info@fyndmee.app" 
                 className="text-[#AB1E3E] hover:text-rose-500 transition-colors underline"
               >
-                info@bbgroupglobal.com
+                info@fyndmee.app
               </a>
             </p>
           </Section>
