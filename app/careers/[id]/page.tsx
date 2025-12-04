@@ -64,7 +64,7 @@ const jobData: { [key: string]: any } = {
     
     applicationDeadline: "Applications are reviewed on a rolling basis",
     salary: "Competitive salary based on experience",
-    applyEmail: "info@bbgroupglobal.com"
+    applyEmail: "humanresource@bbgroupglobal.com"
   },
 
   2: {
@@ -121,7 +121,7 @@ const jobData: { [key: string]: any } = {
     
     applicationDeadline: "Applications are reviewed on a rolling basis",
     salary: "Competitive salary based on experience",
-    applyEmail: "info@bbgroupglobal.com"
+    applyEmail: "humanresource@bbgroupglobal.com"
   },
 
   3: {
@@ -177,7 +177,7 @@ const jobData: { [key: string]: any } = {
     
     applicationDeadline: "Applications are reviewed on a rolling basis",
     salary: "Competitive salary based on experience",
-    applyEmail: "info@bbgroupglobal.com"
+    applyEmail: "humanresource@bbgroupglobal.com"
   },
 
   4: {
@@ -233,7 +233,7 @@ const jobData: { [key: string]: any } = {
     
     applicationDeadline: "Applications are reviewed on a rolling basis",
     salary: "Competitive salary based on experience",
-    applyEmail: "info@bbgroupglobal.com"
+    applyEmail: "humanresource@bbgroupglobal.com"
   }
 }
 

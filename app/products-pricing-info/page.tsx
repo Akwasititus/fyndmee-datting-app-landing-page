@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { Check, Star, Crown, Zap, Heart, Map, Eye, Filter, Globe, Shield, ArrowRight } from 'lucide-react'
+import { Check, Star, Crown, Rocket, Flame, Zap, Heart, Map, Eye, Filter, Globe, Shield, ArrowRight } from 'lucide-react'
 import { motion, Variants } from "framer-motion"
 
 const fadeUp: Variants = {
@@ -79,6 +79,53 @@ export default function PricingPage() {
         { text: "Global access", icon: Globe },
         { text: "Premium Customer Support", icon: Heart }
       ]
+    },
+
+    {
+      name: "Supa Likes",
+      icon: Flame,
+      color: "from-rose-500 to-pink-500",
+      description: "Get noticed 4.5x more",
+      features: [
+        { text: "3 Supa Likes - $3.99 ($1.33/each)", icon: Zap },
+        { text: "6 Supa Likes - $6.99 ($1.17/each)", icon: Zap },
+        { text: "15 Supa Likes - $14.99 ($0.99/each)", icon: Zap },
+        { text: "30 Supa Likes - $19.99 ($0.67/each)", icon: Zap }
+      ],
+      tagline: "You are 4.5x more likely to find a partner/match",
+      cta: "Proceed to Pay $3.99"
+    },
+
+    {
+      name: "Boost Your Profile",
+      icon: Rocket,
+      color: "from-violet-500 to-indigo-500",
+      description: "Be the top profile in your area",
+      features: [
+        { text: "15 min: 2 Boosts - $3.99", icon: Star },
+        { text: "15 min: 5 Boosts - $6.99", icon: Star },
+        { text: "15 min: 10 Boosts - $9.99", icon: Star },
+        { text: "30 min: 2 Boosts - $5.99", icon: Star },
+        { text: "30 min: 5 Boosts - $9.99", icon: Star },
+        { text: "30 min: 10 Boosts - $14.99", icon: Star }
+      ],
+      tagline: "Get more likes and matches with profile boosts",
+      cta: "Proceed to Pay $6.99"
+    },
+
+    {
+      name: "Rewind",
+      icon: Rocket,
+      color: "from-violet-500 to-indigo-500",
+      description: "Get another look at the person you missed",
+      features: [
+        { text: "Weekly - $3.99", icon: Star },
+        { text: "Monthly $6.99 ($117/each, save 12%)", icon: Star },
+        { text: "Quarterly (3 Months) $14.99 ($0.99/each, save 26%)", icon: Star },
+        { text: "Half-Year $19.99 ($0.67/each, save 50%)", icon: Star },
+      ],
+      tagline: "Get more likes and matches with profile boosts",
+      cta: "Proceed to Pay $6.99"
     }
   ]
 

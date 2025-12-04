@@ -19,7 +19,7 @@ export default function ContactUs() {
     const [isSuccess, setIsSuccess] = useState(false)
 
     const contacts = [
-        { label: "General Inquiries", email: "info@bbgroupglobal.com", icon: "💬" },
+        { label: "General Inquiries", email: "info@fyndmee.app", icon: "💬" },
         { label: "Support", email: "admin@fyndmee.app", icon: "🛟" },
         // { label: "Any", email: "any@fyndmee.app", icon: "💼" },
         // { label: "Marketing Team", email: "lina@fyndmee.app", icon: "📰" },
