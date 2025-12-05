@@ -13,7 +13,7 @@ const EnhancedHeroSection = () => {
   const [floatingHearts, setFloatingHearts] = useState<any[]>([])
 
   const typewriterWords = ["Perfect Match", "Soulmate", "True Love", "Dream Partner", "Forever Person", "Best Friend"]
-  const images = ["/images/fyndmee-bg-1.png", "/images/fyndmee6.jpg", "/images/fyndmee4.jpg", "/images/fyndmee2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
+  const images = ["/images/fyndmee-bg-1.png", "/images/fyndmee5.jpg", "/images/fyndmee4.jpg", "/images/fyndmee2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
 
   // Background image carousel
   useEffect(() => {

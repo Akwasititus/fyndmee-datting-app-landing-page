@@ -87,13 +87,13 @@ export default function PricingPage() {
       color: "from-rose-500 to-pink-500",
       description: "Get noticed 4.5x more",
       features: [
-        { text: "3 Supa Likes - $3.99 ($1.33/each)", icon: Zap },
-        { text: "6 Supa Likes - $6.99 ($1.17/each)", icon: Zap },
-        { text: "15 Supa Likes - $14.99 ($0.99/each)", icon: Zap },
-        { text: "30 Supa Likes - $19.99 ($0.67/each)", icon: Zap }
+        { text: "Get 4.5× higher chance of matching with someone you like.", icon: Zap },
+        { text: "Stand out instantly on their feed.", icon: Zap },
+        { text: "Show serious interest with one tap.", icon: Zap },
+        { text: "Boost your visibility to people you truly want.", icon: Zap }
       ],
       tagline: "You are 4.5x more likely to find a partner/match",
-      cta: "Proceed to Pay $3.99"
+      cta: "Proceed to Pay"
     },
 
     {
@@ -102,15 +102,13 @@ export default function PricingPage() {
       color: "from-violet-500 to-indigo-500",
       description: "Be the top profile in your area",
       features: [
-        { text: "15 min: 2 Boosts - $3.99", icon: Star },
-        { text: "15 min: 5 Boosts - $6.99", icon: Star },
-        { text: "15 min: 10 Boosts - $9.99", icon: Star },
-        { text: "30 min: 2 Boosts - $5.99", icon: Star },
-        { text: "30 min: 5 Boosts - $9.99", icon: Star },
-        { text: "30 min: 10 Boosts - $14.99", icon: Star }
+        { text: "Become one of the top profiles in your area", icon: Star },
+        { text: "Get seen within the first few swipes.", icon: Star },
+        { text: "Choose a 15-minute or 30-minute Boost.", icon: Star },
+        { text: "Maximize your exposure when it matters most.", icon: Star },
       ],
       tagline: "Get more likes and matches with profile boosts",
-      cta: "Proceed to Pay $6.99"
+      cta: "Proceed to Pay"
     },
 
     {
@@ -119,13 +117,12 @@ export default function PricingPage() {
       color: "from-violet-500 to-indigo-500",
       description: "Get another look at the person you missed",
       features: [
-        { text: "Weekly - $3.99", icon: Star },
-        { text: "Monthly $6.99 ($117/each, save 12%)", icon: Star },
-        { text: "Quarterly (3 Months) $14.99 ($0.99/each, save 26%)", icon: Star },
-        { text: "Half-Year $19.99 ($0.67/each, save 50%)", icon: Star },
+        { text: "Undo your last swipe instantly.", icon: Star },
+        { text: "Get a second chance on a profile you skipped.", icon: Star },
+        { text: "Never lose a potential match by mistake.", icon: Star },
       ],
       tagline: "Get more likes and matches with profile boosts",
-      cta: "Proceed to Pay $6.99"
+      cta: "Proceed to Pay"
     }
   ]
 
