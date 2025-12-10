@@ -9,36 +9,23 @@ import Header from "@/components/header"
 import NewsletterSection from "@/components/NewsletterSection"
 import BlogPostSection from "@/components/NewsletterSection"
 import DownloadPage from "@/app/download/page"
-import fs from 'fs';
-import path from 'path';
-
-// export default function Home() {
-//   return (
-//     <main className="w-full min-h-screen transition-colors duration-300">
-//       <Header/>
-//       <235f0020efff0cf18c8797a80d0870c4/>
-//       {/* <EnhancedHeroSection />
-//        <TestimonialsSection />
-//       <FeaturesSection />
-     
-     
-//      <BlogPostSection />
-     
-//       <CTASection />
-//       <Footer /> */}
-      
-//     </main>
-//   )
-// }
-
 
 export default function Home() {
-  const htmlPath = path.join(process.cwd(), 'public', 'home.html');
-  const htmlContent = fs.readFileSync(htmlPath, 'utf8');
-
   return (
-    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-  );
+    <main className="w-full min-h-screen transition-colors duration-300">
+      <Header/>
+      <EnhancedHeroSection />
+       <TestimonialsSection />
+      <FeaturesSection />
+     
+     
+     <BlogPostSection />
+     
+      <CTASection />
+      <Footer />
+      
+    </main>
+  )
 }
 
 
