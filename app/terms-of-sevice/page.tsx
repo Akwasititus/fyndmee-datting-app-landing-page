@@ -58,7 +58,7 @@ export default function TermsOfService() {
             className="inline-flex items-center gap-2 text-[#AB1E3E] hover:text-rose-700 transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Home 
+            Back to Home  
           </Link>
         </div>
       </header>
