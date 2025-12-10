@@ -9,6 +9,8 @@ import Header from "@/components/header"
 import NewsletterSection from "@/components/NewsletterSection"
 import BlogPostSection from "@/components/NewsletterSection"
 import DownloadPage from "@/app/download/page"
+import fs from 'fs';
+import path from 'path';
 
 // export default function Home() {
 //   return (
@@ -31,11 +33,11 @@ import DownloadPage from "@/app/download/page"
 
 
 export default function Home() {
+  const htmlPath = path.join(process.cwd(), 'public', 'home.html');
+  const htmlContent = fs.readFileSync(htmlPath, 'utf8');
+
   return (
-    <iframe 
-      src="/235f0020efff0cf18c8797a80d0870c4.html" 
-      style={{ width: '100%', height: '100vh', border: 'none' }} 
-    />
+    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
   );
 }
 
