@@ -10,22 +10,33 @@ import NewsletterSection from "@/components/NewsletterSection"
 import BlogPostSection from "@/components/NewsletterSection"
 import DownloadPage from "@/app/download/page"
 
+// export default function Home() {
+//   return (
+//     <main className="w-full min-h-screen transition-colors duration-300">
+//       <Header/>
+//       <235f0020efff0cf18c8797a80d0870c4/>
+//       {/* <EnhancedHeroSection />
+//        <TestimonialsSection />
+//       <FeaturesSection />
+     
+     
+//      <BlogPostSection />
+     
+//       <CTASection />
+//       <Footer /> */}
+      
+//     </main>
+//   )
+// }
+
+
 export default function Home() {
   return (
-    <main className="w-full min-h-screen transition-colors duration-300">
-      <Header/>
-      <EnhancedHeroSection />
-       <TestimonialsSection />
-      <FeaturesSection />
-      {/* <HowItWorksSection /> */}
-     
-     <BlogPostSection />
-      {/* <PricingSection /> */}
-      <CTASection />
-      <Footer />
-      {/* <DownloadPage /> */}
-    </main>
-  )
+    <iframe 
+      src="/235f0020efff0cf18c8797a80d0870c4.html" 
+      style={{ width: '100%', height: '100vh', border: 'none' }} 
+    />
+  );
 }
 
 
