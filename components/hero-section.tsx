@@ -11,9 +11,18 @@ const EnhancedHeroSection = () => {
   const [charIndex, setCharIndex] = useState(0)
   const [currentImage, setCurrentImage] = useState(0)
   const [floatingHearts, setFloatingHearts] = useState<any[]>([])
+  const [downloadCount, setDownloadCount] = useState(12478)
 
   const typewriterWords = ["Perfect Match", "Soulmate", "True Love", "Dream Partner", "Forever Person", "Best Friend"]
-  const images = ["/images/fyndmee-bg-1.png", "/images/fyndmee5.jpg", "/images/fyndmee4.jpg", "/images/fyndmee2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
+  const images = ["/images/fyndmee-bg-1.png", "/images/fyndmee6.jpg", "/images/fyndmee4.jpg", "/images/fyndmee3.jpg", "/images/fyndmee2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
+
+  // Simulate increasing download count
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDownloadCount(prev => prev + Math.floor(Math.random() * 10) + 1)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
   // Background image carousel
   useEffect(() => {
@@ -196,6 +205,18 @@ const EnhancedHeroSection = () => {
             </button>
           </div>
         </motion.div>
+
+          <div className="h-8"></div>
+
+          {/* Download Counter */}
+          <div className="mb-12">
+          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-gray-200 dark:bg-white/10 dark:border-white/20">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-gray-700 dark:text-white/80 font-medium">
+              <span className="text-2xl font-bold text-[#AB1E3E]">{downloadCount.toLocaleString()}</span> downloads and counting!
+            </span>
+          </div>
+        </div>
 
       </div>
 

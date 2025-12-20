@@ -55,7 +55,7 @@ const FeatureCard = ({ iconUrl, title, description, index }: any) => (
   </motion.div>
 );
 
-export default function FeaturesSection() {
+export default function WhyChooseFyndMee() {
   const features = [
     {
       iconUrl: "https://cdn.lordicon.com/wzrwaorf.json",

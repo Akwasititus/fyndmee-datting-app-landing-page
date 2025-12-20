@@ -5,7 +5,7 @@ import { useState } from "react"
 import { supabase } from "@/lib/supabase"
 
 
-export default function FeaturesSection() {
+export default function BeFirstToKnow() {
   const [email, setEmail] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState("")
