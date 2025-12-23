@@ -18,14 +18,88 @@ const kumbhSans = Kumbh_Sans({
   variable: '--font-kumbh-sans',
 })
 
+// export const metadata: Metadata = {
+//   title: "Fynd Mee",
+//   description: "Welcome to fyndmee",
+//   generator: "BB-group",
+//   icons: {
+//     icon: '/favicon.png',
+//   },
+// }
+
 export const metadata: Metadata = {
   title: "Fynd Mee",
   description: "Welcome to fyndmee",
   generator: "BB-group",
   icons: {
-    icon: '/favicon.png',
-  },
+    icon: [
+      {
+        url: '/favicon.ico', // Google prefers .ico format for root
+        sizes: 'any',
+      },
+      {
+        url: '/favicon.png', // Your PNG version
+        type: 'image/png',
+      },
+      {
+        url: '/icon.png', // Alternative icon
+        type: 'image/png',
+        sizes: '32x32',
+      },
+      {
+        url: '/icon-192.png', // For PWA/Android
+        type: 'image/png',
+        sizes: '192x192',
+      },
+    ],
+    apple: [
+      {
+        url: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+    shortcut: ['/favicon.ico'],
+    other: [
+      {
+        rel: 'icon',
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
+      },
+      {
+        rel: 'icon',
+        url: '/favicon-16x16.png',
+        sizes: '16x16',
+      },
+    ],
+  },
 }
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode
+// }) {
+//   return (
+//     <html lang="en" suppressHydrationWarning className={kumbhSans.variable}>
+//       <head>
+//       {/* <link rel="icon" href="/favicon.ico" /> */}
+//         <Script
+//           src="https://cdn.lordicon.com/lordicon.js"
+//           strategy="afterInteractive"
+//         />
+//       </head>
+//       <body className={inter.className}>
+//         <ThemeProvider>
+//           {children}
+//         </ThemeProvider>
+
+//                 {/* Global Radio Player */}
+//                 {/* <RadioPlayer /> */}
+//       </body>
+//     </html>
+//   )
+// }
 
 export default function RootLayout({
   children,
@@ -35,7 +109,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={kumbhSans.variable}>
       <head>
-      {/* <link rel="icon" href="/favicon.ico" /> */}
+        {/* Explicit favicon links for better crawler discovery */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
         <Script
           src="https://cdn.lordicon.com/lordicon.js"
           strategy="afterInteractive"
@@ -45,9 +123,6 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
         </ThemeProvider>
-
-                {/* Global Radio Player */}
-                {/* <RadioPlayer /> */}
       </body>
     </html>
   )
