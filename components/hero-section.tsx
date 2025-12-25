@@ -150,6 +150,7 @@ const EnhancedHeroSection = () => {
           Where authentic connections begin and love stories unfold
         </motion.p>
 
+        {/* QR CODE TO DOWNLOAD THE APP STARTS HERE... */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -159,8 +160,8 @@ const EnhancedHeroSection = () => {
         >
           {/* Google Play with QR Code */}
           <div className="flex flex-col items-center gap-2">
-            <div className="bg-white p-2 rounded-lg">
-
+            {/* Hide QR code on mobile, show on md screens and above */}
+            <div className="hidden md:block bg-white p-2 rounded-lg">
               <QRCodeSVG
                 value="https://www.google.com"
                 size={80}
@@ -185,8 +186,8 @@ const EnhancedHeroSection = () => {
 
           {/* App Store with QR Code */}
           <div className="flex flex-col items-center gap-2">
-            <div className="bg-white p-2 rounded-lg">
-
+            {/* Hide QR code on mobile, show on md screens and above */}
+            <div className="hidden md:block bg-white p-2 rounded-lg">
               <QRCodeSVG
                 value="https://www.fanmilk.com"
                 size={80}
@@ -206,10 +207,10 @@ const EnhancedHeroSection = () => {
           </div>
         </motion.div>
 
-          <div className="h-8"></div>
+        <div className="h-8"></div>
 
-          {/* Download Counter */}
-          <div className="mb-12">
+        {/* Download Counter */}
+        <div className="mb-12">
           <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-gray-200 dark:bg-white/10 dark:border-white/20">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-gray-700 dark:text-white/80 font-medium">
