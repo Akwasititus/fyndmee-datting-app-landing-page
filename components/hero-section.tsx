@@ -104,7 +104,7 @@ const EnhancedHeroSection = () => {
 
       {/* Scroll-based animation starts here */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -112,7 +112,7 @@ const EnhancedHeroSection = () => {
           className="flex justify-center mb-6"
         >
           <Sparkles className="w-12 h-12 text-[#AB1E3E]" />
-        </motion.div>
+        </motion.div> */}
 
         <motion.h1
           initial={{ opacity: 0, y: 60 }}
@@ -124,7 +124,7 @@ const EnhancedHeroSection = () => {
           Find Your
         </motion.h1>
 
-        <motion.h2
+        {/* <motion.h2
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
@@ -138,7 +138,35 @@ const EnhancedHeroSection = () => {
         >
           {currentText}
           <span className="animate-pulse text-[#AB1E3E]">|</span>
+        </motion.h2> */}
+
+<motion.h2
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: true }}
+          className="text-5xl md:text-7xl font-bold mb-8 relative inline-block"
+        >
+          <span
+            style={{
+              background: "linear-gradient(to right, #AB1E3E, #D42952, #AB1E3E)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            {currentText}
+          </span>
+          <span 
+            className="inline-block w-1 h-[0.9em] ml-1 bg-[#AB1E3E] animate-blink"
+            style={{
+              verticalAlign: 'text-bottom',
+              marginBottom: '0.1em'
+            }}
+          ></span>
         </motion.h2>
+
+
 
         <motion.p
           initial={{ opacity: 0, y: 50 }}

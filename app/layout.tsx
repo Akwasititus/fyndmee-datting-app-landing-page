@@ -119,7 +119,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className={inter.className}>
+      <body >
         <ThemeProvider>
           {children}
         </ThemeProvider>

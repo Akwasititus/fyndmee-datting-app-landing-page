@@ -52,7 +52,7 @@ const FALLBACK_RESPONSES = {
     ]
   },
   pricing: {
-    patterns: ['free', 'cost', 'price', 'payment', 'subscription', 'premium', 'paid', 'how much', 'charge'],
+    patterns: ['free', 'cost', 'price', 'payment', 'pay', 'subscription', 'premium', 'paid', 'how much', 'charge'],
     responses: [
       "Great question! FyndMee is FREE to download and use. 💝\n\nYou get full access to:\n• Smart AI matching\n• Verified profiles\n• Instant messaging\n• Compatibility scores\n\nWe also offer Premium features starting at $9.99/month for things like seeing who liked you, unlimited likes, and profile boosts. But you can absolutely find meaningful connections with the free version!",
       "FyndMee won't cost you anything to start! The app is completely free to download and use basic features.\n\nIf you want extra perks like seeing who's already interested in you or unlimited likes, Premium is available for $9.99/month. But honestly, many of our success stories came from free users! 💕"
@@ -111,7 +111,7 @@ const FALLBACK_RESPONSES = {
   thanks: {
     patterns: ['thank', 'thanks', 'appreciate', 'helpful', 'great'],
     responses: [
-      "You're so welcome! 💕 I'm happy I could help. Feel free to ask anything else about FyndMee, or if you're ready, go ahead and download the app to start your journey to finding meaningful connections!",
+      "You're so welcome! I'm happy I could help. Feel free to ask anything else about FyndMee, or if you're ready, go ahead and download the app to start your journey to finding meaningful connections!",
       "My pleasure! ✨ That's what I'm here for. If you have any other questions as you explore FyndMee, just ask. And remember - your perfect match might be just a download away! 💝",
       "Glad I could help! 🎉 Don't hesitate to reach out if you think of more questions. We're excited to help you find authentic connections. Happy matching! 💕"
     ]
@@ -352,13 +352,13 @@ export default function FyndMeeAIChat() {
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-white" />
+                  <MessageCircle className="w-5 h-5 text-white/90" />
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-pink-500" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-white">FyndMee AI</h3>
+                  <h3 className="font-bold text-white/90">FyndMee AI</h3>
                   <Sparkles className="w-3 h-3 text-yellow-300" />
                 </div>
                 <p className="text-xs text-white/90">Powered by Claude AI</p>
@@ -375,7 +375,7 @@ export default function FyndMeeAIChat() {
               )}
               <button
                 onClick={resetChat}
-                className="px-3 py-1 text-xs font-medium text-white hover:bg-white/20 rounded-lg transition-colors"
+                className="px-3 py-1 text-xs font-medium text-white/90 hover:bg-white/20 rounded-lg transition-colors"
               >
                 Reset
               </button>
@@ -383,8 +383,9 @@ export default function FyndMeeAIChat() {
                 onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-white/20 rounded-lg transition-colors"
               >
-                <X className="w-4 h-4 text-white" />
+                <X className="w-4 h-4 text-white/90" />
               </button>
+              
             </div>
           </div>
         </div>
@@ -400,7 +401,7 @@ export default function FyndMeeAIChat() {
                 <div
                   className={`px-4 py-3 rounded-2xl ${
                     msg.sender === 'user'
-                      ? 'bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-br-sm'
+                      ? 'bg-gradient-to-r from-pink-500 to-rose-600 text-white/90 rounded-br-sm'
                       : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm'
                   }`}
                 >
@@ -416,7 +417,7 @@ export default function FyndMeeAIChat() {
           {isTyping && (
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white animate-pulse" />
+                <Sparkles className="w-4 h-4 text-white/90 animate-pulse" />
               </div>
               <div className="flex gap-1">
                 {[0, 1, 2].map((i) => (
@@ -468,7 +469,7 @@ export default function FyndMeeAIChat() {
             <button
               onClick={handleSend}
               disabled={isTyping || !input.trim()}
-              className="p-3 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-full shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
+              className="p-3 bg-gradient-to-r from-pink-500 to-rose-600 text-white/90  rounded-full shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
             >
               <Send className="w-5 h-5" />
             </button>

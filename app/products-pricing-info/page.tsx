@@ -83,7 +83,8 @@ export default function PricingPage() {
 
     {
       name: "Supa Likes",
-      icon: Flame,
+      iconUrl: "/images/suppa-likes.png",
+      // icon: Flame,
       color: "from-rose-500 to-pink-500",
       description: "Get noticed 4.5x more",
       features: [
@@ -98,7 +99,8 @@ export default function PricingPage() {
 
     {
       name: "Boost Your Profile",
-      icon: Rocket,
+      // icon: Rocket,
+      iconUrl: "/images/boost.png",
       color: "from-violet-500 to-indigo-500",
       description: "Be the top profile in your area",
       features: [
@@ -113,7 +115,8 @@ export default function PricingPage() {
 
     {
       name: "Rewind",
-      icon: Rocket,
+      // icon: Rocket,
+      iconUrl: "/images/rewind.png",
       color: "from-violet-500 to-indigo-500",
       description: "Get another look at the person you missed",
       features: [
@@ -130,8 +133,6 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 py-12">
       {/* Header */}
-
-
 
       {/* Header */}
       <div className="container mx-auto px-4 py-6">
@@ -196,7 +197,6 @@ export default function PricingPage() {
               <div className={`p-8 rounded-t-3xl bg-gradient-to-r ${plan.color}`}>
                 <div className="text-center text-white">
                   <div className="flex justify-center mb-4" style={{ width: "60px", height: "60px", margin: "0 auto" }}>
-                    
 
                     <div className="bg-white/30 backdrop-blur-lg rounded-full p-4 shadow-lg">
                       <img
@@ -205,7 +205,7 @@ export default function PricingPage() {
                         className="h-8 w-8 object-contain hover:scale-110 transition-transform"
                       />
                     </div>
-                    
+
                   </div>
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-white/90">{plan.description}</p>

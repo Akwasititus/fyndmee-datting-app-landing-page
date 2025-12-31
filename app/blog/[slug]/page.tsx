@@ -77,16 +77,8 @@ const blogPosts = [
     readTime: "7 min read",
     likes: 150,
     comments: 12
-  }
-  ,
-
-
-
-
-
-  // ------------------
-
-
+  },
+  
   {
     slug: "healthy-boundaries-for-lasting-connections",
     title: "The Secret to Long-Lasting Connections",

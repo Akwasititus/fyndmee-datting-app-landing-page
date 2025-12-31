@@ -50,8 +50,8 @@ export default function TermsOfService() {
         <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl"></div>
       </div>
 
-                 {/* Header */}
-                 <header className="relative py-8 border-b border-gray-200 dark:border-gray-800">
+      {/* Header */}
+      <header className="relative py-8 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4">
           <Link
             href="/"
@@ -258,8 +258,8 @@ export default function TermsOfService() {
           <Section title="Contact Us" delay={0.8}>
             <p>
               If you have any questions about these Terms, please contact us at:{" "}
-              <a 
-                href="mailto:admin@fyndmee.app" 
+              <a
+                href="mailto:admin@fyndmee.app"
                 className="text-[#AB1E3E] hover:text-rose-500 transition-colors underline"
               >
                 admin@fyndmee.app
