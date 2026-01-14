@@ -88,10 +88,7 @@ export default function SafeTips() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-[#AB1E3E]/10 to-rose-500/10 border border-[#AB1E3E]/20 mb-6">
-            <Shield className="w-5 h-5 text-[#AB1E3E]" />
-            <span className="text-sm font-medium text-[#AB1E3E]">Your Safety Matters</span>
-          </div>
+         
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
             Safe{" "}
             <span className="bg-gradient-to-r from-[#AB1E3E] to-rose-500 bg-clip-text text-transparent">

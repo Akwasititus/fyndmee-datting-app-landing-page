@@ -123,6 +123,8 @@ export default function PricingPage() {
         { text: "Undo your last swipe instantly.", icon: Star },
         { text: "Get a second chance on a profile you skipped.", icon: Star },
         { text: "Never lose a potential match by mistake.", icon: Star },
+        { text: "Boost your chances of finding the right person.", icon: Star },
+      
       ],
       tagline: "Get more likes and matches with profile boosts",
       cta: "Proceed to Pay"
