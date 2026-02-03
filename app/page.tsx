@@ -6,6 +6,7 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import BlogPostSection from "@/components/NewsletterSection"
 import SimpleChatWidget from "@/components/SimpleChatWidget"
+import TestimonialsCarousel from "@/components/Testimonialscarouselminimal"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <WhyChooseFyndMee />
       <BlogPostSection />
       <CTASection />
+      <TestimonialsCarousel />
       <Footer />
       <SimpleChatWidget />
     </main>
