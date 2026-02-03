@@ -16,8 +16,8 @@ export default function Home() {
       <BeFirstToKnow />
       <WhyChooseFyndMee />
       <BlogPostSection />
-      <CTASection />
       <TestimonialsCarousel />
+      <CTASection />
       <Footer />
       <SimpleChatWidget />
     </main>
