@@ -24,6 +24,15 @@ const EnhancedHeroSection = () => {
     return () => clearInterval(interval)
   }, [])
 
+  // Only load current image + preload next
+const [loadedImages, setLoadedImages] = useState(new Set([0, 1]))
+
+useEffect(() => {
+  // Preload next image
+  const nextIndex = (currentImage + 1) % images.length
+  setLoadedImages(prev => new Set([...prev, nextIndex]))
+}, [currentImage])
+
   // Background image carousel
   useEffect(() => {
     const interval = setInterval(() => {
@@ -191,7 +200,7 @@ const EnhancedHeroSection = () => {
             {/* Hide QR code on mobile, show on md screens and above */}
             <div className="hidden md:block bg-white p-2 rounded-lg">
               <QRCodeSVG
-                value="https://www.google.com"
+                value="https://www.fyndmee.app"
                 size={80}
                 bgColor="#ffffff"
                 fgColor="#000000"
@@ -217,7 +226,7 @@ const EnhancedHeroSection = () => {
             {/* Hide QR code on mobile, show on md screens and above */}
             <div className="hidden md:block bg-white p-2 rounded-lg">
               <QRCodeSVG
-                value="https://www.fanmilk.com"
+                value="https://www.fyndmee.app"
                 size={80}
                 bgColor="#ffffff"
                 fgColor="#000000"

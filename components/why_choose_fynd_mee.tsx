@@ -116,7 +116,7 @@ export default function WhyChooseFyndMee() {
             <div className="relative rounded-3xl overflow-hidden">
               <Image
                 // src="/images/fyndmee_image.jpg"
-                src="/images/fynddd.jpg"
+                src="/images/happy-cherry.jpg"
                 alt="Why Choose Fynd Mee"
                 width={600}
                 height={900}
