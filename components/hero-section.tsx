@@ -14,7 +14,7 @@ const EnhancedHeroSection = () => {
   const [downloadCount, setDownloadCount] = useState(12478)
 
   const typewriterWords = ["Perfect Match", "Soulmate", "True Love", "Dream Partner", "Forever Person", "Best Friend"]
-  const images = ["/images/fyndmee-bg-1.png", "/images/fyndmee6.jpg", "/images/fyndmee4.jpg", "/images/fyndmee3.jpg", "/images/fyndmee2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
+  const images = ["/images/fyndmee-bg-1.png","/images/fyndmee6.jpg", "/images/fyndmee4.jpg", "/images/fyndmee3.jpg", "/images/fyndmee2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/7.jpg"]
 
   // Simulate increasing download count
   useEffect(() => {

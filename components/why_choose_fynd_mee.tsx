@@ -34,7 +34,6 @@ const LordIcon = ({ src, colors = "primary:#fb7185,secondary:#f9a8d4", trigger =
   )
 }
 
-
 const FeatureCard = ({ iconUrl, title, description, index }: any) => (
   <motion.div
     variants={fadeUp}
@@ -97,8 +96,24 @@ export default function WhyChooseFyndMee() {
 
   return (
     <section className="relative py-24 px-4 bg-linear-to-b from-black via-slate-950 to-black overflow-hidden">
+      {/* Background image - added here */}
+      {/* <div className="absolute inset-0 z-0 translate-x-110">
+        <Image
+          src="/images/getintourch.png"
+          alt="Hand holding phone with app interface"
+          fill
+          sizes="100vw"
+          className="object-cover object-[60%_50%] opacity-10"
+          priority
+          quality={85}
+        />
+      </div> */}
+      
+      {/* Dark overlay to make image less visible */}
+      {/* <div className="absolute inset-0 bg-black/30 z-0"></div> */}
+
       {/* Background effects */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl"></div>
       </div>
@@ -115,7 +130,6 @@ export default function WhyChooseFyndMee() {
           >
             <div className="relative rounded-3xl overflow-hidden">
               <Image
-                // src="/images/fyndmee_image.jpg"
                 src="/images/happy-cherry.jpg"
                 alt="Why Choose Fynd Mee"
                 width={600}

@@ -10,24 +10,44 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "Thank you Fynd Mee! We're getting married in a few months!",
-    names: "Kathryn B. and Nik N.",
+    quote: "“I matched with Kofi while he was working in Lagos and I was in Accra. What started as random late-night chats turned into daily calls. Eight months later, he flew down to meet my family. Fynd Mee didn’t just give me a match,  it gave me my husband.”",
+    names: "— Ama, Ghana",
   },
   {
-    quote: "I never thought I'd find someone who truly gets me. Fynd Mee made it happen!",
-    names: "Sarah M. and James K.",
+    quote: "“Being Ghanaian in Toronto can feel isolating sometimes. I filtered by country on Fynd Mee and that’s how I met Efua. Two years later, we’re engaged.”",
+    names: "— Michael, Toronto",
   },
   {
-    quote: "Best decision ever! We've been together for 2 years now and couldn't be happier.",
-    names: "Michael R. and Emily T.",
+    quote: "“I had deleted every other app before trying Fynd Mee. The filtering actually made sense — region, interests, distance. I met Thabo just 6km away from me. We’ve been together for a year now.”",
+    names: "— Kayla, Johannesburg",
   },
   {
-    quote: "The verification feature made me feel safe. Met my soulmate here!",
-    names: "Priya S. and David L.",
+    quote: "“Before relocating for work, I used Fynd Mee to connect with professionals in my field. It helped me build relationships before I even landed. That made the transition smoother.”",
+    names: "— Amara, Toronto",
   },
   {
-    quote: "From first message to first date to forever. Thank you Fynd Mee!",
+    quote: "“We both joined Fynd Mee just looking for community. Neither of us expected to meet someone so aligned. Our first date lasted six hours. Now we share an apartment.”",
     names: "Jessica P. and Marcus W.",
+  },
+
+  {
+    quote: "“I filtered by fitness and outdoor activities on Fynd Mee and matched with someone who lives 4km away. We started with morning runs and ended up becoming real friends.”",
+    names: "— Zinhle, Johannesburg",
+  },
+
+  {
+    quote: "“Fynd Mee made it easy to connect across cultures. I met Awa while traveling in Dakar. What stood out was how genuine everyone felt. No pressure, just real conversations.”",
+    names: "— Lucas, Paris",
+  },
+
+  {
+    quote: "“I signed up on Fynd Mee for networking. Within weeks, I met someone who complemented my skills perfectly. What started as conversations turned into a real business partnership.”",
+    names: "— Samuel, Accra",
+  },
+
+  {
+    quote: "“I moved to a new city and didn’t know anyone. I used the friendship option on Fynd Mee and found two amazing women I now call my sisters.”",
+    names: "— Ada, Abuja",
   },
 ]
 

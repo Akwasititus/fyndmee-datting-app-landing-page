@@ -1,6 +1,6 @@
 'use client'
 import { Button } from "@/components/ui/button"
-import { Menu, X, MessageCircle, Send, Sparkles, ChevronDown, Sun, Moon } from "lucide-react"
+import { Menu, X, MessageCircle, Send, Sparkles, Globe, Sun, Moon } from "lucide-react"
 // import { useState } from "react"
 import { useState, useEffect } from "react"
 import { useTheme } from "@/components/theme-provider"
@@ -28,9 +28,13 @@ export default function Header() {
 
 
   const socials = [
-    { name: "WhatsApp", icon: MessageCircle, link: "https://chat.whatsapp.com/your-group-link", color: "bg-[#25D366]" },
-    { name: "Telegram", icon: Send, link: "https://t.me/your-channel", color: "bg-[#0088cc]" }
-  ]
+
+    { name: "Waitlist", icon: Globe, link: "https://forms.gle/D721gVxuZd8eP2E66", color: "bg-[#000000]" },
+
+    { name: "WhatsApp", icon: MessageCircle, link: "https://whatsapp.com/channel/0029VbCI5w6HQbSD0g2SAp3Y", color: "bg-[#25D366]" },
+
+    { name: "Telegram", icon: Send, link: "https://t.me/fyndmee1", color: "bg-[#0088cc]" }
+  ]  
 
   // Don't render theme toggle until mounted to avoid hydration mismatch
   if (!mounted) {
@@ -126,7 +130,7 @@ export default function Header() {
                     className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                   >
                     <div className={`${social.color} p-2 rounded-lg`}>
-                      <social.icon className="text-white" size={20} />
+                      <social.icon className="text-white/90" size={20} />
                     </div>
                     <span className="font-medium text-gray-700">{social.name}</span>
                   </a>
