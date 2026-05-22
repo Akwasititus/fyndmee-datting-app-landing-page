@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Image from "next/image";
 import { MessageCircle, X, Send, Sparkles, ChevronDown, ChevronUp } from 'lucide-react'
 
 type Message = {
@@ -18,107 +19,192 @@ const QUICK_QUESTIONS = [
   "What makes FyndMee different?"
 ]
 
-const SYSTEM_PROMPT = `You are a friendly, helpful customer support assistant for FyndMee, a modern dating app focused on authentic connections and meaningful relationships.
+const SYSTEM_PROMPT = `You are a friendly, helpful customer virtual support assistant for FyndMee. Your namen is Vanassah, a modern dating app focused on authentic connections and meaningful relationships.
 
 KEY INFORMATION ABOUT FYNDMEE:
-- FyndMee uses AI-powered matching that learns user preferences
-- All profiles are verified with photo and ID verification
-- Features include: Smart Matching, Verified Profiles, Instant Messaging, Compatibility Scores, Privacy-First approach
-- Available on iOS (App Store) and Android (Google Play)
-- Free to download with optional premium features
-- Premium features include: See who liked you, unlimited likes, advanced filters, profile boost
-- The app has led to millions of relationships, marriages, and friendships worldwide
-- FyndMee emphasizes genuine connections over casual encounters
-- All data is encrypted and protected with user control over privacy
+- Fynd Mee is a social connection and dating platform designed to help people build meaningful relationships, friendships, networking connections, and genuine communities.
+- Fynd Mee uses intelligent matching technology that learns from user preferences, interests, activity, lifestyle choices, and relationship goals to suggest more compatible connections over time.
+- Users can join Fynd Mee for different purposes including long-term relationships, casual dating, friendships, networking, hobby matching, social connections, and meeting people with shared interests.
+- Fynd Mee includes features such as Smart Matching, Verified Profiles, Instant Messaging, Compatibility Scores, Supa Likes, Profile Boosts, Advanced Filters, Rewind Actions, Privacy Controls, and Secure Account Verification.
+- The app allows users to connect based on interests, profession, industry, education, hobbies, lifestyle, relationship intentions, and location preferences.
+- Fynd Mee supports networking and friendship connections in addition to dating, making it more than just a traditional dating app.
+- Users can match with people who share hobbies and interests such as fitness, photography, sports, entrepreneurship, music, travel, gaming, business, and more.
+- Fynd Mee is available on both iOS through the Apple App Store and Android through Google Play.
+- The app is free to download and includes optional premium subscriptions with additional features and visibility tools.
+- Premium features may include seeing who liked your profile, unlimited likes, advanced filters, profile boosts, rewind actions, priority visibility, and additional matching tools.
+- A Profile Boost increases a user's visibility for a limited time, helping their profile appear to more people nearby and receive more interactions.
+- Supa Likes help users show stronger interest in a profile and stand out more clearly during matching.
+- Compatibility Scores help users better understand how well they may align with another person based on shared interests, values, preferences, and activity.
+- Fynd Mee focuses on authentic and meaningful connections rather than fake profiles, bots, or low-quality interactions.
+- User safety and privacy are major priorities for Fynd Mee.
+- Profiles may go through photo verification, identity verification, and moderation processes to help maintain authenticity and reduce fake accounts.
+- All sensitive user data is encrypted and protected with privacy-focused security systems.
+- Users have control over their privacy settings, visibility preferences, matching preferences, and profile information.
+- Fynd Mee includes reporting, blocking, moderation, and account safety tools to help users stay safe while using the platform.
+- Fynd Mee continuously improves its matching systems and app features based on user feedback, testing, and community needs.
+- The more users interact with the app, the more personalized and accurate their matching experience becomes.
+- Fynd Mee aims to create a welcoming and inclusive environment where people from different backgrounds, cultures, countries, and communities can connect comfortably.
+- The platform is designed for adults aged 18 and above.
+- Fynd Mee supports users looking for serious relationships, meaningful friendships, social discovery, professional networking, and authentic conversations.
+- Fynd Mee's mission is to create a safe, authentic, and enjoyable platform where people can build real human connections through technology.
+- Fynd Mee's vision is to become one of the leading social connection platforms focused on genuine relationships, trust, safety, and meaningful interaction.
+- Fynd Mee values authenticity, safety, inclusiveness, innovation, user experience, privacy, and meaningful human connection.
+- Eric Ford is the founder and CEO of Fynd Mee. His vision is to use technology and culture-driven innovation to help people build genuine relationships and stronger communities.
+- Vanessa is the virtual assistant for Fynd Mee. She is designed to provide friendly, supportive, and informative assistance to users about the app, features, matching process, safety, and general questions.
+- Betty Fosua Oduro Prempeh is the Chief Marketing Officer of Fynd Mee and helps lead the platform's marketing, outreach, and community growth efforts.
+- Fynd Mee regularly updates the app with improvements, new features, bug fixes, performance enhancements, and user-requested updates.
+- Fynd Mee encourages respectful communication, authentic interaction, and positive user experiences throughout the platform.
+- Customer support is available to assist users with questions, technical issues, safety concerns, account support, and general guidance.
+- Fynd Mee is designed to help users discover real people, real conversations, and real connections in a safer and more intentional environment.
+
 
 RESPONSE STYLE:
 - Be warm, friendly, and encouraging
 - Use emojis sparingly (1-2 per response)
 - Keep responses concise (2-4 sentences unless more detail is specifically requested)
 - Focus on the benefits and emotional value of finding meaningful connections
-- If asked about technical issues or account-specific problems, suggest contacting support@fyndmee.com
+- If asked about technical issues or account-specific problems, suggest contacting info@fyndmee.app
 - Emphasize safety, authenticity, and the AI-powered matching technology
 - Be enthusiastic about helping people find love and meaningful relationships
 
 Answer user questions naturally and conversationally.`
 
-// Smart fallback responses
+// fallback responses
 const FALLBACK_RESPONSES = {
+
   download: {
-    patterns: ['download', 'install', 'get app', 'app store', 'play store', 'google play', 'ios', 'android', 'where can i', 'how to get'],
+    patterns: [
+      'download', 'install', 'get app', 'app store', 'appstore',
+      'play store', 'playstore', 'google play', 'ios', 'android',
+      'where can i download', 'how to install', 'where do i get the app'
+    ],
     responses: [
-      "You can download FyndMee from both major app stores! 📱\n\nFor iOS users, search 'FyndMee' in the App Store. Android users can find us on Google Play. We also have QR codes on our website for quick access!\n\nOver 12,000+ people have already downloaded the app. Ready to join them?",
-      "Getting started is easy! FyndMee is available on:\n\n• iOS - App Store\n• Android - Google Play\n\nJust search for 'FyndMee' and look for our pink heart logo. Download is free and takes less than a minute! 💝"
+      "You can download Fynd Mee on both major app stores! 📱\n\nFor iPhone users, simply search 'Fynd Mee' on the Apple App Store. Android users can find us on Google Play.\n\nThe app is free to download and getting started only takes a few minutes. Welcome to a better way to connect! 💕",
+      "Getting started with Fynd Mee is easy! ✨\n\n• Available on iOS through the Apple App Store\n• Available on Android through Google Play\n\nJust search for 'Fynd Mee' and look for our official logo. Download, create your profile, and start connecting!"
     ]
   },
+
   pricing: {
-    patterns: ['free', 'cost', 'price', 'payment', 'pay', 'subscription', 'premium', 'paid', 'how much', 'charge'],
+    patterns: [
+      'free', 'cost', 'price', 'payment', 'premium', 'subscription',
+      'paid', 'how much', 'pricing', 'membership', 'upgrade'
+    ],
     responses: [
-      "Great question! FyndMee is FREE to download and use. 💝\n\nYou get full access to:\n• Smart AI matching\n• Verified profiles\n• Instant messaging\n• Compatibility scores\n\nWe also offer Premium features starting at $9.99/month for things like seeing who liked you, unlimited likes, and profile boosts. But you can absolutely find meaningful connections with the free version!",
-      "FyndMee won't cost you anything to start! The app is completely free to download and use basic features.\n\nIf you want extra perks like seeing who's already interested in you or unlimited likes, Premium is available for $9.99/month. But honestly, many of our success stories came from free users! 💕"
+      "Fynd Mee is completely free to download and use. 💝\n\nFree users can enjoy matching, messaging, profile browsing, compatibility scores, and more.\n\nWe also offer optional Premium features like unlimited likes, advanced filters, profile boosts, and seeing who liked your profile first.",
+      "You can enjoy most of Fynd Mee without paying anything. ✨\n\nPremium subscriptions are available for users who want extra visibility and additional matching tools, but meaningful connections can absolutely happen on the free version too!"
     ]
   },
+
   matching: {
-    patterns: ['match', 'algorithm', 'how does it work', 'find people', 'compatible', 'suggestions', 'swipe'],
+    patterns: [
+      'match', 'matching', 'algorithm', 'compatibility',
+      'how does matching work', 'find people', 'compatible',
+      'swipe', 'recommendations', 'suggestions'
+    ],
     responses: [
-      "Our AI-powered matching is pretty smart! 🧠✨\n\nIt learns from:\n• Your interests and hobbies\n• Values and lifestyle preferences  \n• What you're looking for in a partner\n• Your activity patterns\n\nYou'll see profiles matched to you with compatibility scores. Swipe right if you're interested, and when both people swipe right - it's a match! The more you use the app, the better it gets at finding your perfect match.",
-      "FyndMee uses advanced AI to find your perfect match! We analyze compatibility across multiple dimensions - interests, values, lifestyle, and relationship goals.\n\nEach profile shows you a compatibility score so you can see potential at a glance. The algorithm learns your preferences over time, getting smarter with every swipe. It's like having a personal matchmaker in your pocket! 💕"
+      "Fynd Mee uses intelligent matching technology to help users connect more meaningfully. 🧠✨\n\nThe app learns from your:\n• Interests and hobbies\n• Lifestyle preferences\n• Relationship goals\n• Activity and engagement\n• Location and preferences\n\nThe more you use the app, the more personalized your matches become.",
+      "Our matching system is designed to go beyond random swiping. 💕\n\nFynd Mee looks at compatibility, shared interests, lifestyle choices, and user preferences to suggest people you may genuinely connect with.\n\nCompatibility Scores help guide users toward stronger potential matches."
     ]
   },
+
   safety: {
-    patterns: ['safe', 'safety', 'privacy', 'secure', 'data', 'protection', 'verify', 'verification', 'trust'],
+    patterns: [
+      'safe', 'safety', 'privacy', 'secure', 'verification',
+      'verify', 'fake profiles', 'security', 'data protection',
+      'trust', 'encrypted'
+    ],
     responses: [
-      "Your safety is our absolute top priority! 🔒\n\nEvery FyndMee profile goes through:\n• Photo verification (real people only!)\n• ID verification for authenticity\n• Manual review by our team\n\nPlus you get:\n• Encrypted messaging\n• Block and report features\n• Privacy controls (you decide what to share)\n• 24/7 safety monitoring\n\nWe're committed to creating a space where you can focus on finding love, not worrying about safety.",
-      "Security and privacy are built into everything we do! 🛡️\n\nAll profiles are verified with photo + ID verification. Your messages are encrypted, your data is protected, and you have complete control over your privacy settings.\n\nYou can block or report anyone who makes you uncomfortable, and our team reviews reports quickly. We've created one of the safest dating apps out there!"
+      "User safety is one of Fynd Mee's biggest priorities. 🔒\n\nWe use profile verification, moderation systems, reporting tools, privacy controls, and encrypted systems to help create a safer environment for everyone.\n\nUsers also have the ability to block or report accounts whenever necessary.",
+      "Fynd Mee is designed with privacy and authenticity in mind. 🛡️\n\nProfiles may go through verification processes to reduce fake accounts and improve trust within the community.\n\nYour personal data and conversations are protected using secure and encrypted systems."
     ]
   },
-  different: {
-    patterns: ['different', 'special', 'unique', 'why fyndmee', 'why choose', 'better', 'stand out', 'compared'],
-    responses: [
-      "What makes FyndMee special? I'm glad you asked! 💕\n\n✨ AI-Powered Matching - Not just random profiles, but smart compatibility\n✅ Verified Profiles - Everyone is photo + ID verified (no catfishing!)\n💝 Real Connections - We attract people seeking meaningful relationships\n🔒 Privacy First - Your data is protected and encrypted\n📊 Compatibility Scores - See your potential with each match\n\nWe've helped create millions of relationships, marriages, and friendships. FyndMee isn't just another dating app - it's where authentic connections begin!",
-      "FyndMee stands out in three big ways:\n\n1️⃣ Smart AI that actually learns what you're looking for\n2️⃣ Every single profile is verified (photo + ID) - real people only!\n3️⃣ We focus on meaningful connections, not just swiping games\n\nOur members tell us they appreciate the quality of matches and feeling safe. With over 12,000 downloads and countless success stories, we're building something special here! ✨"
-    ]
-  },
+
   features: {
-    patterns: ['features', 'what can i do', 'capabilities', 'functions', 'tools'],
+    patterns: [
+      'features', 'tools', 'what can i do',
+      'capabilities', 'functions', 'options'
+    ],
     responses: [
-      "FyndMee is packed with features to help you find your perfect match! ✨\n\n🎯 Smart Matching - AI learns your preferences\n✅ Verified Profiles - Photo + ID verification\n💬 Instant Messaging - Chat with matches instantly\n📊 Compatibility Scores - See your match potential\n🔒 Privacy Controls - You decide what to share\n🌟 Profile Boosts - Get more visibility (Premium)\n\nEverything is designed to help you make authentic, meaningful connections!",
-      "Here's what you can do with FyndMee:\n\n• Browse verified profiles matched to you\n• See detailed compatibility scores\n• Chat instantly when you match\n• Share photos in secure conversations\n• Control your privacy settings\n• Report/block as needed\n\nPremium members also get unlimited likes, see who liked them first, and get profile boosts. Want to know more about any specific feature?"
+      "Fynd Mee includes a variety of features designed to help users build genuine connections. ✨\n\nSome key features include:\n• Smart Matching\n• Compatibility Scores\n• Instant Messaging\n• Verified Profiles\n• Supa Likes\n• Profile Boosts\n• Advanced Filters\n• Privacy Controls\n• Secure Reporting Tools",
+      "Fynd Mee is more than just a dating app. 💕\n\nUsers can connect for relationships, friendships, networking, hobbies, and social discovery.\n\nThe app includes matching tools, messaging features, visibility boosts, compatibility insights, and profile customization options."
     ]
   },
-  account: {
-    patterns: ['create account', 'sign up', 'register', 'join', 'get started', 'profile', 'delete account'],
+
+  premium: {
+    patterns: [
+      'boost', 'supa like', 'premium features',
+      'rewind', 'unlimited likes', 'who liked me',
+      'visibility', 'premium'
+    ],
     responses: [
-      "Getting started with FyndMee is super easy! 🎉\n\n1. Download the app (iOS or Android)\n2. Sign up with your phone number\n3. Add at least 2 photos\n4. Fill in your interests and preferences\n5. Verify your profile (photo + ID)\n6. Start matching!\n\nThe whole process takes about 5-10 minutes, and verification usually completes within 1-2 hours. Then you're ready to find your person! 💕",
-      "Creating your profile is quick:\n\n• Download FyndMee from your app store\n• Enter your phone number for verification\n• Upload photos (minimum 2, but more is better!)\n• Share your interests and what you're looking for\n• Complete photo and ID verification\n\nTo delete your account later, just go to Profile → Settings → Account Settings → Delete Account. But we hope you'll find your match first! ✨"
+      "Fynd Mee Premium includes additional tools that help improve visibility and matching opportunities. 🌟\n\nPremium features may include:\n• Unlimited Likes\n• Profile Boosts\n• Supa Likes\n• Advanced Filters\n• Rewind Actions\n• Seeing who liked your profile",
+      "A Boost helps your profile appear to more people for a limited time, increasing visibility and potential matches. ✨\n\nSupa Likes allow users to express stronger interest and stand out more clearly during matching."
     ]
   },
-  success: {
-    patterns: ['success', 'work', 'stories', 'testimonial', 'does it work', 'real', 'results'],
+
+  networking: {
+    patterns: [
+      'networking', 'business', 'friends',
+      'friendship', 'community', 'hobbies',
+      'meet people'
+    ],
     responses: [
-      "FyndMee has led to millions of relationships, marriages, and friendships worldwide! 💕\n\nOur members love:\n• The quality of matches (AI really works!)\n• Feeling safe with verified profiles\n• Finding people who want real relationships\n• The compatibility scores that guide them\n\nWe get messages every week from couples who met on FyndMee. Some are engaged, some are married, and many have found their best friend. Your story could be next! ✨",
-      "Yes, it really works! 🎉\n\nWith 12,478+ downloads and counting, FyndMee has created countless success stories. Our AI matching and verification process means you're meeting real people who are genuinely looking for meaningful connections.\n\nThe compatibility scores help you focus on the best matches, and our members report higher quality conversations compared to other apps. Ready to write your own success story?"
+      "Fynd Mee is designed for more than dating. 🤝\n\nUsers can also connect for friendships, networking, hobby matching, social discovery, and community building.\n\nMany users join to meet people with shared interests, careers, lifestyles, or activities.",
+      "Whether you're looking for a relationship, new friends, business connections, or people who share your hobbies, Fynd Mee helps bring people together through more intentional and meaningful matching."
     ]
   },
+
+  founder: {
+    patterns: [
+      'founder', 'ceo', 'who created', 'who owns',
+      'eric ford', 'about the founder'
+    ],
+    responses: [
+      "Fynd Mee was founded by Eric Ford. ✨\n\nHis vision is to build a safer and more authentic platform where people can create meaningful human connections through technology and community-driven experiences.",
+      "Eric Ford is the founder and CEO of Fynd Mee. He is passionate about combining technology, culture, and human connection to help people build genuine relationships and communities."
+    ]
+  },
+
+  vanessa: {
+    patterns: [
+      'vanessa', 'assistant', 'virtual assistant',
+      'chatbot', 'who are you'
+    ],
+    responses: [
+      "Hi! I'm Vanessa, the virtual assistant for Fynd Mee. 💕\n\nI'm here to help answer questions about the app, matching, features, safety, profiles, and anything else you may need while using Fynd Mee.",
+      "I'm Vanessa! ✨ Your friendly Fynd Mee assistant.\n\nI’m here to make your experience smoother by helping with questions about the app, connections, safety, features, and general support."
+    ]
+  },
+
   greetings: {
-    patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'sup', 'yo'],
+    patterns: [
+      'hello', 'hi', 'hey', 'good morning',
+      'good afternoon', 'good evening'
+    ],
     responses: [
-      "Hello! 👋 Welcome to FyndMee! I'm here to help you learn about our app and how we can help you find meaningful connections. What would you like to know?",
-      "Hey there! 💕 Great to meet you! I'd love to tell you about FyndMee and how our AI-powered matching can help you find your perfect match. What questions do you have?",
-      "Hi! ✨ Thanks for stopping by! I'm here to answer any questions about FyndMee - whether it's about safety, features, pricing, or how to get started. What's on your mind?"
+      "Hello! 👋 Welcome to Fynd Mee. I'm Vanessa, your virtual assistant. How can I help you today?",
+      "Hey there! 💕 Thanks for stopping by Fynd Mee. Feel free to ask me anything about the app, matching, features, or safety.",
+      "Hi! ✨ I'm here to help you learn more about Fynd Mee and how it works. What would you like to know?"
     ]
   },
+
   thanks: {
-    patterns: ['thank', 'thanks', 'appreciate', 'helpful', 'great'],
+    patterns: [
+      'thank you', 'thanks', 'appreciate',
+      'helpful', 'great'
+    ],
     responses: [
-      "You're so welcome! I'm happy I could help. Feel free to ask anything else about FyndMee, or if you're ready, go ahead and download the app to start your journey to finding meaningful connections!",
-      "My pleasure! ✨ That's what I'm here for. If you have any other questions as you explore FyndMee, just ask. And remember - your perfect match might be just a download away! 💝",
-      "Glad I could help! 🎉 Don't hesitate to reach out if you think of more questions. We're excited to help you find authentic connections. Happy matching! 💕"
+      "You're very welcome! 💕 I'm always here if you have more questions about Fynd Mee.",
+      "Happy to help! ✨ Feel free to ask anything else anytime.",
+      "Glad I could help! 🎉 Wishing you an amazing experience on Fynd Mee."
     ]
   }
-}
+};
 
-const DEFAULT_FALLBACK = "I'm here to help with FyndMee! I can answer questions about:\n\n💕 Downloading the app\n🔒 Safety and privacy\n💰 Pricing and features\n🎯 How matching works\n✨ What makes us different\n\nWhat would you like to know? Or if you have a specific account issue, please contact support@fyndmee.com"
+
+const DEFAULT_FALLBACK =
+"I'm here to help with Fynd Mee! 💕\n\nYou can ask me about:\n• Downloading the app\n• Safety and privacy\n• Matching and compatibility\n• Premium features\n• Networking and friendships\n• Account setup\n• Profile features\n\nWhat would you like to know?";
+
 
 export default function FyndMeeAIChat() {
   const [isOpen, setIsOpen] = useState(false)
@@ -129,14 +215,14 @@ export default function FyndMeeAIChat() {
   const [isMobile, setIsMobile] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  const conversationHistory = useRef<Array<{role: string, content: string}>>([])
+  const conversationHistory = useRef<Array<{ role: string, content: string }>>([])
   const lastCategory = useRef<string | null>(null)
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([{
         id: 1,
-        text: "Hi there! 👋 I'm your FyndMee AI assistant, powered by Claude. I can help you with questions about our app, features, safety, or finding your perfect match. What would you like to know?",
+        text: "Hi there! 👋 I am Vanessa, your virtual assistant. I can help you with questions about our app, features, safety, or finding your perfect match. What would you like to know?",
         sender: 'bot',
         timestamp: new Date()
       }])
@@ -163,12 +249,12 @@ export default function FyndMeeAIChat() {
   // Fallback: Find response from hardcoded strings
   const findFallbackResponse = (userMessage: string): string | null => {
     const lowerMsg = userMessage.toLowerCase().trim()
-    
+
     for (const [category, data] of Object.entries(FALLBACK_RESPONSES)) {
-      const matched = data.patterns.some(pattern => 
+      const matched = data.patterns.some(pattern =>
         lowerMsg.includes(pattern.toLowerCase())
       )
-      
+
       if (matched) {
         const responses = data.responses
         if (lastCategory.current === category && responses.length > 1) {
@@ -176,12 +262,12 @@ export default function FyndMeeAIChat() {
           lastCategory.current = category
           return otherResponses[Math.floor(Math.random() * otherResponses.length)]
         }
-        
+
         lastCategory.current = category
         return responses[Math.floor(Math.random() * responses.length)]
       }
     }
-    
+
     return null
   }
 
@@ -193,30 +279,21 @@ export default function FyndMeeAIChat() {
         content: userMessage
       })
 
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const response = await fetch("/api/chat", {  // Call your API route
         method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY!,
-        "anthropic-version": "2023-06-01"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: conversationHistory.current
+          messages: conversationHistory.current,
+          systemPrompt: SYSTEM_PROMPT
         })
       })
 
       if (!response.ok) {
-        throw new Error('Claude API failed')
+        throw new Error('Claude API failed');
       }
 
-      const data = await response.json()
-      const botMessage = data.content
-        .filter((item: any) => item.type === "text")
-        .map((item: any) => item.text)
-        .join("\n")
+      const data = await response.json();
+      const botMessage = data.message;
 
       conversationHistory.current.push({
         role: "assistant",
@@ -226,7 +303,7 @@ export default function FyndMeeAIChat() {
       return botMessage
     } catch (error) {
       console.log('Claude API unavailable, using fallback responses')
-      throw error // Throw to trigger fallback
+      throw error
     }
   }
 
@@ -239,11 +316,11 @@ export default function FyndMeeAIChat() {
       // STEP 2: Claude failed, try hardcoded pattern matching
       console.log('Falling back to pattern matching...')
       const fallbackResponse = findFallbackResponse(userMessage)
-      
+
       if (fallbackResponse) {
         return fallbackResponse
       }
-      
+
       // STEP 3: No pattern matched, use default fallback
       console.log('Using default fallback message')
       lastCategory.current = null
@@ -298,7 +375,7 @@ export default function FyndMeeAIChat() {
     lastCategory.current = null
     setMessages([{
       id: 1,
-      text: "Hi there! 👋 I'm your FyndMee AI assistant, powered by Claude. I can help you with questions about our app, features, safety, or finding your perfect match. What would you like to know?",
+      text: "Hi there! 👋 I am Vanessa, your virtual assistant. I can help you with questions about our app, features, safety, or finding your perfect match. What would you like to know?",
       sender: 'bot',
       timestamp: new Date()
     }])
@@ -315,8 +392,8 @@ export default function FyndMeeAIChat() {
         aria-label="Open AI chat assistant"
       >
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full blur-lg opacity-50 group-hover:opacity-75 animate-pulse" />
-          <div className="relative flex items-center justify-center w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full shadow-2xl transition-transform group-hover:scale-110">
+          <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-rose-600 rounded-full blur-lg opacity-50 group-hover:opacity-75 animate-pulse" />
+          <div className="relative flex items-center justify-center w-16 h-16 bg-linear-to-r from-pink-500 to-rose-600 rounded-full shadow-2xl transition-transform group-hover:scale-110">
             <MessageCircle className="w-7 h-7 text-white" />
             <Sparkles className="w-4 h-4 text-yellow-300 absolute -top-1 -right-1 animate-pulse" />
           </div>
@@ -346,22 +423,28 @@ export default function FyndMeeAIChat() {
         `}
       >
         {/* Header */}
-        <div className="relative bg-gradient-to-r from-pink-500 to-rose-600 p-4">
+        <div className="relative bg-linear-to-r from-pink-500 to-rose-600 p-4">
           <div className="absolute inset-0 bg-black/10" />
           <div className="relative flex items-center justify-between">
             <div className="flex items-center gap-3">
+
+
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-white/90" />
-                </div>
+                <img
+                  src="/images/logos.png"
+                  alt="Fynd Mee logo"
+                  className="h-8 w-8 object-contain rounded-md"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-pink-500" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-white/90">FyndMee AI</h3>
+                  <h3 className="font-bold text-white/90">Meet Vanessa</h3>
                   <Sparkles className="w-3 h-3 text-yellow-300" />
                 </div>
-                <p className="text-xs text-white/90">Powered by Claude AI</p>
+                <p className="text-xs text-white/90">Our Virtual Assistant</p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -385,13 +468,13 @@ export default function FyndMeeAIChat() {
               >
                 <X className="w-4 h-4 text-white/90" />
               </button>
-              
+
             </div>
           </div>
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-pink-50/30 to-white">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-linear-to-b from-pink-50/30 to-white">
           {messages.map((msg) => (
             <div
               key={msg.id}
@@ -399,11 +482,10 @@ export default function FyndMeeAIChat() {
             >
               <div className={`max-w-[80%] ${msg.sender === 'user' ? 'order-2' : 'order-1'}`}>
                 <div
-                  className={`px-4 py-3 rounded-2xl ${
-                    msg.sender === 'user'
-                      ? 'bg-gradient-to-r from-pink-500 to-rose-600 text-white/90 rounded-br-sm'
-                      : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm'
-                  }`}
+                  className={`px-4 py-3 rounded-2xl ${msg.sender === 'user'
+                    ? 'bg-linear-to-r from-pink-500 to-rose-600 text-white/90 rounded-br-sm'
+                    : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-sm'
+                    }`}
                 >
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
                 </div>
@@ -416,7 +498,7 @@ export default function FyndMeeAIChat() {
 
           {isTyping && (
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-linear-to-r from-pink-500 to-rose-600 flex items-center justify-center">
                 <Sparkles className="w-4 h-4 text-white/90 animate-pulse" />
               </div>
               <div className="flex gap-1">
@@ -476,14 +558,12 @@ export default function FyndMeeAIChat() {
           </div>
           <p className="text-xs text-center text-gray-500 mt-2 flex items-center justify-center gap-1">
             <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-            AI-powered • Always learning
+            Vanessa is online
           </p>
         </div>
       </div>
     </>
   )
 }
-
-
 
 /// https://claude.ai/chat/931d9076-66ec-4661-bdda-759296e02c54
