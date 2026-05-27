@@ -203,7 +203,7 @@ const FALLBACK_RESPONSES = {
 
 
 const DEFAULT_FALLBACK =
-"I'm here to help with Fynd Mee! 💕\n\nYou can ask me about:\n• Downloading the app\n• Safety and privacy\n• Matching and compatibility\n• Premium features\n• Networking and friendships\n• Account setup\n• Profile features\n\nWhat would you like to know?";
+  "I'm here to help with Fynd Mee! 💕\n\nYou can ask me about:\n• Downloading the app\n• Safety and privacy\n• Matching and compatibility\n• Premium features\n• Networking and friendships\n• Account setup\n• Profile features\n\nWhat would you like to know?";
 
 
 export default function FyndMeeAIChat() {
@@ -505,7 +505,7 @@ export default function FyndMeeAIChat() {
                 {[0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className="w-2 h-2 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full animate-bounce"
+                    className="w-2 h-2 bg-linear-to-r from-pink-500 to-rose-600 rounded-full animate-bounce"
                     style={{ animationDelay: `${i * 150}ms` }}
                   />
                 ))}
@@ -518,7 +518,7 @@ export default function FyndMeeAIChat() {
 
         {/* Quick Questions */}
         {messages.length === 1 && (
-          <div className="px-4 py-3 bg-gradient-to-r from-pink-50 to-rose-50 border-t">
+          <div className="px-4 py-3 bg-linear-to-r from-pink-50 to-rose-50 border-t">
             <p className="text-xs font-semibold text-gray-700 mb-2">Quick questions:</p>
             <div className="flex flex-wrap gap-2">
               {QUICK_QUESTIONS.map((q, i) => (
@@ -551,7 +551,7 @@ export default function FyndMeeAIChat() {
             <button
               onClick={handleSend}
               disabled={isTyping || !input.trim()}
-              className="p-3 bg-gradient-to-r from-pink-500 to-rose-600 text-white/90  rounded-full shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
+              className="p-3 bg-linear-to-r from-pink-500 to-rose-600 text-white/90  rounded-full shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
             >
               <Send className="w-5 h-5" />
             </button>
