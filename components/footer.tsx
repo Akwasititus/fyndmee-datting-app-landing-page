@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/images/logos.png"
+                src="/images/logo-cherry.svg"
                 alt="Fynd Mee logo"
                 className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
               />

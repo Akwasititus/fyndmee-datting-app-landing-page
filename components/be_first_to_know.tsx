@@ -141,7 +141,7 @@ export default function BeFirstToKnow() {
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden">
               <Image
-                src="/images/all-in-fyndmee.png"
+                src="/images/all-in-fyndmee.webp"
                 alt="Fynd Mee App"
                 width={900}
                 height={800}

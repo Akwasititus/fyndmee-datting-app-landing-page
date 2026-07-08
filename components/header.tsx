@@ -44,7 +44,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
-              src="/images/logos.png"
+              src="/images/new-logo-white.svg"
               alt="Fynd Mee logo"
               className="h-8 w-8 object-contain rounded-md"
               style={{ filter: 'brightness(0) invert(1)' }}
@@ -71,7 +71,7 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <img
-            src="/images/logos.png"
+            src="/images/new-logo-white.svg"
             alt="Fynd Mee logo"
             className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
             style={{ filter: 'brightness(0) invert(1)' }}
