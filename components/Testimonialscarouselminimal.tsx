@@ -186,11 +186,11 @@ export default function TestimonialsCarousel() {
                     {/* Names with heart icon */}
                     <div className="flex items-center gap-3">
                      
-              <img
-              src="/images/logos.png"
-              alt="Fynd Mee logo"
-              className="h-8 w-8 object-contain rounded-md"
-            />
+             <img
+                src="/images/logo-cherry.svg"
+                alt="Fynd Mee logo"
+                className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
+              />
                  
                       <p className="text-base sm:text-lg font-medium text-gray-600 dark:text-white/70 tracking-wide">
                         {testimonials[currentIndex].names}

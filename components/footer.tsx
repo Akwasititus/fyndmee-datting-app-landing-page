@@ -86,7 +86,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-200 dark:border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 dark:text-white/50 text-sm">© 2025 Fynd mee. All rights reserved.</p>
+            <p className="text-gray-500 dark:text-white/50 text-sm">© 2026 Fynd Mee. All rights reserved.</p>
             <div className="flex gap-6">
             <a href="https://www.tiktok.com/@fyndmee_app" className="text-gray-500 hover:text-rose-400 transition dark:text-white/50">
                 TikTok
