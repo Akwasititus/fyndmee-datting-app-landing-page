@@ -430,12 +430,12 @@ export default function FyndMeeAIChat() {
 
 
               <div className="relative">
-                <img
-                  src="/images/logos.png"
-                  alt="Fynd Mee logo"
-                  className="h-8 w-8 object-contain rounded-md"
-                  style={{ filter: 'brightness(0) invert(1)' }}
-                />
+                   <img
+              src="/images/new-logo-white.svg"
+              alt="Fynd Mee logo"
+              className="h-8 w-8 object-contain rounded-md"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
 
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-pink-500" />
               </div>
