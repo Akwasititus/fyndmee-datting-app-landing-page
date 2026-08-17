@@ -1,211 +1,262 @@
-'use client'
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { Menu, X, MessageCircle, Send, Sparkles, Globe, Sun, Moon } from "lucide-react"
-// import { useState } from "react"
-import { useState, useEffect } from "react"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
+import { Globe, Menu, MessageCircle, Moon, Send, Sparkles, Sun, X } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useState } from "react"
 import { useTheme } from "@/components/theme-provider"
+
+const navItems = [
+  { id: "why-choose", label: "Why Fynd Mee", href: "/#why-choose-heading" },
+  { id: "pricing", label: "Products", href: "/products-pricing-info" },
+  { id: "newsroom", label: "News Room", href: "/blog" },
+  { id: "download", label: "Download", href: "/download" },
+]
+
+const socials = [
+  {
+    name: "Waitlist",
+    icon: Globe,
+    link: "https://forms.gle/D721gVxuZd8eP2E66",
+    color: "bg-black",
+  },
+  {
+    name: "WhatsApp",
+    icon: MessageCircle,
+    link: "https://whatsapp.com/channel/0029VbCI5w6HQbSD0g2SAp3Y",
+    color: "bg-[#25D366]",
+  },
+  {
+    name: "Telegram",
+    icon: Send,
+    link: "https://t.me/fyndmee1",
+    color: "bg-[#0088cc]",
+  },
+]
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const [active, setActive] = useState("home")
+  const [active, setActive] = useState("")
   const [showSocials, setShowSocials] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const reduceMotion = useReducedMotion()
+  const { theme, toggleTheme } = useTheme()
 
-   const { theme, toggleTheme } = useTheme()
+  useEffect(() => setMounted(true), [])
 
-     useEffect(() => {
-    setMounted(true)
+  useEffect(() => {
+    const closeMenus = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false)
+        setShowSocials(false)
+      }
+    }
+
+    window.addEventListener("keydown", closeMenus)
+    return () => window.removeEventListener("keydown", closeMenus)
   }, [])
 
-  const navItems = [
-    { id: "FeatureCard", label: "", href: "#FeatureCard" },
-    { id: "pricing", label: "Products", href: "/products-pricing-info" },
-    { id: "newsroom", label: "News Room", href: "/blog" },
-    { id: "download", label: "Download", href: "/download" },
-    // { id: "download", label: "Download", href: "#download" }
-  ]
-
-
-
-  const socials = [
-
-    { name: "Waitlist", icon: Globe, link: "https://forms.gle/D721gVxuZd8eP2E66", color: "bg-[#000000]" },
-
-    { name: "WhatsApp", icon: MessageCircle, link: "https://whatsapp.com/channel/0029VbCI5w6HQbSD0g2SAp3Y", color: "bg-[#25D366]" },
-
-    { name: "Telegram", icon: Send, link: "https://t.me/fyndmee1", color: "bg-[#0088cc]" }
-  ]  
-
-  // Don't render theme toggle until mounted to avoid hydration mismatch
-  if (!mounted) {
-    return (
-      <header className="absolute top-0 left-0 right-0 z-50">
-        <div className="container mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img
-              src="/images/new-logo-white.svg"
-              alt="Fynd Mee logo"
-              className="h-8 w-8 object-contain rounded-md"
-              style={{ filter: 'brightness(0) invert(1)' }}
-            />
-            <span className="text-xl md:text-2xl font-bold text-white">Fynd Mee</span>
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-            aria-label="Toggle menu"
-          >
-            <Menu size={24} />
-          </button>
-        </div>
-      </header>
-    )
-  }
+  const transition = reduceMotion
+    ? { duration: 0 }
+    : { type: "spring" as const, stiffness: 360, damping: 30 }
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <img
+    <header className="absolute inset-x-0 top-0 z-50">
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className="container mx-auto flex items-center justify-between px-4 py-4 md:py-6"
+      >
+        <Link
+          href="/"
+          aria-label="Fynd Mee home"
+          className="group flex min-h-11 items-center gap-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7899] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+        >
+          <motion.img
             src="/images/new-logo-white.svg"
-            alt="Fynd Mee logo"
-            className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
-            style={{ filter: 'brightness(0) invert(1)' }}
+            alt=""
+            className="h-8 w-8 rounded-md object-contain drop-shadow-lg"
+            style={{ filter: "brightness(0) invert(1)" }}
+            whileHover={reduceMotion ? undefined : { rotate: -5, scale: 1.08 }}
+            transition={transition}
           />
-          <span className="text-xl md:text-2xl font-bold text-white/90 drop-shadow-lg">Fynd Mee</span>
-        </div>
+          <span className="text-xl font-bold text-white/90 drop-shadow-lg md:text-2xl">
+            Fynd Mee
+          </span>
+        </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map(item => (
-            <a
+        <nav aria-label="Primary navigation" className="hidden items-center gap-8 md:flex">
+          {navItems.map((item) => (
+            <Link
               key={item.id}
               href={item.href}
               onClick={() => setActive(item.id)}
-              className={`font-medium transition-all hover:scale-105 drop-shadow-md ${
-                active === item.id 
-                  ? "text-[#AB1E3E] font-bold" 
-                  : "text-white/90 hover:text-white"
+              className={`group relative flex min-h-11 items-center text-sm font-semibold drop-shadow-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7899] focus-visible:ring-offset-4 focus-visible:ring-offset-transparent ${
+                active === item.id ? "text-[#ff7899]" : "text-white/90 hover:text-[#fff]"
               }`}
             >
               {item.label}
-            </a>
+              <span
+                aria-hidden="true"
+                className={`absolute bottom-1 left-0 h-0.5 rounded-full bg-[#ff7899] transition-[width,opacity] duration-300 ease-out ${
+                  active === item.id
+                    ? "w-full opacity-100"
+                    : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                }`}
+              />
+            </Link>
           ))}
         </nav>
 
-        {/* Desktop Button */}
-        <div className="hidden md:flex items-center space-x-4">
-
-  {/* Theme Toggle */}
+        <div className="hidden items-center gap-3 md:flex">
           <Button
             onClick={toggleTheme}
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/10 rounded-full"
+            aria-label={mounted ? `Switch to ${theme === "dark" ? "light" : "dark"} mode` : "Change theme"}
+            className="h-11 w-11 cursor-pointer rounded-full text-[#fff] transition-[background-color,transform] duration-200 hover:scale-105 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-[#ff7899] motion-reduce:hover:scale-100"
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={mounted ? theme : "loading"}
+                initial={reduceMotion ? false : { opacity: 0, rotate: -35, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={reduceMotion ? undefined : { opacity: 0, rotate: 35, scale: 0.8 }}
+                transition={{ duration: reduceMotion ? 0 : 0.18 }}
+              >
+                {mounted && theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+              </motion.span>
+            </AnimatePresence>
           </Button>
 
           <div className="relative">
-            <Button 
-              onClick={() => setShowSocials(!showSocials)}
-              className="bg-[#AB1E3E] hover:bg-[#8B1830] text-white/90 border-none hover:scale-105 hover:shadow-xl shadow-lg transition-all flex items-center gap-2"
+            <Button
+              onClick={() => setShowSocials((value) => !value)}
+              aria-expanded={showSocials}
+              aria-controls="community-menu"
+              className="flex min-h-11 cursor-pointer items-center gap-2 border-none bg-[#AB1E3E] text-white/90 shadow-lg transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#8B1830] hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[#ff7899] motion-reduce:hover:translate-y-0"
             >
-              <Sparkles className="animate-pulse" size={18} />
+              <Sparkles aria-hidden="true" size={18} />
               Join the Community
             </Button>
-            
-            {showSocials && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
-                {socials.map(social => (
-                  <a
-                    key={social.name}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-                  >
-                    <div className={`${social.color} p-2 rounded-lg`}>
-                      <social.icon className="text-white/90" size={20} />
-                    </div>
-                    <span className="font-medium text-gray-700">{social.name}</span>
-                  </a>
-                ))}
-              </div>
-            )}
+
+            <AnimatePresence>
+              {showSocials && (
+                <motion.div
+                  id="community-menu"
+                  initial={reduceMotion ? false : { opacity: 0, y: -8, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={reduceMotion ? undefined : { opacity: 0, y: -5, scale: 0.98 }}
+                  transition={transition}
+                  className="absolute right-0 z-50 mt-3 w-52 origin-top-right rounded-2xl border border-gray-200 bg-white p-2 shadow-2xl"
+                >
+                  {socials.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex min-h-12 items-center gap-3 rounded-xl px-3 text-gray-700 transition-[background-color,transform] duration-200 hover:translate-x-0.5 hover:bg-rose-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AB1E3E] motion-reduce:hover:translate-x-0"
+                    >
+                      <span className={`${social.color} rounded-lg p-2 transition-transform duration-200 group-hover:scale-105 motion-reduce:group-hover:scale-100`}>
+                        <social.icon aria-hidden="true" className="text-[#fff]" size={18} />
+                      </span>
+                      <span className="font-semibold">{social.name}</span>
+                    </a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-          aria-label="Toggle menu"
+          onClick={() => setIsOpen((value) => !value)}
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+          className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-[#fff] transition-colors duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7899] md:hidden"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden backdrop-blur-md border-t border-white/10">
-          <nav className="container mx-auto px-4 py-6 flex flex-col space-y-4">
-
-
-            {/* Theme Toggle Mobile */}
-            <button
-              onClick={toggleTheme}
-              className="flex items-center space-x-3 px-3 py-2 text-white hover:bg-white/10 rounded-lg transition-all"
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={isOpen ? "close" : "menu"}
+              initial={reduceMotion ? false : { opacity: 0, rotate: -45, scale: 0.75 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={reduceMotion ? undefined : { opacity: 0, rotate: 45, scale: 0.75 }}
+              transition={{ duration: reduceMotion ? 0 : 0.16 }}
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-              <span>Switch to {theme === 'dark' ? 'Light' : 'Dark'} Mode</span>
-            </button>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.span>
+          </AnimatePresence>
+        </button>
+      </motion.div>
 
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            id="mobile-navigation"
+            initial={reduceMotion ? false : { opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-t border-white/10 bg-[#16090f]/92 shadow-2xl backdrop-blur-xl md:hidden"
+          >
+            <nav aria-label="Mobile navigation" className="container mx-auto flex flex-col gap-1 px-4 py-5">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={reduceMotion ? false : { opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: reduceMotion ? 0 : index * 0.035, duration: 0.22 }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => {
+                      setActive(item.id)
+                      setIsOpen(false)
+                    }}
+                    className={`flex min-h-12 items-center rounded-xl px-4 font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7899] ${
+                      active === item.id
+                        ? "bg-white/12 text-[#fff]"
+                        : "text-white/80 hover:bg-white/8 hover:text-[#fff]"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
 
-
-
-            {navItems.map(item => (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={() => {
-                  setActive(item.id)
-                  setIsOpen(false)
-                }}
-                className={`font-medium py-2 hover:pl-2 transition-all ${
-                  active === item.id
-                    ? "text-white font-bold border-l-4 border-white pl-2"
-                    : "text-white/90 hover:text-white"
-                }`}
+              <button
+                onClick={toggleTheme}
+                className="mt-2 flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border-t border-white/10 px-4 text-left font-medium text-white/80 transition-colors hover:bg-white/8 hover:text-[#fff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7899]"
               >
-                {item.label}
-              </a>
-            ))}
-            
-            <div className="pt-2 border-t border-white/20 mt-2">
-              <p className="text-white/70 text-sm mb-3">Join our community</p>
-              {socials.map(social => (
+                {mounted && theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+                Switch to {mounted && theme === "light" ? "Dark" : "Light"} Mode
+              </button>
+
+              <p className="mb-2 mt-4 px-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/50">
+                Join our community
+              </p>
+              {socials.map((social) => (
                 <a
                   key={social.name}
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 px-3 py-2.5 mb-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all"
+                  className="flex min-h-12 items-center gap-3 rounded-xl px-4 font-medium text-white/85 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7899]"
                 >
-                  <div className={`${social.color} p-2 rounded-lg`}>
-                    <social.icon className="text-white" size={18} />
-                  </div>
-                  <span className="font-medium text-white">{social.name}</span>
+                  <span className={`${social.color} rounded-lg p-2`}>
+                    <social.icon aria-hidden="true" className="text-[#fff]" size={18} />
+                  </span>
+                  {social.name}
                 </a>
               ))}
-            </div>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

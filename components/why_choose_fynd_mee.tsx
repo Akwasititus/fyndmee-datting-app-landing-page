@@ -1,24 +1,40 @@
 "use client"
 
-import { motion, Variants } from "framer-motion"
+import { motion, useReducedMotion, type Variants } from "framer-motion"
 import Image from "next/image"
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: "easeOut",
     },
   },
 }
 
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07 } },
+}
+
 // Custom component to handle Lordicon
-const LordIcon = ({ src, colors = "primary:#fb7185,secondary:#f9a8d4", trigger = "hover", size = 60 }: any) => {
+const LordIcon = ({
+  src,
+  colors = "primary:#D42952,secondary:#F2879F",
+  trigger = "loop-on-hover",
+  size = 28,
+}: {
+  src: string
+  colors?: string
+  trigger?: string
+  size?: number
+}) => {
   return (
     <div
+      aria-hidden="true"
       dangerouslySetInnerHTML={{
         __html: `
           <lord-icon
@@ -28,34 +44,58 @@ const LordIcon = ({ src, colors = "primary:#fb7185,secondary:#f9a8d4", trigger =
             style="width:${size}px;height:${size}px"
           >
           </lord-icon>
-        `
+        `,
       }}
     />
   )
 }
 
-const FeatureCard = ({ iconUrl, title, description, index }: any) => (
-  <motion.div
+type Feature = {
+  iconUrl: string
+  title: string
+  description: string
+}
+
+const FeatureCard = ({
+  iconUrl,
+  title,
+  description,
+  side,
+}: Feature & { side: "left" | "right" }) => (
+  <motion.li
     variants={fadeUp}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ delay: index * 0.1 }}
-    className="group relative p-6 rounded-2xl bg-linear-to-br from-white/5 to-white/10 border border-white/10 hover:border-[#AB1E3E]/50 transition-all duration-300 hover:shadow-2xl hover:shadow-[#AB1E3E]/20"
+    className={`group relative rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#AB1E3E]/40 hover:shadow-lg hover:shadow-[#AB1E3E]/10 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:border-[#D42952]/40 dark:hover:bg-white/[0.06] ${
+      side === "left"
+        ? "lg:text-right lg:hover:-translate-x-1"
+        : "lg:hover:translate-x-1"
+    } motion-reduce:hover:translate-x-0`}
   >
-    <div className="absolute inset-0 bg-linear-to-br from-rose-500/0 to-pink-500/0 group-hover:from-[#AB1E3E]/10 group-hover:to-[#AB1E3E]/10 rounded-2xl transition-all duration-300"></div>
-    <div className="relative z-10 flex flex-col items-start">
-      <div className="mb-3" style={{ width: "60px", height: "60px" }}>
-        <LordIcon src={iconUrl} className="group-hover:fill-[#AB1E3E]" />
-      </div>
-      <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-      <p className="text-white leading-relaxed text-sm">{description}</p>
-    </div>
-  </motion.div>
-);
+    {/* Spoke pointing at the centrepiece */}
+    <span
+      aria-hidden="true"
+      className={`absolute top-1/2 hidden h-px w-10 transition-opacity duration-300 lg:block ${
+        side === "left"
+          ? "-right-10 bg-linear-to-r from-[#AB1E3E]/30 to-transparent dark:from-[#D42952]/40"
+          : "-left-10 bg-linear-to-l from-[#AB1E3E]/30 to-transparent dark:from-[#D42952]/40"
+      } opacity-60 group-hover:opacity-100`}
+    />
+
+    <span
+      className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#AB1E3E]/8 ring-1 ring-[#AB1E3E]/10 transition-colors duration-300 group-hover:bg-[#AB1E3E]/12 dark:bg-white/5 dark:ring-white/10 ${
+        side === "left" ? "lg:ml-auto" : ""
+      }`}
+    >
+      <LordIcon src={iconUrl} />
+    </span>
+    <h3 className="mb-1.5 text-base font-bold text-gray-900 dark:text-white">{title}</h3>
+    <p className="text-sm leading-relaxed text-gray-600 dark:text-white/60">{description}</p>
+  </motion.li>
+)
 
 export default function WhyChooseFyndMee() {
-  const features = [
+  const reduceMotion = useReducedMotion()
+
+  const features: Feature[] = [
     {
       iconUrl: "https://cdn.lordicon.com/wzrwaorf.json",
       title: "Smart Matching",
@@ -64,7 +104,7 @@ export default function WhyChooseFyndMee() {
     },
     {
       iconUrl: "https://cdn.lordicon.com/egiwmiit.json",
-      title: "Verified Profiles", 
+      title: "Verified Profiles",
       description:
         "All members are verified with photo and ID verification to ensure authenticity and safety in every connection.",
     },
@@ -94,80 +134,85 @@ export default function WhyChooseFyndMee() {
     },
   ]
 
-  return (
-    <section className="relative py-24 px-4 bg-linear-to-b from-black via-slate-950 to-black overflow-hidden">
-      {/* Background image - added here */}
-      {/* <div className="absolute inset-0 z-0 translate-x-110">
-        <Image
-          src="/images/getintourch.png"
-          alt="Hand holding phone with app interface"
-          fill
-          sizes="100vw"
-          className="object-cover object-[60%_50%] opacity-10"
-          priority
-          quality={85}
-        />
-      </div> */}
-      
-      {/* Dark overlay to make image less visible */}
-      {/* <div className="absolute inset-0 bg-black/30 z-0"></div> */}
+  const leftFeatures = features.slice(0, 3)
+  const rightFeatures = features.slice(3)
 
+  const columnProps = {
+    variants: stagger,
+    initial: reduceMotion ? (false as const) : ("hidden" as const),
+    whileInView: "show" as const,
+    viewport: { once: true, amount: 0.15 },
+    className: "grid gap-4 md:grid-cols-3 lg:auto-rows-fr lg:grid-cols-1",
+  }
+
+  return (
+    <section
+      aria-labelledby="why-choose-heading"
+      className="relative overflow-hidden bg-linear-to-b from-white via-gray-50 to-white px-4 py-24 dark:from-black dark:via-slate-950 dark:to-black"
+    >
       {/* Background effects */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl"></div>
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-[#AB1E3E]/8 blur-3xl dark:bg-[#AB1E3E]/15" />
+        <div className="absolute right-10 bottom-20 h-72 w-72 rounded-full bg-[#D42952]/8 blur-3xl dark:bg-[#D42952]/12" />
+        {/* Glow behind the centrepiece */}
+        <div className="absolute top-1/2 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#AB1E3E]/10 blur-[110px] dark:bg-[#AB1E3E]/25" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Image */}
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Header */}
+        <motion.div
+          variants={fadeUp}
+          initial={reduceMotion ? false : "hidden"}
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+          className="mx-auto mb-14 max-w-2xl text-center"
+        >
+          <p className="mb-3 text-sm font-semibold tracking-widest text-[#AB1E3E] uppercase dark:text-[#F2879F]">
+            Why Fynd Mee
+          </p>
+          <h2
+            id="why-choose-heading"
+            className="mb-4 text-4xl font-bold tracking-tight text-balance text-gray-900 md:text-5xl dark:text-white"
+          >
+            Why Choose <span className="text-[#AB1E3E] dark:text-[#D42952]">Fynd Mee</span>?
+          </h2>
+          <p className="text-lg text-pretty text-gray-600 dark:text-white/70">
+            Experience dating reimagined with cutting-edge technology and genuine human connection
+          </p>
+        </motion.div>
+
+        {/* Cards flanking the centrepiece */}
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)_minmax(0,1fr)] lg:gap-10">
+          <motion.ul {...columnProps} className={`order-2 lg:order-1 ${columnProps.className}`}>
+            {leftFeatures.map((feature) => (
+              <FeatureCard key={feature.title} {...feature} side="left" />
+            ))}
+          </motion.ul>
+
+          {/* Centrepiece */}
           <motion.div
             variants={fadeUp}
-            initial="hidden"
+            initial={reduceMotion ? false : "hidden"}
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            className="relative"
+            className="order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none"
           >
-            <div className="relative rounded-3xl overflow-hidden">
+            <div className="relative aspect-4/5 h-full overflow-hidden rounded-[2rem] ring-1 ring-gray-900/5 lg:aspect-auto lg:min-h-[34rem] dark:ring-white/10">
               <Image
-                src="/images/happy-cherry.jpg"
-                alt="Why Choose Fynd Mee"
-                width={600}
-                height={900}
-                className="rounded-3xl object-cover"
-                priority
+                src="/images/dddddd.jpg"
+                alt="A smiling woman in red, posing against a red backdrop"
+                fill
+                sizes="(min-width: 1024px) 380px, (min-width: 640px) 28rem, 100vw"
+                className="object-cover"
               />
-              <div className="absolute top-4 -left-4 w-24 h-24 bg-rose-500/20 rounded-full blur-xl"></div>
-              <div className="absolute bottom-4 -right-4 w-32 h-32 bg-pink-500/20 rounded-full blur-xl"></div>
             </div>
           </motion.div>
 
-          {/* Right Side - Content */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="mb-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Why Choose{" "}
-                <span className="bg-[#AB1E3E] bg-clip-text text-transparent">
-                  Fynd Mee
-                </span>
-                ?
-              </h2>
-              <p className="text-lg text-white">
-                Experience dating reimagined with cutting-edge technology and genuine human connection
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {features.map((feature, index) => (
-                <FeatureCard key={index} {...feature} index={index} />
-              ))}
-            </div>
-          </motion.div>
+          <motion.ul {...columnProps} className={`order-3 ${columnProps.className}`}>
+            {rightFeatures.map((feature) => (
+              <FeatureCard key={feature.title} {...feature} side="right" />
+            ))}
+          </motion.ul>
         </div>
       </div>
     </section>

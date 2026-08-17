@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Kumbh_Sans, Geist, Geist_Mono, Inter } from "next/font/google"
+import { Kumbh_Sans, Geist, Geist_Mono, Inter, Fraunces } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -13,10 +13,18 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 // Configure the font
-const kumbhSans = Kumbh_Sans({ 
+const kumbhSans = Kumbh_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-kumbh-sans',
+})
+
+// Editorial display serif — used for the hero headline (see components/hero-section.tsx).
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  display: 'swap',
+  style: ['normal', 'italic'],
+  variable: '--font-fraunces',
 })
 
 
@@ -75,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={kumbhSans.variable}>
+    <html lang="en" suppressHydrationWarning className={`${kumbhSans.variable} ${fraunces.variable}`}>
       <head>
         {/* Explicit favicon links for better crawler discovery */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
