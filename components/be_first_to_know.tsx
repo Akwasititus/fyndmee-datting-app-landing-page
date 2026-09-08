@@ -108,10 +108,7 @@ export default function BeFirstToKnow() {
             />
 
             <div className="relative z-10 max-w-2xl">
-              <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#f6dce4] backdrop-blur-sm">
-                <Mail aria-hidden="true" className="h-4 w-4 text-[#ff6f94]" />
-                The Fynd Mee letter
-              </p>
+             
 
               <h2
                 id="newsletter-heading"
@@ -230,13 +227,7 @@ export default function BeFirstToKnow() {
               className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(25,5,12,0.86)_100%)] lg:bg-[linear-gradient(90deg,rgba(42,13,22,0.3)_0%,transparent_30%,transparent_68%,rgba(25,5,12,0.12)_100%)]"
             />
 
-            <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-xs font-semibold text-[#fff] shadow-lg backdrop-blur-md sm:left-7 sm:top-7">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ff6f94] opacity-70 motion-reduce:animate-none" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#ff6f94]" />
-              </span>
-              Fresh from Fynd Mee
-            </div>
+          
 
             <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-[#2a0d16]/70 p-5 shadow-2xl backdrop-blur-xl sm:bottom-7 sm:left-7 sm:right-7 lg:p-6">
               <Heart aria-hidden="true" className="h-5 w-5 fill-[#ff6f94] text-[#ff6f94]" />
