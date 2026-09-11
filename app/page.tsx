@@ -7,21 +7,36 @@ import Header from "@/components/header"
 import BlogPostSection from "@/components/NewsletterSection"
 import SimpleChatWidget from "@/components/SimpleChatWidget"
 import TestimonialsCarousel from "@/components/Testimonialscarouselminimal"
-import GetStartedSection from "@/components/get_in_tourch"
+import StructuredData from "@/components/structured-data"
+import {
+  mobileApplicationJsonLd,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo"
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen transition-colors duration-300">
+    <>
+      <StructuredData
+        data={[organizationJsonLd, websiteJsonLd, mobileApplicationJsonLd]}
+      />
+      <a
+        href="#main-content"
+        className="sr-only z-[100] rounded-md bg-white px-4 py-3 text-gray-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Skip to main content
+      </a>
       <Header />
-      <EnhancedHeroSection />
-      {/* <GetStartedSection /> */}
-      <BeFirstToKnow />
-      <WhyChooseFyndMee />
-      <BlogPostSection />
-      <TestimonialsCarousel />
-      <CTASection />
+      <main id="main-content" className="min-h-screen w-full transition-colors duration-300">
+        <EnhancedHeroSection />
+        <BeFirstToKnow />
+        <WhyChooseFyndMee />
+        <BlogPostSection />
+        <TestimonialsCarousel />
+        <CTASection />
+      </main>
       <Footer />
       <SimpleChatWidget />
-    </main>
+    </>
   )
 }

@@ -28,14 +28,7 @@ import {
 
 const SERIF = "var(--font-fraunces), 'Iowan Old Style', Georgia, serif"
 
-/* Real product features, in the app's own wording. */
-const FEATURES = [
-  "Smart Matching",
-  "Verified Profiles",
-  "Compatibility Scores",
-  "Supa Likes",
-  "Profile Boosts",
-]
+
 
 /* Faces for the social-proof cluster. object-position is tuned per
    photo so each circle actually lands on a face. */
@@ -235,16 +228,7 @@ export default function EnhancedHeroSection() {
         {/* ───────── Left: the pitch ───────── */}
         <div className="max-w-xl">
           {/* eyebrow */}
-          {/* <motion.p
-            variants={animate ? rise : undefined}
-            className="inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.045] px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#f0d6dc] backdrop-blur-sm sm:text-xs"
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D42952] opacity-70" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#D42952]" />
-            </span>
-            Dating · Friendship · Networking
-          </motion.p> */}
+        
 
           {/* headline */}
           <motion.h1
@@ -479,24 +463,6 @@ export default function EnhancedHeroSection() {
         </div>
       </motion.div>
 
-      {/* ══════════ FEATURE RULE ══════════ */}
-      <motion.div
-        initial={animate ? { opacity: 0 } : false}
-        animate={animate ? { opacity: 1 } : undefined}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="relative z-10 border-t border-white/[0.08]"
-      >
-        <ul className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-center gap-x-7 gap-y-2 px-5 py-5 sm:px-8 lg:justify-start lg:gap-x-10">
-          {FEATURES.map((f) => (
-            <li
-              key={f}
-              className="text-[10.5px] font-medium uppercase tracking-[0.19em] text-[#e3c9d0]/45 sm:text-[11px]"
-            >
-              {f}
-            </li>
-          ))}
-        </ul>
-      </motion.div>
     </section>
   )
 }

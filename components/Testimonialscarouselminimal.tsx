@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 interface Testimonial {
   quote: string
@@ -186,9 +187,11 @@ export default function TestimonialsCarousel() {
                     {/* Names with heart icon */}
                     <div className="flex items-center gap-3">
                      
-             <img
+             <Image
                 src="/images/logo-cherry.svg"
                 alt="Fynd Mee logo"
+                width={32}
+                height={32}
                 className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
               />
                  

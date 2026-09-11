@@ -1,6 +1,9 @@
 {
-  "name": "My Awesome App",
-  "short_name": "My Awesome App",
+  "name": "Fynd Mee - Verified Dating App",
+  "short_name": "Fynd Mee",
+  "description": "Meet verified people and build meaningful relationships with smart, compatibility-based matching.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +16,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#AB1E3E",
+  "background_color": "#150A0F",
   "display": "standalone"
 }

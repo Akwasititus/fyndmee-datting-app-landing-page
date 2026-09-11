@@ -1,12 +1,16 @@
-import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Calendar, User, Heart, MessageCircle } from 'lucide-react'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Blog - FyndMee',
-  description: 'Insights, stories and updates from the FyndMee team.',
-}
+export const metadata = createPageMetadata({
+  title: 'Dating and Relationship Advice',
+  description:
+    'Practical dating advice, relationship insights, online safety guidance, and stories about building authentic connections from Fynd Mee.',
+  path: '/blog',
+  image: '/images/meaningful-connections-in-2025.jpg',
+  imageAlt: 'Dating and relationship advice from the Fynd Mee blog',
+})
 
 const blogPosts = [
   {
@@ -35,6 +39,7 @@ const blogPosts = [
     `,
     imageUrl: "/images/blog-3.jpg",
     date: "November 26, 2025",
+    datePublished: "2025-11-26",
     category: "Professional Growth",
     author: "Paulina Mwindor",
     authorRole: "Product Marketing Lead",
@@ -62,6 +67,7 @@ const blogPosts = [
     `,
     imageUrl: "/images/blog-intentional.jpg",
     date: "December 4, 2025",
+    datePublished: "2025-12-04",
     category: "Relationships",
     author: "Paulina Mwindor",
     authorRole: "Product Marketing Lead",
@@ -96,6 +102,7 @@ const blogPosts = [
   `,
     imageUrl: "/images/blog-secret-long-lasting-connection.jpg",
     date: "December 2, 2025",
+    datePublished: "2025-12-02",
     category: "Relationship Growth",
     author: "Paulina Mwindor",
     authorRole: "Relationship Writer",
@@ -129,6 +136,7 @@ const blogPosts = [
   `,
     imageUrl: "/images/meaningful-connections-in-2025.jpg",
     date: "December 5, 2025",
+    datePublished: "2025-12-05",
     category: "Modern Relationships",
     author: "Paulina Mwindor",
     authorRole: "Relationship Writer",
@@ -161,12 +169,12 @@ export default function BlogPage() {
 
           <div className="text-center max-w-3xl mx-auto">
             
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
               FyndMee{" "}
               <span className="bg-gradient-to-r from-[#AB1E3E] to-rose-500 bg-clip-text text-transparent">
                 Blog
               </span>
-            </h2>
+            </h1>
             <p className="text-xl text-gray-600 dark:text-white/60">
               Insights, stories, and updates from the FyndMee team.
             </p>
@@ -197,7 +205,7 @@ export default function BlogPage() {
                   <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-white/60 mb-3">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
-                      {post.date}
+                      <time dateTime={post.datePublished}>{post.date}</time>
                     </div>
                     <div className="flex items-center gap-1">
                       <Heart className="w-4 h-4" />

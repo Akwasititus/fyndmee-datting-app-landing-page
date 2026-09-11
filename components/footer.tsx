@@ -1,6 +1,7 @@
 
 "use client"
 import { Heart } from "lucide-react"
+import Image from "next/image"
 
 export default function Footer() {
   return (
@@ -10,9 +11,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img
+              <Image
                 src="/images/logo-cherry.svg"
                 alt="Fynd Mee logo"
+                width={32}
+                height={32}
                 className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
               />
               <span className="text-xl font-bold text-gray-900 dark:text-white">Fynd Mee</span>

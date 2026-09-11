@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /email-confirmation-success
+
 Sitemap: https://fyndmee.app/sitemap.xml
+Host: https://fyndmee.app
