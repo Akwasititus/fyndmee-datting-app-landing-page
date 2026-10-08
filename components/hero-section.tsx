@@ -201,6 +201,25 @@ export default function EnhancedHeroSection() {
         }}
       />
 
+      {/* A quiet photo backdrop keeps the couple in the scene without competing with the headline. */}
+      <div aria-hidden="true" className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-laughing-couple.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[68%_center]"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, #150a0f 0%, rgba(21,10,15,0.94) 27%, rgba(21,10,15,0.68) 53%, rgba(21,10,15,0.20) 100%), linear-gradient(0deg, #150a0f 0%, transparent 32%, rgba(21,10,15,0.12) 100%)",
+          }}
+        />
+      </div>
+
       {/* film grain — kills the flat-gradient look */}
       <div
         aria-hidden
@@ -348,7 +367,7 @@ export default function EnhancedHeroSection() {
           ref={collageRef}
           onPointerMove={handlePointer}
           onPointerLeave={resetPointer}
-          className="relative mx-auto aspect-[56/62] w-full max-w-[380px] sm:max-w-[440px] lg:mx-0 lg:max-w-[560px]"
+          className="hidden"
         >
           {/* soft bloom behind the prints */}
           <div

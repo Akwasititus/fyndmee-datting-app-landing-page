@@ -15,7 +15,7 @@ npm run start    # serve the production build
 npx tsc --noEmit # type-check — the real correctness gate (see below)
 ```
 
-There are **no tests** and no test runner. The `lint` script (`eslint .`) is declared in `package.json` but ESLint is not installed and there is no ESLint config, so it fails — don't rely on it.
+`npm test` runs Vanessa's focused tests with Node's built-in test runner. The `lint` script (`eslint .`) is declared in `package.json` but ESLint is not installed and there is no ESLint config, so it fails — don't rely on it.
 
 `next.config.mjs` sets `typescript.ignoreBuildErrors: true`, so **`npm run build` succeeds with type errors**. Run `npx tsc --noEmit` after TypeScript changes; expect pre-existing errors in untouched files, so compare before/after rather than requiring a clean run.
 
@@ -27,7 +27,9 @@ There are **no tests** and no test runner. The `lint` script (`eslint .`) is dec
 
 - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` — browser-side Supabase client
 - `SUPABASE_SERVICE_ROLE_KEY` — present but currently unused
-- `ANTHROPIC_API_KEY` — server-side only, used by `app/api/chat/route.js`
+- `GROQ_API_KEY` — optional server-side key for Vanessa; missing key uses FAQ mode
+- `GROQ_MODEL` — optional server-side model, default `openai/gpt-oss-20b`
+- `ANTHROPIC_API_KEY` — legacy, no longer used by Vanessa
 
 ## Architecture
 
@@ -46,7 +48,7 @@ Brand color `#AB1E3E` (with `#D42952` as the lighter accent) is hardcoded as an 
 - `components/be_first_to_know.tsx` → `newsletter_subscribers` table
 - `app/contact-us/page.tsx` → `contact-us-website` table
 
-**Chat widget with two-tier fallback.** `components/SimpleChatWidget.tsx` (floating widget on the home page) POSTs to `app/api/chat/route.js`, which proxies to the Anthropic Messages API directly with `fetch` (no SDK). If that call fails, the widget silently degrades to a large hardcoded keyword→response map in the same file. Both the `SYSTEM_PROMPT` (company facts about FyndMee) and the fallback responses live in the widget. The `ai`, `@ai-sdk/*`, and `@botpress/*` dependencies are installed but unused.
+**Vanessa support widget.** `components/SimpleChatWidget.tsx` POSTs to `app/api/chat/route.js`. `lib/vanessa/server.mjs` validates requests and calls Groq with server-owned instructions; missing credentials and provider failures return FAQ mode. Shared public support facts live in `lib/vanessa/content.mjs`, also used locally if the route fails. `lib/vanessa/session.mjs` keeps ten turns in memory and cancels reset/unmounted work. The UI labels FAQ mode explicitly. See `docs/vanessa.md` for setup and `tests/vanessa.test.mjs` for provider/session tests. The `ai`, `@ai-sdk/*`, and `@botpress/*` dependencies remain unused.
 
 **`/profile/[token]`** is a mobile deep-link bridge: it tries `fyndmee://profile/<token>` (Android) or the universal link (iOS), then falls back to the app stores after 3s. The App Store / Play Store URLs there are still placeholders.
 

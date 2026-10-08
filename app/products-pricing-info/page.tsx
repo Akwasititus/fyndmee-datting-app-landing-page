@@ -91,7 +91,6 @@ const plans: Plan[] = [
 const addOns = [
   {
     name: "Supa Likes",
-    iconUrl: "/images/suppa-likes.png",
     description: "Show stronger interest and stand out from an ordinary Like.",
     icon: Zap,
     tone: "rose",
@@ -99,7 +98,6 @@ const addOns = [
   },
   {
     name: "Profile Boost",
-    iconUrl: "/images/boost.png",
     description: "Move your profile closer to the front when you want more eyes on you.",
     icon: Star,
     tone: "violet",
@@ -107,13 +105,27 @@ const addOns = [
   },
   {
     name: "Rewind",
-    iconUrl: "/images/rewind.png",
     description: "Take back your last swipe and give a promising profile another look.",
     icon: RefreshCcw,
     tone: "amber",
     details: ["Undo your last swipe", "Recover a missed profile", "Give a connection another chance"],
   },
 ]
+
+const addOnStyles: Record<string, { panel: string; icon: string }> = {
+  rose: {
+    panel: "from-[#fff0f2] via-[#fff8f8] to-[#ffe2e9] dark:from-[#351621] dark:via-[#2b1720] dark:to-[#42172a]",
+    icon: "bg-white text-[#ad1f48] ring-[#efc9d3] dark:bg-[#5b2036] dark:text-[#ffd6e0] dark:ring-[#82445a]",
+  },
+  violet: {
+    panel: "from-[#f5f0ff] via-[#fbf9ff] to-[#e9ddff] dark:from-[#271b38] dark:via-[#241a30] dark:to-[#392044]",
+    icon: "bg-white text-[#7046a0] ring-[#ded0f2] dark:bg-[#4b2a60] dark:text-[#e8d5ff] dark:ring-[#715183]",
+  },
+  amber: {
+    panel: "from-[#fff7e8] via-[#fffcf7] to-[#ffebbf] dark:from-[#352516] dark:via-[#2e2118] dark:to-[#493016]",
+    icon: "bg-white text-[#9a6500] ring-[#f3dfb4] dark:bg-[#5d411e] dark:text-[#ffe4aa] dark:ring-[#806139]",
+  },
+}
 
 const comparison = [
   ["Unlimited Likes", true, true, true],
@@ -126,18 +138,21 @@ const comparison = [
 
 const accentStyles = {
   plus: {
+    bar: "bg-gradient-to-r from-sky-400 to-cyan-300",
     shell: "border-sky-200/80 dark:border-sky-400/20",
     wash: "from-sky-500/14 via-cyan-400/5 to-transparent",
     label: "text-sky-700 dark:text-sky-300",
     icon: "bg-sky-50 ring-sky-200 dark:bg-sky-400/10 dark:ring-sky-400/20",
   },
   gold: {
+    bar: "bg-gradient-to-r from-amber-400 to-yellow-200",
     shell: "border-[#d7a837] shadow-[0_24px_70px_-30px_rgba(199,145,29,0.48)] dark:border-[#d7a837]/70",
     wash: "from-amber-400/22 via-orange-300/8 to-transparent",
     label: "text-amber-700 dark:text-amber-300",
     icon: "bg-amber-50 ring-amber-200 dark:bg-amber-400/10 dark:ring-amber-400/20",
   },
   royal: {
+    bar: "bg-gradient-to-r from-violet-500 to-fuchsia-400",
     shell: "border-violet-200/80 dark:border-violet-400/20",
     wash: "from-violet-500/16 via-fuchsia-400/6 to-transparent",
     label: "text-violet-700 dark:text-violet-300",
@@ -158,12 +173,11 @@ export default function PricingPage() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#fff9f6] text-[#2d1720] dark:bg-[#0f090b] dark:text-[#fff8f5]">
-      <div className="relative border-b border-[#7b1d38]/10 bg-[#2a0d16] px-4 pb-24 pt-6 sm:px-6 lg:px-8 lg:pb-32">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(circle_at_16%_8%,rgba(218,52,96,0.32),transparent_35%),radial-gradient(circle_at_85%_18%,rgba(235,151,77,0.15),transparent_28%)]"
-        />
+    <main className="min-h-screen overflow-hidden bg-[linear-gradient(180deg,#fff7f3_0%,#fffdfb_44%,#fff9f6_100%)] text-[#2d1720] dark:bg-[linear-gradient(180deg,#0f090b_0%,#160e12_50%,#0f090b_100%)] dark:text-[#fff8f5]">
+      <div className="relative overflow-hidden rounded-b-[2.5rem] border-b border-[#7b1d38]/10 bg-[#2a0d16] px-4 pb-24 pt-6 sm:rounded-b-[4rem] sm:px-6 lg:px-8 lg:pb-32">
+        <Image src="/images/pricing-hero-joy.png" alt="" fill priority sizes="100vw" className="object-cover object-[73%_top] sm:object-[center_38%]" />
+        <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(42,13,22,0.3)_0%,rgba(42,13,22,0.48)_34%,rgba(42,13,22,0.92)_70%,#2a0d16_100%)] sm:hidden" />
+        <div aria-hidden="true" className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(42,13,22,0.97)_0%,rgba(42,13,22,0.86)_35%,rgba(42,13,22,0.44)_68%,rgba(42,13,22,0.12)_100%)] sm:block" />
 
         <div className="relative mx-auto max-w-7xl">
           <Link
@@ -178,19 +192,15 @@ export default function PricingPage() {
             variants={reveal}
             initial={reduceMotion ? false : "hidden"}
             animate="show"
-            className="mx-auto mt-16 max-w-3xl text-center sm:mt-20"
+            className="mt-64 max-w-[650px] text-left sm:mt-24 lg:mt-28"
           >
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#ffd4df]">
-              <Sparkles aria-hidden="true" className="h-4 w-4 text-[#ff7899]" />
-              Plans made for every pace
-            </p>
             <h1
-              className="mt-6 text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-[#fff8f5] sm:text-6xl lg:text-7xl"
+              className="text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-[#fff8f5] sm:text-6xl lg:text-7xl"
               style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
             >
-              Choose your experience.
+              Choose your <span className="italic text-[#ffb7c8]">experience.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
+            <p className="mt-6 max-w-xl text-pretty text-base leading-7 text-[#ffe0e6] sm:text-lg sm:leading-8">
               Start with the features that fit how you connect today. You can
               always discover more as your Fynd Mee journey grows.
             </p>
@@ -213,9 +223,10 @@ export default function PricingPage() {
                   whileInView="show"
                   viewport={{ once: true, amount: 0.15 }}
                   transition={{ delay: reduceMotion ? 0 : index * 0.055 }}
-                  className={`group relative flex overflow-hidden rounded-[2rem] border bg-white shadow-[0_20px_55px_-38px_rgba(75,21,39,0.42)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-34px_rgba(75,21,39,0.5)] motion-reduce:hover:translate-y-0 dark:bg-[#191013] ${styles.shell}`}
+                  className={`group relative isolate flex overflow-hidden rounded-[2rem] border bg-white shadow-[0_20px_55px_-38px_rgba(75,21,39,0.42)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-34px_rgba(75,21,39,0.5)] motion-reduce:hover:translate-y-0 dark:bg-[#191013] ${styles.shell}`}
                 >
                   <div aria-hidden="true" className={`absolute inset-x-0 top-0 h-48 bg-linear-to-b ${styles.wash}`} />
+                  <div aria-hidden="true" className={`absolute inset-x-0 top-0 h-1.5 ${styles.bar}`} />
 
                   {plan.popular && (
                     <div className="absolute right-5 top-5 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#9a6b00] px-3 py-1.5 text-xs font-bold text-[#fff] shadow-lg">
@@ -225,23 +236,23 @@ export default function PricingPage() {
                   )}
 
                   <div className="relative flex w-full flex-col p-6 sm:p-8">
-                    <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ring-1 ${styles.icon}`}>
+                    <div className={`flex h-20 w-20 items-center justify-center rounded-[1.35rem] shadow-[0_10px_30px_rgba(42,13,22,0.08)] ring-1 ${styles.icon}`}>
                       <Image
                         src={plan.iconUrl}
                         alt=""
-                        width={42}
-                        height={42}
-                        className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-105 motion-reduce:group-hover:scale-100"
+                        width={48}
+                        height={48}
+                        className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105 motion-reduce:group-hover:scale-100"
                       />
                     </div>
 
                     <p className={`mt-6 text-xs font-bold uppercase tracking-[0.16em] ${styles.label}`}>
                       {plan.eyebrow}
                     </p>
-                    <h3 className="mt-2 text-2xl font-bold tracking-tight text-gray-950 dark:text-[#fff8f5]">
+                    <h3 className="mt-2 text-[1.7rem] font-bold tracking-[-0.035em] text-gray-950 dark:text-[#fff8f5]">
                       {plan.name}
                     </h3>
-                    <p className="mt-3 min-h-14 text-sm leading-6 text-gray-600 dark:text-white/60">
+                    <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-white/60 lg:min-h-14">
                       {plan.description}
                     </p>
 
@@ -249,8 +260,8 @@ export default function PricingPage() {
 
                     <ul className="flex-1 space-y-4">
                       {plan.features.map(({ text, icon: Icon }) => (
-                        <li key={text} className="flex items-start gap-3 text-sm leading-6 text-gray-700 dark:text-white/75">
-                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#AB1E3E]/10 text-[#AB1E3E] dark:bg-[#D42952]/15 dark:text-[#ff7899]">
+                        <li key={text} className="flex items-start gap-3 text-[15px] leading-6 text-gray-700 dark:text-white/75">
+                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#AB1E3E]/10 text-[#AB1E3E] dark:bg-[#D42952]/15 dark:text-[#ff7899]">
                             <Icon aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={2.4} />
                           </span>
                           {text}
@@ -298,15 +309,15 @@ export default function PricingPage() {
             </h2>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-gray-200 bg-white shadow-[0_18px_48px_-38px_rgba(75,21,39,0.35)] dark:border-white/10 dark:bg-[#191013]">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[640px] border-collapse text-sm">
+          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-gray-200 bg-white shadow-[0_22px_55px_-36px_rgba(75,21,39,0.32)] dark:border-white/10 dark:bg-[#191013]">
+            <div className="overflow-x-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#AB1E3E]" role="region" aria-label="Plan comparison" tabIndex={0}>
+              <table className="w-full min-w-[720px] border-collapse text-sm">
                 <caption className="sr-only">Comparison of Fynd Mee Plus, Gold, and Royal features</caption>
                 <thead>
                   <tr className="border-b border-gray-200 bg-[#fff7f3] dark:border-white/10 dark:bg-white/[0.03]">
-                    <th scope="col" className="px-6 py-5 text-left font-semibold text-gray-900 dark:text-[#fff8f5]">Feature</th>
+                    <th scope="col" className="sticky left-0 z-10 min-w-[200px] bg-[#fff7f3] px-6 py-5 text-left font-semibold text-gray-900 dark:bg-[#21171a] dark:text-[#fff8f5]">Feature</th>
                     {plans.map((plan) => (
-                      <th key={plan.shortName} scope="col" className="px-5 py-5 text-center font-bold text-gray-900 dark:text-[#fff8f5]">
+                      <th key={plan.shortName} scope="col" className={`min-w-[150px] px-5 py-5 text-center font-bold text-gray-900 dark:text-[#fff8f5] ${plan.popular ? "bg-amber-100/70 dark:bg-amber-400/10" : ""}`}>
                         {plan.shortName}
                       </th>
                     ))}
@@ -314,12 +325,12 @@ export default function PricingPage() {
                 </thead>
                 <tbody>
                   {comparison.map(([feature, ...values]) => (
-                    <tr key={feature} className="border-b border-gray-100 last:border-0 dark:border-white/[0.07]">
-                      <th scope="row" className="px-6 py-4 text-left font-medium text-gray-700 dark:text-white/70">
+                    <tr key={feature} className="border-b border-gray-100 transition-colors last:border-0 hover:bg-rose-50/50 dark:border-white/[0.07] dark:hover:bg-white/[0.03]">
+                      <th scope="row" className="sticky left-0 z-10 min-w-[200px] bg-white px-6 py-4 text-left font-medium text-gray-700 dark:bg-[#191013] dark:text-white/70">
                         {feature}
                       </th>
                       {values.map((included, index) => (
-                        <td key={`${feature}-${plans[index].shortName}`} className="px-5 py-4 text-center">
+                        <td key={`${feature}-${plans[index].shortName}`} className={`px-5 py-4 text-center ${plans[index].popular ? "bg-amber-50/70 dark:bg-amber-400/[0.04]" : ""}`}>
                           {included ? (
                             <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300">
                               <Check aria-hidden="true" className="h-4 w-4" strokeWidth={2.6} />
@@ -376,22 +387,15 @@ export default function PricingPage() {
                   transition={{ delay: reduceMotion ? 0 : index * 0.05 }}
                   className="group overflow-hidden rounded-[1.75rem] border border-white/70 bg-white shadow-[0_18px_45px_-36px_rgba(75,21,39,0.4)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_55px_-32px_rgba(75,21,39,0.5)] motion-reduce:hover:translate-y-0 dark:border-white/10 dark:bg-[#211418]"
                 >
-                  <div className="relative flex h-48 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.95),rgba(255,232,236,0.75)_45%,rgba(171,30,62,0.12)_100%)] dark:bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.12),rgba(171,30,62,0.12)_48%,rgba(0,0,0,0.1)_100%)]">
-                    <Image
-                      src={addOn.iconUrl}
-                      alt=""
-                      width={118}
-                      height={118}
-                      className="h-28 w-28 object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-2 motion-reduce:group-hover:scale-100 motion-reduce:group-hover:rotate-0"
-                    />
+                  <div className={`relative flex h-36 items-center justify-center overflow-hidden bg-gradient-to-br ${addOnStyles[addOn.tone].panel}`}>
+                    <div aria-hidden="true" className="absolute h-32 w-32 rounded-full border border-current/10 opacity-20" />
+                    <div aria-hidden="true" className="absolute h-52 w-52 rounded-full border border-current/10 opacity-15" />
+                    <span className={`relative flex h-16 w-16 items-center justify-center rounded-[1.35rem] shadow-[0_15px_35px_rgba(42,13,22,0.12)] ring-1 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105 motion-reduce:group-hover:rotate-0 motion-reduce:group-hover:scale-100 ${addOnStyles[addOn.tone].icon}`}>
+                      <Icon aria-hidden="true" className="h-8 w-8" strokeWidth={1.8} />
+                    </span>
                   </div>
                   <div className="p-6">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#AB1E3E]/10 text-[#AB1E3E] dark:bg-[#D42952]/15 dark:text-[#ff7899]">
-                        <Icon aria-hidden="true" className="h-5 w-5" />
-                      </span>
-                      <h3 className="text-xl font-bold text-gray-950 dark:text-[#fff8f5]">{addOn.name}</h3>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-950 dark:text-[#fff8f5]">{addOn.name}</h3>
                     <p className="mt-4 min-h-18 text-sm leading-6 text-gray-600 dark:text-white/60">{addOn.description}</p>
                     <ul className="mt-5 space-y-2.5">
                       {addOn.details.map((detail) => (

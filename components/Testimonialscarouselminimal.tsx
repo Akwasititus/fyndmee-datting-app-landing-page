@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import useEmblaCarousel from "embla-carousel-react"
 
 interface Testimonial {
   quote: string
@@ -52,217 +53,72 @@ const testimonials: Testimonial[] = [
   },
 ]
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-}
-
-const quoteVariants = {
-  enter: {
-    opacity: 0,
-    y: 20,
-  },
-  center: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: {
-      duration: 0.3,
-      ease: "easeIn",
-    },
-  },
-}
-
 export default function TestimonialsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [progress, setProgress] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
-
-  const SLIDE_DURATION = 9000 // 6 seconds per slide
-  const PROGRESS_INTERVAL = 80 // Update progress every 50ms
+  const [carouselRef, carouselApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
+    breakpoints: { "(prefers-reduced-motion: reduce)": { duration: 0 } },
+  })
+  const [firstVisible, setFirstVisible] = useState(0)
 
   useEffect(() => {
-    if (isPaused) return
-
-    const progressTimer = setInterval(() => {
-      setProgress((prev) => {
-        const increment = (PROGRESS_INTERVAL / SLIDE_DURATION) * 100
-        const newProgress = prev + increment
-
-        if (newProgress >= 100) {
-          setCurrentIndex((current) => (current + 1) % testimonials.length)
-          return 0
-        }
-
-        return newProgress
-      })
-    }, PROGRESS_INTERVAL)
-
-    return () => clearInterval(progressTimer)
-  }, [isPaused, currentIndex])
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index)
-    setProgress(0)
-  }
-
-  const handleMouseEnter = () => setIsPaused(true)
-  const handleMouseLeave = () => setIsPaused(false)
+    if (!carouselApi) return
+    const updateSelection = () => setFirstVisible(carouselApi.selectedScrollSnap())
+    updateSelection()
+    carouselApi.on("select", updateSelection)
+    carouselApi.on("reInit", updateSelection)
+    return () => {
+      carouselApi.off("select", updateSelection)
+      carouselApi.off("reInit", updateSelection)
+    }
+  }, [carouselApi])
 
   return (
-    <section className="relative py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-slate-950 dark:to-black overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-rose-500/5 dark:bg-rose-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/5 dark:bg-pink-500/10 rounded-full blur-3xl"></div>
-      </div>
+    <section className="relative overflow-hidden bg-[#fff8f5] px-4 py-20 text-[#29171d] dark:bg-[#100b0e] dark:text-[#fff8f5] sm:px-6 lg:px-8 lg:py-28">
+      <div aria-hidden="true" className="pointer-events-none absolute -left-36 top-12 h-96 w-96 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-800/10" />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-36 bottom-12 h-96 w-96 rounded-full bg-pink-200/40 blur-3xl dark:bg-pink-800/10" />
+      <div className="relative mx-auto max-w-7xl">
+        <h2 className="mb-12 text-center text-4xl font-bold tracking-[-0.045em] sm:mb-16 sm:text-5xl lg:text-6xl">
+          What Our{" "}
+          <span className="bg-gradient-to-r from-[#AB1E3E] to-pink-500 bg-clip-text text-transparent">Users Say</span>
+        </h2>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <motion.div
-          // variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{
-            duration: fadeUp.show.transition.duration,
-            ease: (fadeUp.show.transition.ease === "easeIn"
-              ? [0.42, 0, 1, 1]
-              : fadeUp.show.transition.ease) as any,
-          }}
-        >
-          {/* Section Title */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-16 text-center">
-            What Our{" "}
-            <span className="bg-gradient-to-r from-[#AB1E3E] to-pink-500 bg-clip-text text-transparent">
-              Users Say
-            </span>
-          </h2>
-
-          {/* Testimonial Container */}
-          <div
-            className="relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {/* Quote Card */}
-            <div className="relative p-8 sm:p-12 md:p-16 rounded-3xl bg-white/50 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 shadow-xl dark:shadow-2xl dark:shadow-[#AB1E3E]/10 min-h-[400px] sm:min-h-[350px] md:min-h-[300px] flex flex-col justify-center">
-              {/* Decorative Quote Marks */}
-              <div className="absolute top-8 left-8 text-[#AB1E3E]/20 dark:text-[#AB1E3E]/30 text-6xl sm:text-7xl md:text-8xl font-serif leading-none select-none">
-                "
-              </div>
-              <div className="absolute bottom-8 right-8 text-[#AB1E3E]/20 dark:text-[#AB1E3E]/30 text-6xl sm:text-7xl md:text-8xl font-serif leading-none select-none rotate-180">
-                "
-              </div>
-
-              {/* Testimonial Content with AnimatePresence */}
-              <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-8 md:px-16">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    // variants={quoteVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    className="flex flex-col items-center"
-                  >
-                    {/* Quote Text */}
-                    <blockquote className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed text-gray-800 dark:text-white mb-8 max-w-4xl">
-                      {testimonials[currentIndex].quote}
-                    </blockquote>
-
-                    {/* Names with heart icon */}
-                    <div className="flex items-center gap-3">
-                     
-             <Image
-                src="/images/logo-cherry.svg"
-                alt="Fynd Mee logo"
-                width={32}
-                height={32}
-                className="h-8 w-8 object-contain rounded-md hover:scale-110 transition-transform drop-shadow-lg"
-              />
-                 
-                      <p className="text-base sm:text-lg font-medium text-gray-600 dark:text-white/70 tracking-wide">
-                        {testimonials[currentIndex].names}
-                      </p>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-
-            {/* Navigation Dots with Progress Bars */}
-            <div className="flex items-center justify-center gap-3 mt-12">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#AB1E3E]/50 rounded-full relative"
-                  aria-label={`Go to testimonial ${index + 1}`}
-                >
-                  {/* Background bar */}
-                  <div className="h-1 w-12 sm:w-16 bg-gray-300 dark:bg-white/20 rounded-full overflow-hidden">
-                    {/* Progress bar */}
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-[#AB1E3E] to-pink-500 rounded-full"
-                      initial={{ width: "0%" }}
-                      animate={{
-                        width:
-                          index === currentIndex
-                            ? `${progress}%`
-                            : index < currentIndex
-                            ? "100%"
-                            : "0%",
-                      }}
-                      transition={{
-                        duration: 0.1,
-                        ease: "linear",
-                      }}
-                    />
-                  </div>
-
-                  {/* Hover effect */}
-                  {index !== currentIndex && (
-                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 dark:group-hover:bg-white/5 rounded-full transition-colors" />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Manual Navigation Arrows */}
-            <button
-              onClick={() => goToSlide((currentIndex - 1 + testimonials.length) % testimonials.length)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-white/70 hover:text-[#AB1E3E] dark:hover:text-[#AB1E3E] hover:border-[#AB1E3E]/50 transition-all shadow-lg hover:shadow-xl hidden md:flex"
-              aria-label="Previous testimonial"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={() => goToSlide((currentIndex + 1) % testimonials.length)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-white/70 hover:text-[#AB1E3E] dark:hover:text-[#AB1E3E] hover:border-[#AB1E3E]/50 transition-all shadow-lg hover:shadow-xl hidden md:flex"
-              aria-label="Next testimonial"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+        <div ref={carouselRef} className="overflow-hidden" role="region" aria-roledescription="carousel" aria-label="Testimonials">
+          <div className="flex items-stretch gap-5">
+          {testimonials.map((testimonial, index) => {
+            const featured = index === firstVisible
+            return (
+              <figure
+                key={`${testimonial.names}-${index}`}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} of ${testimonials.length}`}
+                className={`group relative flex min-w-0 shrink-0 basis-full flex-col overflow-hidden rounded-[1.75rem] border p-7 shadow-[0_16px_45px_rgba(76,20,39,0.06)] transition-[background-color,border-color,box-shadow] duration-300 hover:shadow-[0_24px_50px_rgba(76,20,39,0.12)] sm:basis-[calc((100%-1.25rem)/2)] sm:p-8 lg:min-h-[430px] lg:basis-[calc((100%-2.5rem)/3)] ${featured
+                  ? "border-[#6e2540] bg-[#3b1022] text-[#fff8f5] dark:border-[#a65b75]"
+                  : "border-[#efdde0] bg-white text-[#39232b] dark:border-white/10 dark:bg-white/[0.05] dark:text-[#f4e9ec]"
+                }`}
+              >
+                <span aria-hidden="true" className={`mb-6 block text-6xl font-bold leading-none ${featured ? "text-[#f6a4b9]" : "text-[#b0254d] dark:text-[#ff9eb6]"}`} style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}>“</span>
+                <blockquote className="flex-1 text-lg leading-[1.7] sm:text-xl">{testimonial.quote}</blockquote>
+                <figcaption className={`mt-8 flex items-center gap-3 border-t pt-5 ${featured ? "border-white/20" : "border-[#f0e2e5] dark:border-white/10"}`}>
+                  <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${featured ? "bg-white" : "bg-[#fbe8ed] dark:bg-white"}`}>
+                    <Image src="/images/logo-cherry.svg" alt="" width={24} height={24} className="h-6 w-6 object-contain" />
+                  </span>
+                  <span className={`text-sm font-semibold sm:text-base ${featured ? "text-[#fff8f5]" : "text-[#6c4653] dark:text-white/75"}`}>{testimonial.names}</span>
+                </figcaption>
+              </figure>
+            )
+          })}
           </div>
-        </motion.div>
+        </div>
+
+        <nav className="mt-8 flex items-center justify-center gap-5" aria-label="Testimonial carousel controls">
+          <button type="button" onClick={() => carouselApi?.scrollPrev()} aria-label="Previous testimonial" className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#e5cbd2] bg-white text-[#7d2440] transition-colors hover:border-[#ab1e3e] hover:bg-[#fff0f3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ab1e3e] dark:border-white/20 dark:bg-white/5 dark:text-[#ffd8e2] dark:hover:bg-white/10"><ChevronLeft aria-hidden="true" className="h-5 w-5" /></button>
+          <span className="min-w-20 text-center text-sm font-semibold tabular-nums text-[#7d2440] dark:text-[#ffd8e2]">{firstVisible + 1} / {testimonials.length}</span>
+          <button type="button" onClick={() => carouselApi?.scrollNext()} aria-label="Next testimonial" className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#e5cbd2] bg-white text-[#7d2440] transition-colors hover:border-[#ab1e3e] hover:bg-[#fff0f3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ab1e3e] dark:border-white/20 dark:bg-white/5 dark:text-[#ffd8e2] dark:hover:bg-white/10"><ChevronRight aria-hidden="true" className="h-5 w-5" /></button>
+        </nav>
+        <p className="sr-only" role="status" aria-live="polite">Starting with testimonial {firstVisible + 1} of {testimonials.length}</p>
       </div>
     </section>
   )

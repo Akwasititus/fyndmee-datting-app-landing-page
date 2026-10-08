@@ -1,9 +1,9 @@
 import { createPageMetadata } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
-  title: "Download the Fynd Mee Dating App",
+  title: "Find the Fynd Mee App",
   description:
-    "Download Fynd Mee for iPhone or Android and start meeting verified people through smart, compatibility-based matching.",
+    "Meet Fynd Mee, discover how it works, and find guidance for locating the official app listing.",
   path: "/download",
   image: "/images/download-image.png",
   imageAlt: "Download the Fynd Mee dating app",

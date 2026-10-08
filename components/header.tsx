@@ -10,7 +10,7 @@ import { useTheme } from "@/components/theme-provider"
 const navItems = [
   { id: "why-choose", label: "Why Fynd Mee", href: "/#why-choose-heading" },
   { id: "pricing", label: "Products", href: "/products-pricing-info" },
-  { id: "newsroom", label: "News Room", href: "/blog" },
+  { id: "newsroom", label: "Blog", href: "/blog" },
   { id: "download", label: "Download", href: "/download" },
 ]
 
