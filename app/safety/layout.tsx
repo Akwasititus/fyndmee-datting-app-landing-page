@@ -3,7 +3,7 @@ import { createPageMetadata } from "@/lib/seo"
 export const metadata = createPageMetadata({
   title: "Online Dating Safety Tips",
   description:
-    "Read practical Fynd Mee safety tips for protecting your privacy, spotting suspicious behavior, chatting securely, and meeting in person.",
+    "Read Fynd Mee safety guidance, reporting information, and standards prohibiting child sexual abuse and exploitation.",
   path: "/safety",
 })
 

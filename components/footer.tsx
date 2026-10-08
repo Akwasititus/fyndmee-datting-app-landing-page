@@ -76,6 +76,11 @@ export default function Footer() {
                   Terms of Service
                 </a>
               </li>
+              <li>
+                <a href="/delete-account" className="hover:text-rose-400 transition">
+                  Delete Account
+                </a>
+              </li>
              
               <li>
                 <a href="/safety" className="hover:text-rose-400 transition">

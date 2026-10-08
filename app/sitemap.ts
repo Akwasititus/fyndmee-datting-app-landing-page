@@ -14,6 +14,7 @@ const staticPages = [
   { path: '/careers', changeFrequency: 'weekly' as const, priority: 0.5 },
   { path: '/privacy-policy', changeFrequency: 'yearly' as const, priority: 0.3 },
   { path: '/terms-of-service', changeFrequency: 'yearly' as const, priority: 0.3 },
+  { path: '/delete-account', changeFrequency: 'yearly' as const, priority: 0.3 },
 ]
 
 const blogPosts = [
@@ -26,7 +27,7 @@ const blogPosts = [
 const careerIds = ['1', '2', '3', '4']
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUpdated = new Date('2026-09-11')
+  const siteUpdated = new Date('2026-09-22')
 
   return [
     ...staticPages.map(({ path, changeFrequency, priority }) => ({

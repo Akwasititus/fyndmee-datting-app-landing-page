@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
             </span>
           </h1>
           <p className="text-gray-600 dark:text-white/60 text-lg">
-            Last updated: November 28, 2025
+            Last updated: September 18, 2026
           </p>
         </motion.div>
 
@@ -156,6 +156,18 @@ export default function PrivacyPolicy() {
             </ul>
           </Section>
 
+          <Section title="Vanessa Virtual Support" delay={0.28}>
+            <p>
+              When you use Vanessa on this website, your question and up to ten recent conversation turns are sent to our website server. When AI support is configured, these messages are sent to Groq to generate a reply. If AI is unavailable, Vanessa uses FAQ answers instead.
+            </p>
+            <p>
+              The widget keeps its conversation in page memory, not in browser storage or our database. Reset clears that conversation, and reloading the page starts a new one. The chat implementation logs provider response status and timing, not message content. Vanessa cannot access or change your Fynd Mee account. Please do not send passwords, verification codes, payment details, or sensitive personal information.
+            </p>
+            <p>
+              Groq handles messages under its own data policy and the service settings configured for our account. See <a href="https://console.groq.com/docs/your-data" className="underline" target="_blank" rel="noopener noreferrer">Groq's data policy</a> for its retention practices. Resetting the widget does not delete information already processed by a service provider.
+            </p>
+          </Section>
+
           <Section title="Data Security" delay={0.3}>
             <p>
               We are committed to protecting your personal information from unauthorized access, use, or disclosure. We have implemented robust technical and organizational security measures to safeguard the information we collect, including data encryption, access controls, and secure data storage practices. While we strive to protect your personal information, no method of transmission over the internet or electronic storage is 100% secure.
@@ -177,7 +189,14 @@ export default function PrivacyPolicy() {
               </li>
               <li className="flex items-start">
                 <span className="text-[#AB1E3E] mr-2">•</span>
-                <span><strong className="text-gray-900 dark:text-white">Deletion:</strong> Request the deletion of your personal information under certain circumstances.</span>
+                <span>
+                  <strong className="text-gray-900 dark:text-white">Deletion:</strong>{" "}
+                  Request the deletion of your personal information under certain circumstances through our{" "}
+                  <Link href="/delete-account" className="text-[#AB1E3E] underline hover:text-rose-500">
+                    account deletion page
+                  </Link>
+                  .
+                </span>
               </li>
               <li className="flex items-start">
                 <span className="text-[#AB1E3E] mr-2">•</span>
