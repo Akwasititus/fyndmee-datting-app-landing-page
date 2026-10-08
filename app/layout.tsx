@@ -1,36 +1,95 @@
 import type { Metadata } from "next"
-import { Kumbh_Sans, Geist, Geist_Mono, Inter } from "next/font/google"
+import { Fraunces, Kumbh_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
-import RadioPlayer from "@/components/RadioPlayer"
+import { SITE_URL, siteConfig } from "@/lib/seo"
 import "./globals.css"
 
-const inter = Inter({ subsets: ['latin'] })
-
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-
 // Configure the font
-const kumbhSans = Kumbh_Sans({ 
+const kumbhSans = Kumbh_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-kumbh-sans',
 })
 
-// export const metadata: Metadata = {
-//   title: "Fynd Mee",
-//   description: "Welcome to fyndmee",
-//   generator: "BB-group",
-//   icons: {
-//     icon: '/favicon.png',
-//   },
-// }
+// Editorial display serif — used for the hero headline (see components/hero-section.tsx).
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  display: 'swap',
+  style: ['normal', 'italic'],
+  variable: '--font-fraunces',
+})
+
 
 export const metadata: Metadata = {
-  title: "Fynd Mee",
-  description: "Welcome to fyndmee",
-  generator: "BB-group",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Fynd Mee | Verified Dating App for Real Connections",
+    template: "%s | Fynd Mee",
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "Fynd Mee",
+    "FyndMee",
+    "verified dating app",
+    "meaningful relationships",
+    "online dating",
+    "smart matching",
+    "dating app in Africa",
+  ],
+  authors: [{ name: siteConfig.name, url: SITE_URL }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "relationships",
+  referrer: "origin-when-cross-origin",
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    type: "website",
+    locale: "en_GH",
+    url: SITE_URL,
+    siteName: siteConfig.name,
+    title: "Fynd Mee | Verified Dating App for Real Connections",
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.socialImage,
+        width: 1500,
+        height: 1000,
+        alt: siteConfig.socialImageAlt,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fynd Mee | Verified Dating App for Real Connections",
+    description: siteConfig.description,
+    images: [siteConfig.socialImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  manifest: "/site.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: siteConfig.name,
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  generator: "Next.js",
   icons: {
     icon: [
       {
@@ -40,16 +99,6 @@ export const metadata: Metadata = {
       {
         url: '/favicon.png', // Your PNG version
         type: 'image/png',
-      },
-      {
-        url: '/icon.png', // Alternative icon
-        type: 'image/png',
-        sizes: '32x32',
-      },
-      {
-        url: '/icon-192.png', // For PWA/Android
-        type: 'image/png',
-        sizes: '192x192',
       },
     ],
     apple: [
@@ -75,31 +124,6 @@ export const metadata: Metadata = {
   },
 }
 
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode
-// }) {
-//   return (
-//     <html lang="en" suppressHydrationWarning className={kumbhSans.variable}>
-//       <head>
-//       {/* <link rel="icon" href="/favicon.ico" /> */}
-//         <Script
-//           src="https://cdn.lordicon.com/lordicon.js"
-//           strategy="afterInteractive"
-//         />
-//       </head>
-//       <body className={inter.className}>
-//         <ThemeProvider>
-//           {children}
-//         </ThemeProvider>
-
-//                 {/* Global Radio Player */}
-//                 {/* <RadioPlayer /> */}
-//       </body>
-//     </html>
-//   )
-// }
 
 export default function RootLayout({
   children,
@@ -107,13 +131,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={kumbhSans.variable}>
+    <html lang="en" suppressHydrationWarning className={`${kumbhSans.variable} ${fraunces.variable}`}>
       <head>
-        {/* Explicit favicon links for better crawler discovery */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        
         <Script
           src="https://cdn.lordicon.com/lordicon.js"
           strategy="afterInteractive"
@@ -123,6 +142,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

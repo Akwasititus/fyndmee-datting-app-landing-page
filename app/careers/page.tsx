@@ -229,10 +229,6 @@ export default function CareersPage() {
     }
   ]
 
-  const handleApplyClick = (jobId: number) => {
-    window.location.href = `/careers/${jobId}`
-  }
-
   return (
     <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-black dark:via-slate-950 dark:to-black">
       {/* Background effects - only visible in dark mode */}
@@ -268,9 +264,9 @@ export default function CareersPage() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Open Positions
-            </h2>
+            </h1>
             <p className="text-gray-600 dark:text-white/60">
               Join our team and make a real impact across Africa
             </p>
@@ -313,15 +309,13 @@ export default function CareersPage() {
                     </div>
                   </div>
 
-                  <motion.button
-                    onClick={() => handleApplyClick(job.id)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                  <Link
+                    href={`/careers/${job.id}`}
                     className="w-full mt-6 bg-gradient-to-r from-[#AB1E3E] to-rose-500 text-white/90 px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 inline-flex items-center justify-center gap-2"
                   >
-                    Apply Now
+                    View role and apply
                     <ArrowRight className="w-4 h-4" />
-                  </motion.button>
+                  </Link>
                 </div>
               </motion.div>
             ))}

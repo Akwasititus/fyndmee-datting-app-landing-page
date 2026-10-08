@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
+import StructuredData from '@/components/structured-data'
+import { SITE_URL, siteConfig } from '@/lib/seo'
 
 const blogPosts = [
 
@@ -36,6 +38,7 @@ const blogPosts = [
     `,
     imageUrl: "/images/blog-3.jpg",
     date: "November 26, 2025",
+    datePublished: "2025-11-26",
     category: "Professional Growth",
     author: "Paulina Mwindor",
     authorRole: "Product Marketing Lead",
@@ -70,6 +73,7 @@ const blogPosts = [
     `,
     imageUrl: "/images/blog-intentional.jpg",
     date: "December 4, 2025",
+    datePublished: "2025-12-04",
     category: "Relationships",
     author: "Paulina Mwindor",
     authorRole: "Product Marketing Lead",
@@ -108,6 +112,7 @@ const blogPosts = [
     `,
     imageUrl: "/images/blog-secret-long-lasting-connection.jpg",
     date: "December 2, 2025",
+    datePublished: "2025-12-02",
     category: "Relationship Growth",
     author: "Paulina Mwindor",
     authorRole: "Relationship Writer",
@@ -143,6 +148,7 @@ const blogPosts = [
     `,
     imageUrl: "/images/meaningful-connections-in-2025.jpg",
     date: "December 5, 2025",
+    datePublished: "2025-12-05",
     category: "Modern Relationships",
     author: "Paulina Mwindor",
     authorRole: "Relationship Writer",
@@ -160,20 +166,49 @@ interface BlogPostPageProps {
   }>
 }
 
+export function generateStaticParams() {
+  return blogPosts.map(({ slug }) => ({ slug }))
+}
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
   const post = blogPosts.find(p => p.slug === slug)
 
   if (!post) {
     return {
-      title: 'Post Not Found - FyndMee'
+      title: 'Post Not Found',
+      robots: { index: false, follow: false },
     }
   }
 
+  const canonical = `${SITE_URL}/blog/${post.slug}`
+
   return {
-    title: `${post.title} - FyndMee Blog`,
+    title: post.title,
     description: post.excerpt,
+    authors: [{ name: post.author }],
+    alternates: { canonical },
     openGraph: {
+      type: 'article',
+      locale: 'en_GH',
+      url: canonical,
+      siteName: siteConfig.name,
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.datePublished,
+      authors: [post.author],
+      section: post.category,
+      images: [
+        {
+          url: post.imageUrl,
+          width: 1500,
+          height: 1000,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
       images: [post.imageUrl],
@@ -194,8 +229,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     .filter(p => p.slug !== post.slug && p.category === post.category)
     .slice(0, 3)
 
+  const canonical = `${SITE_URL}/blog/${post.slug}`
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: `${SITE_URL}${post.imageUrl}`,
+    datePublished: post.datePublished,
+    dateModified: post.datePublished,
+    mainEntityOfPage: canonical,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
+      <StructuredData data={articleJsonLd} />
       {/* Header */}
       <header className="relative py-8 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4">
@@ -252,7 +305,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  <span>{post.date}</span>
+                  <time dateTime={post.datePublished}>{post.date}</time>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />

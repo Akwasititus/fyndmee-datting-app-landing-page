@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from 'next/link'
-import { ArrowLeft, Shield, AlertCircle, Heart, MessageSquare, Users, Phone, Lock, Eye, HelpCircle } from 'lucide-react'
+import { ArrowLeft, Shield, AlertCircle, ShieldAlert } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -104,12 +104,56 @@ export default function SafeTips() {
         <div className="bg-gray-50 dark:bg-white/5 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-white/10 p-8 md:p-12">
           <Section delay={0.1}>
             <p className="text-gray-700 dark:text-white/70 italic mb-4">
-              At Fynd Mee, your safety is our top priority. While we verify all profiles, you should always exercise caution when interacting with new people, whether online or in person.
+              At Fynd Mee, your safety is our top priority. Safety features can help, but no verification or moderation system can guarantee that every person is who they claim to be. Always exercise caution when interacting with new people, whether online or in person.
             </p>
             <p>
               Use your best judgment and put your safety first. While you can't control others' actions, these tips can help protect you throughout your dating journey.
             </p>
           </Section>
+
+          <motion.section
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ delay: 0.12 }}
+            aria-labelledby="child-safety-standards"
+            className="mb-10 rounded-2xl border border-[#AB1E3E]/25 bg-gradient-to-br from-[#AB1E3E]/8 to-rose-500/5 p-6 md:p-8 dark:border-rose-400/25 dark:from-[#AB1E3E]/20 dark:to-rose-500/10"
+          >
+            <div className="flex flex-col items-start gap-4 sm:flex-row">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#AB1E3E] text-white shadow-sm">
+                <ShieldAlert aria-hidden="true" className="h-6 w-6" />
+              </div>
+              <div className="min-w-0">
+                <h2 id="child-safety-standards" className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Child Safety Standards
+                </h2>
+                <p className="mt-4 leading-relaxed text-gray-700 dark:text-white/75">
+                  Fynd Mee prohibits child sexual abuse and exploitation (CSAE). Users must not use Fynd Mee to groom, exploit, threaten, or sexually endanger a child, or to create, request, share, or distribute child sexual abuse material (CSAM). This rule applies to profiles, photos, messages, calls, and all other activity on Fynd Mee.
+                </p>
+
+                <h3 className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">
+                  Report a child safety concern
+                </h3>
+                <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/75">
+                  If you encounter a profile, content, or behaviour that may endanger a child, report it using the reporting option in the Fynd Mee app. You can also contact us at{" "}
+                  <a
+                    href="mailto:info@fyndmee.app"
+                    className="font-semibold text-[#AB1E3E] underline decoration-[#AB1E3E]/40 underline-offset-4 transition-colors hover:text-rose-700 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AB1E3E] dark:text-rose-300 dark:hover:text-rose-200"
+                  >
+                    info@fyndmee.app
+                  </a>
+                  . If a child is in immediate danger, contact local emergency services.
+                </p>
+
+                <h3 className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">
+                  How we respond
+                </h3>
+                <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/75">
+                  We review child safety reports and take appropriate action in accordance with our standards and applicable law. This may include removing prohibited content, restricting or disabling accounts, and reporting confirmed CSAM to the relevant authorities where required.
+                </p>
+              </div>
+            </div>
+          </motion.section>
 
           <Section title="1. Online Safety" delay={0.15}>
             <SubSection title="Never Send Money or Share Financial Info">
@@ -160,7 +204,7 @@ export default function SafeTips() {
                 Keep conversations on Fynd Mee while getting to know someone. Users with bad intentions often try to move chats elsewhere quickly.
               </TipBox>
               <p className="mt-2">
-                Our platform includes safety features and message filters to protect you.
+                Staying on the platform keeps the conversation connected to the relevant account if you need to report a safety concern.
               </p>
             </SubSection>
 
@@ -315,29 +359,8 @@ export default function SafeTips() {
 
             <SubSection title="Use Block Features">
               <p>
-                You can block any user instantly. Blocked users cannot contact you or see your profile.
+                Use the blocking option in the Fynd Mee app to stop unwanted contact. If the person contacts you from another account, report that account too.
               </p>
-            </SubSection>
-
-            <SubSection title="Our Safety Features">
-              <ul className="list-none space-y-2 ml-4">
-                <li className="flex items-start">
-                  <span className="text-[#AB1E3E] mr-2">•</span>
-                  <span>All profiles are verified with facial recognition</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#AB1E3E] mr-2">•</span>
-                  <span>24/7 moderation team</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#AB1E3E] mr-2">•</span>
-                  <span>One-tap reporting and blocking</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#AB1E3E] mr-2">•</span>
-                  <span>Screenshot detection for privacy</span>
-                </li>
-              </ul>
             </SubSection>
           </Section>
 
@@ -389,10 +412,10 @@ export default function SafeTips() {
 
           <Section title="Need Help?" delay={0.45}>
             <p>
-              If you have safety concerns or need to report an incident, contact our Trust & Safety team:
+              If you have safety concerns or need to report an incident, contact Fynd Mee support:
             </p>
             <div className="mt-4 p-4 bg-gradient-to-r from-[#AB1E3E]/5 to-rose-500/5 rounded-xl">
-              <p className="font-semibold text-gray-900 dark:text-white mb-2">Fynd Mee Safety Team</p>
+              <p className="font-semibold text-gray-900 dark:text-white mb-2">Fynd Mee Support</p>
               <a 
                 href="mailto:info@fyndmee.app" 
                 className="text-[#AB1E3E] hover:text-rose-500 transition-colors underline"
@@ -400,7 +423,7 @@ export default function SafeTips() {
                 info@fyndmee.app
               </a>
               <p className="text-sm text-gray-600 dark:text-white/60 mt-2">
-                We review all reports within 24 hours and take appropriate action.
+                Include the relevant profile details and a short description of what happened. Do not send passwords, verification codes, payment information, or other sensitive account credentials.
               </p>
             </div>
           </Section>

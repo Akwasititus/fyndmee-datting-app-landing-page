@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/05455/.codex/**)",
+      "Read(//c/Users/05455/.gemini/**)",
+      "Read(//c/Users/05455/.claude/**)",
+      "Read(//c/Users/05455/.claude/plugins/**)",
+      "Bash(claude mcp *)"
+    ]
+  }
+}
