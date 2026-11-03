@@ -39,12 +39,12 @@ export default function DownloadPage() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-0 pt-16 sm:px-8 md:pt-20 lg:min-h-[680px] lg:grid-cols-[1.04fr_0.96fr] lg:gap-12 lg:px-12 lg:pt-10">
           <div className="relative z-10 pb-12 lg:pb-20">
             <h1 className="max-w-[660px] text-balance text-[clamp(3.25rem,7vw,6.25rem)] font-bold leading-[0.98] tracking-[-0.065em]" style={{ color: "#fff" }}>Good things start with a <span className="italic text-[#ffb6c6]" style={serif}>hello.</span></h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-[#f7dce3] sm:text-xl">Your next meaningful connection could be closer than you think. Make a profile, meet people who share your interests, and let the conversation begin.</p>
+            {/* <p className="mt-7 max-w-xl text-lg leading-8 text-[#f7dce3] sm:text-xl">Your next meaningful connection could be closer than you think. Make a profile, meet people who share your interests, and let the conversation begin.</p> */}
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a href="#get-the-app" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 text-base font-bold text-[#65142b] shadow-[0_12px_35px_rgba(9,2,5,0.18)] transition-colors hover:bg-[#ffe5eb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b1022]">Find the app <ArrowDown aria-hidden="true" className="h-4 w-4" /></a>
               <Link href="/the-app" style={{ color: "#fff" }} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-5 font-semibold underline-offset-4 transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">Explore how it works <ArrowRight aria-hidden="true" className="h-4 w-4" /></Link>
             </div>
-            <p className="mt-7 flex items-center gap-2 text-sm text-[#ebc5ce]"><ShieldCheck aria-hidden="true" className="h-4 w-4 shrink-0" />For adults 18 and over</p>
+            {/* <p className="mt-7 flex items-center gap-2 text-sm text-[#ebc5ce]"><ShieldCheck aria-hidden="true" className="h-4 w-4 shrink-0" />For adults 18 and over</p> */}
           </div>
           <div className="relative mx-auto flex w-full max-w-[590px] items-end justify-center self-end pt-4 lg:pt-10">
             <div aria-hidden="true" className="absolute bottom-16 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.07] sm:h-[510px] sm:w-[510px]" />
